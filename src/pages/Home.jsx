@@ -1,10 +1,12 @@
 import React from 'react';
 import Portada from '../components/sections/Portada';
+import MenuProduct from '../components/sections/MenuProduct';
 
 const Home = () => {
     return (
-        <div>
+        <div className='Main'>
             <Portada></Portada>
+            <MenuProduct></MenuProduct>
         </div>
     );
 };

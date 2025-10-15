@@ -1,0 +1,33 @@
+.menuProduct {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.menuProduct:hover {
+  border: #3b82f6 solid 2px;
+}
+
+.IconOpcion {
+  position: relative;
+  transition: transform 0.6s ease;
+}
+
+.menuProduct:hover .IconOpcion {
+  transform: translateY(-18px);
+}
+
+.menuProduct:hover .nombreOpcion {
+  display: block;
+  bottom: 15px;
+  transition: all 0.5s ease;
+  opacity: 1;
+  color: #3b82f6;
+}
+
+.nombreOpcion {
+  position: absolute;
+  bottom: -20px;
+  opacity: 0;
+  padding: 0;
+}

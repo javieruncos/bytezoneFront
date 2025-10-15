@@ -11,7 +11,7 @@ const Portada = () => {
 
    
   return (
-     <div className="h-[550px] bg-black text-white container mx-auto px-5 mt-5 py-5 flex flex-col justify-center">
+     <div className="h-[550px] bg-black text-white rounded-2xl container mx-auto px-5 mt-5 py-5 flex flex-col justify-center">
       {/* Render dinámico del componente */}
       <div className="flex-1">{componentes[active]}</div>
 
