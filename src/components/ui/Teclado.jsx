@@ -17,10 +17,19 @@ const Teclado = () => {
           <div className="mt-20 flex flex-col gap-5">
             <p className="text-4xl font-bold">Mouse Blanco</p>
             <div className="flex gap-6 mt-5">
-              <button className="bg-white text-black rounded-sm px-6 py-2">
+              <button className="bg-white text-black rounded-sm px-16 py-5 border hover:bg-black
+               hover:text-white
+               hover:border-x-amber-50
+                transition duration-700
+               cursor-pointer
+               ">
                 Ver Producto
               </button>
-              <button className="bg-blue-500 text-white rounded-sm px-6 py-2">
+              <button className="bg-blue-500 text-white border  rounded-sm px-16 py-5 hover:bg-black
+               hover:text-white
+               hover:border-blue-500 
+               transition duration-700
+               cursor-pointer">
                 Comprar Ahora
               </button>
             </div>
