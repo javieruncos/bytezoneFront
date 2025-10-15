@@ -39,6 +39,16 @@ const Joystick = () => {
             alt="Joystick Blanco"
             className="w-full h-full object-cover absolute top-0 left-0"
           />
+          <motion.div
+            initial={{ x: 100, opacity: 0 }} // empieza a la derecha
+            animate={{ x: 0, opacity: 1 }} // termina en su posición
+            transition={{ duration: 0.6, delay: 1 }}
+            className=" absolute top-20 left-10 "
+          >
+            <span className="text-white py-2 px-10 text-2xl bg-blue-500 rounded-sm">
+              $150.000
+            </span>
+          </motion.div>
         </motion.div>
       </div>
     </>

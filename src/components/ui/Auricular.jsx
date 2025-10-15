@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Auricular = () => {
   return (
     <>
-      <div className="grid grid-cols-2 w-full h-full mx-5">
+      <div className="grid grid-cols-2 w-full h-full mx-5 relative">
         {/* Texto animado */}
         <motion.div
           className="pt-20 px-10 flex flex-col gap-5"
@@ -40,6 +40,16 @@ const Auricular = () => {
             alt="Auriculares"
             className="w-full h-full object-contain absolute top-0 left-0"
           />
+          <motion.div
+            initial={{ x: 100, opacity: 0 }} // empieza a la derecha
+            animate={{ x: 0, opacity: 1 }} // termina en su posición
+            transition={{ duration: 0.6,delay: 1 }}
+            className=" absolute top-20 left-10 "
+          >
+            <span className="text-white py-2 px-10 text-2xl bg-blue-500 rounded-sm">
+              $150.000
+            </span>
+          </motion.div>
         </motion.div>
       </div>
     </>
