@@ -2,6 +2,7 @@ import React from 'react';
 import Portada from '../components/sections/Portada';
 import MenuProduct from '../components/sections/MenuProduct';
 import SectionProducts from '../components/sections/SectionProducts';
+import Destacados from '../components/sections/Destacados';
 
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
             <Portada></Portada>
             <MenuProduct></MenuProduct>
              <SectionProducts></SectionProducts>
+             <Destacados></Destacados>
         </div>
     );
 };
