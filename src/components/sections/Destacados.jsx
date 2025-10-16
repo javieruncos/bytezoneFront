@@ -1,15 +1,29 @@
 import { image } from "framer-motion/client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Destacados = () => {
-  const images = [
+  const imagesWhite = [
     "https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6614f0cb0c96220c7026b096_wepik-export-20240408173119hqvi.webp",
     "https://static.vecteezy.com/system/resources/previews/044/283/776/non_2x/white-headphone-on-transparent-background-image-png.png",
     "https://static.vecteezy.com/system/resources/previews/012/981/082/non_2x/wireless-headphones-side-view-white-icon-on-a-transparent-background-3d-rendering-png.png",
     "https://png.pngtree.com/png-vector/20241030/ourmid/pngtree-wireless-headphones-png-image_14187419.png",
   ];
 
+  const imagesBlack = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoMjz5i8jHRV_5LxQfDjHs8Yfku5vcVlqd-Q&s",
+    "https://png.pngtree.com/png-vector/20250321/ourmid/pngtree-wireless-headphone-png-image_15830312.png",
+    "https://png.pngtree.com/png-vector/20250703/ourmid/pngtree-black-headphones-sleek-3d-render-png-image_16600605.webp",
+    "https://w7.pngwing.com/pngs/360/202/png-transparent-headphones-computer-file-black-headphones-electronics-black-hair-black-white.png",
+  ]
+
+  const componentOpcion = ["blanco", "negro"];
+
   const [active, setActive] = useState(0);
+  const [opcionComponente, setOpcionComponente] = useState(0);
+
+  const currentImages =
+    opcionComponente === 0 ? imagesWhite : imagesBlack;
 
   return (
     <div className="h-auto  container mx-auto px-15">
@@ -34,11 +48,16 @@ const Destacados = () => {
         <div className="col-span-3 row-span-5 col-start-3 ">
           <div className="h-[555px]  w-full mt-5 flex gap-4 border border-blue-300 px-5 py-5 rounded-2xl">
             <div className="h-full w-[200px]  flex flex-col justify-around items-center">
-              {images.map((image, index) => (
-                <div className="h-[120px] w-full   rounded-2xl py-4 border border-gray-300
-                 hover:border-blue-500"
-                 onClick={()=>{setActive(index)}}
-                 >
+               {currentImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`h-[120px] w-full rounded-2xl py-4 border transition-all duration-300 cursor-pointer ${
+                    active === index
+                      ? "border-blue-500 scale-105"
+                      : "border-gray-300 hover:border-blue-500"
+                  }`}
+                  onClick={() => setActive(index)}
+                >
                   <img
                     src={image}
                     alt="Auriculares"
@@ -46,11 +65,12 @@ const Destacados = () => {
                   />
                 </div>
               ))}
+              
             </div>
             <div className="h-full w-full">
               <div className="h-[300px] bg-black py-5 rounded-2xl">
                 <img
-                  src={images[active]}
+                  src={currentImages[active]}
                   alt="Auriculares"
                   className="w-full h-full object-contain"
                 />
@@ -70,7 +90,23 @@ const Destacados = () => {
               </div>
             </div>
           </div>
+       
         </div>
+      </div>
+       <div className="flex gap-4 justify-center mt-5 py-5">
+        {componentOpcion.map((_, index) => (
+          <motion.button
+            key={index}
+            onClick={() => setOpcionComponente(index)}
+            layout
+            transition={{ type: "spring", stiffness: 300, damping: 20 ,duration: 0.5}}
+            className={`h-5 flex items-center justify-center ${
+              opcionComponente === index
+                ? "bg-blue-500 w-20 rounded-full"
+                : "bg-gray-300 w-5 rounded-full"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );
