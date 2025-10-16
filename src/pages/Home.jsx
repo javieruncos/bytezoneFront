@@ -3,6 +3,7 @@ import Portada from '../components/sections/Portada';
 import MenuProduct from '../components/sections/MenuProduct';
 import SectionProducts from '../components/sections/SectionProducts';
 import Destacados from '../components/sections/Destacados';
+import MasVendidos from '../components/sections/MasVendidos';
 
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
             <MenuProduct></MenuProduct>
              <SectionProducts></SectionProducts>
              <Destacados></Destacados>
+             <MasVendidos></MasVendidos>
         </div>
     );
 };
