@@ -25,7 +25,7 @@ const Destacados = () => {
   const currentImages = opcionComponente === 0 ? imagesWhite : imagesBlack;
 
   return (
-    <div className="h-auto  container mx-auto px-15">
+    <div className="h-auto  container mx-auto px-0">
       <div className="grid grid-cols-5 grid-rows-5 gap-4">
         <div className="col-span-2 row-span-5 py-5">
           <div className="h-auto w-full bg-black text-white py-5 rounded-2xl">

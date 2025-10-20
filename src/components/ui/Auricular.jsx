@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Auricular = () => {
   return (
     <>
-      <div className="grid grid-cols-2 w-full h-full mx-5 relative">
+      <div className="grid grid-cols-2 w-full h-full mx-0 relative">
         {/* Texto animado */}
         <motion.div
           className="pt-20 px-10 flex flex-col gap-5"

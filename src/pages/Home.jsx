@@ -4,6 +4,7 @@ import MenuProduct from '../components/sections/MenuProduct';
 import SectionProducts from '../components/sections/SectionProducts';
 import Destacados from '../components/sections/Destacados';
 import MasVendidos from '../components/sections/MasVendidos';
+import ProductosPrincipales from '../components/sections/ProductosPrincipales';
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
              <SectionProducts></SectionProducts>
              <Destacados></Destacados>
              <MasVendidos></MasVendidos>
+             <ProductosPrincipales></ProductosPrincipales>
         </div>
     );
 };

@@ -3,7 +3,7 @@ import CardProduct from "../ui/CardProduct";
 
 const SectionProducts = () => {
   return (
-    <div className="h-auto container mx-auto px-15">
+    <div className="h-auto container mx-auto px-0">
       <div className="flex justify-between items-center py-5">
         <div>
           <h2 className="text-4xl font-bold">
