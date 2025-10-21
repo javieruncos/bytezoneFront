@@ -8,7 +8,7 @@ import monitor from '../../assets/icons/monitor.png'
 
 const MenuProduct = () => {
     return (
-        <div className='h-[250px]  container mx-auto px-15'> 
+        <div className='h-[250px]  container mx-auto px-0'> 
             <div className='grid grid-cols-6 gap-2 h-auto py-15'>
                 <div className='h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct'>
                     <img src={computer} alt=""  className="IconOpcion h-[95px]"/>
