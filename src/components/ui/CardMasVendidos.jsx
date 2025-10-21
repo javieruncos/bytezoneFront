@@ -2,7 +2,7 @@ import React from "react";
 
 const CardMasVendidos = ({producto}) => {
   return (
-    <div className="group h-[400px] w-full bg-white border rounded-3xl overflow-hidden transition-all duration-500 flex items-center gap-6 p-6">
+    <div className="group h-[400px] w-full bg-white border border-gray-200 rounded-md overflow-hidden transition-all duration-500 flex items-center gap-6 p-6">
       <div className="flex-shrink-0 h-[300px] w-[300px] flex justify-center items-center bg-[#191919] rounded-2xl overflow-hidden">
         <img
           src={producto.imagen}

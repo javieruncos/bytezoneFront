@@ -5,6 +5,7 @@ import SectionProducts from '../components/sections/SectionProducts';
 import Destacados from '../components/sections/Destacados';
 import MasVendidos from '../components/sections/MasVendidos';
 import ProductosPrincipales from '../components/sections/ProductosPrincipales';
+import Banner from '../components/ui/Banner';
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
              <SectionProducts></SectionProducts>
              <Destacados></Destacados>
              <MasVendidos></MasVendidos>
+             <Banner></Banner>
              <ProductosPrincipales></ProductosPrincipales>
         </div>
     );

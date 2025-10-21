@@ -2,18 +2,58 @@ import React from "react";
 import { useState } from "react";
 import CardMasVendidos from "../ui/CardMasVendidos";
 import { motion } from "framer-motion";
+import computer from '../../assets/icons/computer.png'
+import auricular from '../../assets/icons/auriculares.png'
+import joystick      from '../../assets/icons/joystick.png'
+import laptop from '../../assets/icons/laptop.png'
+import mouse from '../../assets/icons/mouse.png'
+import monitor from '../../assets/icons/monitor.png'
 
 const ProductosPrincipales = () => {
   const [btnActive, setBtnActive] = useState("");
 
+  // const items = [
+  //   "auriculares",
+  //   "teclados",
+  //   "monitores",
+  //   "mouse",
+  //   "parlantes",
+  //   "cámaras",
+  //   "micrófonos",
+  // ];
+
   const items = [
-    "auriculares",
-    "teclados",
-    "monitores",
-    "mouse",
-    "parlantes",
-    "cámaras",
-    "micrófonos",
+  {
+    id: 1,
+    nombre: "auriculares",
+    icon:auricular
+  },
+  {
+    id: 1,
+    nombre: "joystick",
+    icon:joystick
+  },
+  {
+    id: 1,
+    nombre: "teclados",
+    icon:computer
+  },
+  {
+    id: 1,
+    nombre: "laptops",
+    icon:laptop
+  },
+  {
+    id: 1,
+    nombre: "mouse",
+    icon:mouse
+  },
+  {
+    id: 1,
+    nombre: "monitores",
+    icon:monitor
+  }
+   
   ];
 
   const productos = [
@@ -115,18 +155,18 @@ const ProductosPrincipales = () => {
       </div>
       <hr className="text-blue-500" />
       <div className="mt-16 flex gap-3 h-auto border-gray-300 rounded-md  relative">
-        <div className="w-[200px] h-[400px] flex-shrink-0 overflow-y-auto rounded-md  sticky top-5">
+        <div className="w-[200px] h-full flex-shrink-0 overflow-y-auto rounded-md  sticky top-5">
           {items.map((item) => (
             <button
               key={item}
-              onClick={() => setBtnActive(item)}
-              className={`text-center py-4 border-b w-full border-gray-300 hover:border-blue-300  ${
-                btnActive === item
+              onClick={() => setBtnActive(item.nombre)}
+              className={`text-center py-4 px-4 border-b w-full border-gray-300 hover:border-blue-300 flex items-center  gap-2 ${
+                btnActive === item.nombre
                   ? "bg-blue-500 text-white rounded-md"
                   : "bg-white rounded-md text-black"
               }`}
             >
-              {item}
+             <img src={item.icon} alt="" className="w-[40px] h-[40px]" /> {item.nombre}
             </button>
           ))}
         </div>
