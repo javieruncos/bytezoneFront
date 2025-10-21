@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import CardMasVendidos from "../ui/CardMasVendidos";
+import { motion } from "framer-motion";
 
 const ProductosPrincipales = () => {
   const [btnActive, setBtnActive] = useState("");
@@ -13,6 +15,89 @@ const ProductosPrincipales = () => {
     "cámaras",
     "micrófonos",
   ];
+
+  const productos = [
+    {
+      id: 1,
+      nombre: "Auriculares Premium",
+      categoria: "auriculares",
+      precio: 150,
+      imagen: "https://...",
+      descripcion: "Sonido envolvente y diseño ergonómico.",
+      stock: "disponible",
+    },
+    {
+      id: 2,
+      nombre: "Laptop Gamer",
+      categoria: "laptops",
+      precio: 1200,
+      imagen: "https://...",
+      descripcion: "Alto rendimiento para gaming y trabajo.",
+      stock: "disponible",
+    },
+    {
+      id: 3,
+      nombre: "Cámara HD",
+      categoria: "cámaras",
+      precio: 300,
+      imagen: "https://...",
+      descripcion: "Captura imágenes nítidas y video en alta definición.",
+      stock: "agotado",
+    },
+    {
+      id: 3,
+      nombre: "Cámara HD",
+      categoria: "micrófonos",
+      precio: 300,
+      imagen: "https://...",
+      descripcion: "Captura imágenes nítidas y video en alta definición.",
+      stock: "agotado",
+    },
+    {
+      id: 3,
+      nombre: "Cámara HD",
+      categoria: "parlantes",
+      precio: 300,
+      imagen: "https://...",
+      descripcion: "Captura imágenes nítidas y video en alta definición.",
+      stock: "agotado",
+    },
+    {
+      id: 3,
+      nombre: "Cámara HD",
+      categoria: "mouse",
+      precio: 300,
+      imagen: "https://...",
+      descripcion: "Captura imágenes nítidas y video en alta definición.",
+      stock: "agotado",
+    },
+    {
+      id: 3,
+      nombre: "Cámara HD",
+      categoria: "monitores",
+      precio: 300,
+      imagen: "https://...",
+      descripcion: "Captura imágenes nítidas y video en alta definición.",
+      stock: "agotado",
+    },
+    {
+      id: 3,
+      nombre: "Cámara HD",
+      categoria: "teclados",
+      precio: 300,
+      imagen: "https://...",
+      descripcion: "Captura imágenes nítidas y video en alta definición.",
+      stock: "agotado",
+    },
+    // más productos...
+  ];
+
+  // filtramos productos deacuerdo a la categoria seleccionada
+  const productosFiltrados = btnActive
+    ? productos.filter((item) => {
+        return item.categoria === btnActive;
+      })
+    : productos;
 
   return (
     <div className="container mx-auto my-17">
@@ -30,119 +115,33 @@ const ProductosPrincipales = () => {
       </div>
       <hr className="text-blue-500" />
       <div className="mt-16 flex gap-3 h-auto border-gray-300 rounded-md  relative">
-        <div className="w-[200px] h-[400px] overflow-y-auto rounded-md  sticky top-5">
+        <div className="w-[200px] h-[400px] flex-shrink-0 overflow-y-auto rounded-md  sticky top-5">
           {items.map((item) => (
             <button
               key={item}
               onClick={() => setBtnActive(item)}
-              className={`text-center py-4 border-b w-full border-gray-300 hover:border-blue-500  ${
+              className={`text-center py-4 border-b w-full border-gray-300 hover:border-blue-300  ${
                 btnActive === item
                   ? "bg-blue-500 text-white rounded-md"
-                  : "bg-white"
+                  : "bg-white rounded-md text-black"
               }`}
             >
               {item}
             </button>
           ))}
         </div>
-
-        <div className="w-full h-auto  grid grid-cols-2 gap-4">
-          <div className="group h-[400px] w-full py-5 border border-white/10 rounded-3xl overflow-hidden bg-white transition-all duration-500 flex items-center gap-6 p-6">
-            <div className="flex-shrink-0 h-[300px] w-[300px] flex justify-center items-center bg-[#191919] rounded-2xl overflow-hidden">
-              <img
-                src="https://diamondsystemar.vtexassets.com/arquivos/ids/163846-800-450?v=638881982714900000&width=800&height=450&aspect=true"
-                alt="Auriculares"
-                className="object-contain h-full w-full group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="flex flex-col justify-center text-black">
-              <h4 className="text-3xl font-semibold mb-2">
-                Auriculares Premium
-              </h4>
-              <p className="text-gray-300 text-lg mb-4">
-                Sonido envolvente y diseño ergonómico para una experiencia de
-                audio superior.
-              </p>
-              <p className="text-2xl font-bold text-blue-500 mb-4">
-                $150.00 USD
-              </p>
-              <button className="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-300">
-                Ver producto
-              </button>
-            </div>
-          </div>
-          <div className="group h-[400px] w-full bg-white  backdrop-blur-lg border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 flex items-center gap-6 p-6">
-            <div className="flex-shrink-0 h-[300px] w-[300px] flex justify-center items-center bg-[#191919] rounded-2xl overflow-hidden">
-              <img
-                src="https://diamondsystemar.vtexassets.com/arquivos/ids/163846-800-450?v=638881982714900000&width=800&height=450&aspect=true"
-                alt="Auriculares"
-                className="object-contain h-full w-full group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="flex flex-col justify-center text-black">
-              <h4 className="text-3xl font-semibold mb-2">
-                Auriculares Premium
-              </h4>
-              <p className="text-gray-300 text-lg mb-4">
-                Sonido envolvente y diseño ergonómico para una experiencia de
-                audio superior.
-              </p>
-              <p className="text-2xl font-bold text-blue-500 mb-4">
-                $150.00 USD
-              </p>
-              <button className="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-300">
-                Ver producto
-              </button>
-            </div>
-          </div>
-          <div className="group h-[400px] w-full bg-white backdrop-blur-lg border border-white/10 rounded-3xl overflow-hidden  transition-all duration-500 flex items-center gap-6 p-6">
-            <div className="flex-shrink-0 h-[300px] w-[300px] flex justify-center items-center bg-[#191919] rounded-2xl overflow-hidden">
-              <img
-                src="https://diamondsystemar.vtexassets.com/arquivos/ids/163846-800-450?v=638881982714900000&width=800&height=450&aspect=true"
-                alt="Auriculares"
-                className="object-contain h-full w-full group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="flex flex-col justify-center text-black">
-              <h4 className="text-3xl font-semibold mb-2">
-                Auriculares Premium
-              </h4>
-              <p className="text-gray-300 text-lg mb-4">
-                Stock:  <span className="text-green-300">disponible</span>
-              </p>
-              <p className="text-2xl font-bold text-blue-500 mb-4">
-                $150.00 USD
-              </p>
-              <button className="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-300">
-                Ver producto
-              </button>
-            </div>
-          </div>
-          <div className="group h-[400px] w-full bg-white backdrop-blur-lg border border-white/10 rounded-3xl overflow-hidden  transition-all duration-500 flex items-center gap-6 p-6">
-            <div className="flex-shrink-0 h-[300px] w-[300px] flex justify-center items-center bg-[#191919] rounded-2xl overflow-hidden">
-              <img
-                src="https://diamondsystemar.vtexassets.com/arquivos/ids/163846-800-450?v=638881982714900000&width=800&height=450&aspect=true"
-                alt="Auriculares"
-                className="object-contain h-full w-full group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="flex flex-col justify-center text-black">
-              <h4 className="text-3xl font-semibold mb-2">
-                Auriculares Premium
-              </h4>
-              <p className="text-gray-300 text-lg mb-4">
-                Sonido envolvente y diseño ergonómico para una experiencia de
-                audio superior.
-              </p>
-              <p className="text-2xl font-bold text-blue-500 mb-4">
-                $150.00 USD
-              </p>
-              <button className="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-300">
-                Ver producto
-              </button>
-            </div>
-          </div>
-        </div>
+        <motion.div
+          key={btnActive} // cambia cuando cambia la categoría
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 2 }}
+          className="grid grid-cols-2 gap-3"
+        >
+          {productosFiltrados.map((p) => (
+            <CardMasVendidos key={p.id} producto={p} />
+          ))}
+        </motion.div>
       </div>
     </div>
   );
