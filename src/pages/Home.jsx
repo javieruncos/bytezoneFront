@@ -7,12 +7,15 @@ import MasVendidos from "../components/sections/MasVendidos";
 import ProductosPrincipales from "../components/sections/ProductosPrincipales";
 import Banner from "../components/ui/Banner";
 import Comentarios from "../components/sections/Comentarios";
+import Menu from "../components/common/Menu";
 
 const Home = () => {
-
   return (
     <div className="Main">
-      <Portada></Portada>
+      <Menu></Menu>
+      <section className="mt-20">
+        <Portada></Portada>
+      </section>
       <MenuProduct></MenuProduct>
       <SectionProducts></SectionProducts>
       <Destacados></Destacados>
