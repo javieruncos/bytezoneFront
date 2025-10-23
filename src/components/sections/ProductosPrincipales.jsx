@@ -197,9 +197,9 @@ const ProductosPrincipales = () => {
       <hr className="text-blue-500" />
 
       {/* Contenedor principal */}
-      <div className="flex flex-col md:flex-row gap-4 mt-8">
+      <div className="flex flex-col md:flex-row gap-4 mt-8 ">
         {/* Sidebar categorías */}
-        <div className="w-full md:w-[200px] flex-shrink-0">
+        <div className="w-full md:w-[200px] flex-shrink-0 sticky top-5">
           <div className="grid grid-cols-2 sm:grid-cols-1 gap-4">
             {items.map((item) => (
               <button
@@ -221,18 +221,18 @@ const ProductosPrincipales = () => {
         </div>
 
         {/* Productos */}
-       <motion.div
-  key={btnActive} // cambia cuando cambia la categoría
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  exit={{ opacity: 0 }}
-  transition={{ duration: 0.5 }}
-  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full"
->
-  {productosFiltrados.map((p) => (
-    <CardMasVendidos key={p.id} producto={p} />
-  ))}
-</motion.div>
+        <motion.div
+          key={btnActive} // cambia cuando cambia la categoría
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-3 w-full"
+        >
+          {productosFiltrados.slice(0, 6).map((p) => (
+            <CardMasVendidos key={p.id} producto={p} />
+          ))}
+        </motion.div>
       </div>
     </div>
   );
