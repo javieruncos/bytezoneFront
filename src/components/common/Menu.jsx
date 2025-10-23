@@ -42,11 +42,11 @@ const Menu = () => {
           </div>
         </div>
       </div>
-      <div className=" text-black text-center py-2 h-[100px] flex items-center justify-between px-12">
+      <div className=" text-black text-center py-2 h-[100px] flex items-center justify-between px-4 md:px-12 ">
         <div className="w-1/2 flex items-center">
           <span className="text-2xl font-bold">BYTEZONE</span>
         </div>
-        <div class="relative w-1/2">
+        <div class="relative w-1/2 hidden md:block">
           <input
             type="search"
             placeholder="Buscar..."

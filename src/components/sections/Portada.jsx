@@ -30,15 +30,15 @@ const Portada = () => {
     //     ))}
     //   </div>
     // </div>
-    <div className="h-[1000px] md:h-[550px] bg-black text-white rounded-2xl container mx-auto px-0 mt-5 py-5 flex flex-col justify-center">
+    <div className="h-[1000px] md:h-[550px] bg-black text-white rounded-2xl container mx-auto px-0 mt-5 py-5 flex flex-col justify-center ">
       {/* Contenedor para título e imagen */}
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center ">
         {/* Render dinámico del componente */}
         <div className="flex-1 w-full">{componentes[active]}</div>
       </div>
 
       {/* Botones circulares */}
-      <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 mt-5 py-5">
+      <div className="flex  sm:flex-row  items-center justify-center gap-4 mt-5 py-5">
         {componentes.map((_, index) => (
           <motion.button
             key={index}
