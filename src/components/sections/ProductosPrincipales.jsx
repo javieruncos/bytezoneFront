@@ -128,7 +128,6 @@ const ProductosPrincipales = () => {
       descripcion: "Captura imágenes nítidas y video en alta definición.",
       stock: "agotado",
     },
-    // más productos...
   ];
 
   // filtramos productos deacuerdo a la categoria seleccionada
@@ -139,50 +138,6 @@ const ProductosPrincipales = () => {
     : productos;
 
   return (
-    // <div className="container mx-auto my-17">
-    //   <div className="flex justify-between items-center py-5">
-    //     <div>
-    //       <h2 className="text-4xl font-bold">
-    //         Ultimas <span className="text-blue-500">Novedades</span>
-    //       </h2>
-    //     </div>
-    //     <div>
-    //       <button className="py-3 px-10 bg-blue-500 text-white border rounded-md hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500">
-    //         <span>VerTodo</span>
-    //       </button>
-    //     </div>
-    //   </div>
-    //   <hr className="text-blue-500" />
-    //   <div className="mt-16 flex gap-3 h-auto border-gray-300 rounded-md  relative">
-    //     <div className="w-[200px] h-full flex-shrink-0 overflow-y-auto rounded-md  sticky top-5">
-    //       {items.map((item) => (
-    //         <button
-    //           key={item}
-    //           onClick={() => setBtnActive(item.nombre)}
-    //           className={`text-center py-4 px-4 border-b w-full border-gray-300 hover:border-blue-300 flex items-center  gap-2 ${
-    //             btnActive === item.nombre
-    //               ? "bg-blue-500 text-white rounded-md"
-    //               : "bg-white rounded-md text-black"
-    //           }`}
-    //         >
-    //          <img src={item.icon} alt="" className="w-[40px] h-[40px]" /> {item.nombre}
-    //         </button>
-    //       ))}
-    //     </div>
-    //     <motion.div
-    //       key={btnActive} // cambia cuando cambia la categoría
-    //       initial={{ opacity: 0 }}
-    //       animate={{ opacity: 1 }}
-    //       exit={{ opacity: 0 }}
-    //       transition={{ duration: 2 }}
-    //       className="grid grid-cols-2 gap-3"
-    //     >
-    //       {productosFiltrados.map((p) => (
-    //         <CardMasVendidos key={p.id} producto={p} />
-    //       ))}
-    //     </motion.div>
-    //   </div>
-    // </div>
     <div className="container mx-auto my-8 px-4">
       {/* Título y botón */}
       <div className="flex flex-col md:flex-row justify-between items-center md:items-center py-5 gap-4">
@@ -199,7 +154,7 @@ const ProductosPrincipales = () => {
       {/* Contenedor principal */}
       <div className="flex flex-col md:flex-row gap-4 mt-8 ">
         {/* Sidebar categorías */}
-        <div className="w-full md:w-[200px] flex-shrink-0 sticky top-5">
+        <div className="w-full md:w-[200px] flex-shrink-0 ">
           <div className="grid grid-cols-2 sm:grid-cols-1 gap-4">
             {items.map((item) => (
               <button

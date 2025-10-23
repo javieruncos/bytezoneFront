@@ -24,7 +24,7 @@ const Home = () => {
       <MasVendidos></MasVendidos>
       <ProductosPrincipales></ProductosPrincipales>
       <Banner></Banner>
-      <Comentarios></Comentarios>
+      {/* <Comentarios></Comentarios> */}
     </div>
   );
 };
