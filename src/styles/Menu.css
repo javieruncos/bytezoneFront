@@ -1,0 +1,20 @@
+.ticker-scroller {
+  width: 200%;
+  display: flex;
+  animation: tickerMove 12s linear infinite;
+  /* mejora de nitidez */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* cada bloque se ajusta al contenido y no se encoge */
+.ticker-item {
+  flex: 0 0 auto;
+  padding-right: 2rem; /* separación entre repeticiones */
+}
+
+/* ANIMACIÓN: mover de 0 -> -50% (cuando la primera mitad sale, la segunda está entrando) */
+@keyframes tickerMove {
+      0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}

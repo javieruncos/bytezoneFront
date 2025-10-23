@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className="Main">
       <Menu></Menu>
-      <section className="mt-20">
+      <section className="mt-10">
         <Portada></Portada>
       </section>
       <MenuProduct></MenuProduct>

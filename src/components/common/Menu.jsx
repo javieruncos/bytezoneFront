@@ -1,5 +1,9 @@
 import { useState } from "react";
+import "../../styles/Menu.css";
 import { motion, AnimatePresence } from "framer-motion";
+import auricular from "../../assets/icons/auricularIcon.png";
+import userIcon from "../../assets/icons/userIcon.webp";
+import carritoIcon from "../../assets/icons/carritoIcon.webp";
 
 const Menu = () => {
   const [open, setOpen] = useState(false);
@@ -18,17 +22,37 @@ const Menu = () => {
 
   return (
     <>
-      <div className="bg-blue-600 text-white text-center py-2 h-[100px] flex items-center justify-between px-12">
-        <div className="">
-          <span className="text-2xl font-bold">ByteZone</span>
+      <div class="overflow-hidden h-[50px] bg-black text-white flex items-center">
+        <div class="flex will-change-transform [transform:translateZ(0)] ticker-scroller">
+          <div class="flex items-center whitespace-nowrap ticker-item">
+             Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
+            por Hoy •
+          </div>
+          <div class="flex items-center whitespace-nowrap ticker-item">
+             Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
+            por Hoy •
+          </div>
+          <div class="flex items-center whitespace-nowrap ticker-item">
+             Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
+            por Hoy •
+          </div>
+          <div class="flex items-center whitespace-nowrap ticker-item">
+             Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
+            por Hoy •
+          </div>
         </div>
-        <div class="relative w-[600px]">
+      </div>
+      <div className=" text-black text-center py-2 h-[100px] flex items-center justify-between px-12">
+        <div className="w-1/2 flex items-center">
+          <span className="text-2xl font-bold">BYTEZONE</span>
+        </div>
+        <div class="relative w-1/2">
           <input
             type="search"
             placeholder="Buscar..."
             class="w-full bg-black text-white py-3 pl-4 pr-12 rounded-lg outline-none"
           />
-          <button class="absolute right-3 top-1/2 -translate-y-1/2 text-black rounded-md bg-amber-50 p-2 hover:bg-blue-500 hover:text-white">
+          <button class="absolute right-3 top-1/2 -translate-y-1/2 text-black rounded-md bg-white p-2 hover:bg-blue-500 hover:text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -45,20 +69,34 @@ const Menu = () => {
             </svg>
           </button>
         </div>
-        <div>
-          <span className="text-2xl font-bold">Contactanos</span>
+        <div className="flex items-center justify-end gap-5 w-1/2 ">
+          <div className="hidden md:block">
+            <img src={auricular} alt="" className="h-[50px]" />
+          </div>
+          <div className="text-start text-sm hidden md:block">
+            <p className=" font-bold">Necesitas Ayuda?</p>
+            <p className=" font-bold">4335343</p>
+          </div>
+          <div className="flex  items-center gap-4">
+            <button className=" cursor-pointer">
+              <img src={userIcon} alt="" className="h-[30px]" />
+            </button>
+            <button className="cursor-pointer">
+              <img src={carritoIcon} alt="" className="h-[30px]" />
+            </button>
+          </div>
         </div>
       </div>
 
-      <nav className="text-gray-200 sticky top-0 w-full z-30  menu bg-white md:bg-white">
+      <nav className="text-black sticky top-0 w-full z-30  menu border border-gray-300 bg-[#f5f5f5]">
         <div className="container mx-auto flex gap-8 items-center p-4">
           <div className="flex-1 flex items-center gap-8">
             {/* Logo */}
             <button
               onClick={() => handleScroll("servicios")}
-              className="text-xl pb-1 font-bold text-amber-600"
+              className="text-xl pb-1 font-bold text-black hover:text-blue-500"
             >
-              MOTOMECANICA
+              Ofertas en curso
             </button>
             {/* Menú desktop */}
             <ul className="hidden md:flex ms-auto gap-6">
@@ -72,7 +110,7 @@ const Menu = () => {
                   onClick={() => handleScroll("servicios")}
                   className="hover:text-amber-600"
                 >
-                  servicios
+                  Sobre Nosotros
                 </button>
               </li>
               <li>
@@ -81,6 +119,14 @@ const Menu = () => {
                   className="hover:text-amber-600"
                 >
                   contacto
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleScroll("contacto")}
+                  className="hover:text-amber-600"
+                >
+                  Shop
                 </button>
               </li>
             </ul>
