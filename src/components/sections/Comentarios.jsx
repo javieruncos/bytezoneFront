@@ -1,8 +1,6 @@
 import { useState } from "react";
 
 const Comentarios = () => {
-  const [usuarioActivo, setUsuarioActivo] = useState(null);
-
   const usuarios = [
     {
       id: 1,
@@ -41,54 +39,56 @@ const Comentarios = () => {
     },
   ];
 
+  const [usuarioActivo, setUsuarioActivo] = useState(usuarios[0]);
+
   return (
-    <div className="container mx-auto my-20 px-4">
-      <div className="flex justify-center items-center flex-col my-10">
-        <h2 className="text-5xl font-bold mb-10 text-center">
+    <div className="container mx-auto px-4 my-12">
+      <div className="flex flex-col items-center text-center mb-10">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
           Reseñas de clientes
         </h2>
-        <div className="w-[700px] text-center">
-          <p>
-            “Descubre lo que nuestros clientes opinan sobre su experiencia con
-            ElectronicZ: desde amantes de la tecnología hasta profesionales y
-            nómadas digitales.”
-          </p>
-        </div>
+        <p className="text-base sm:text-lg md:text-xl max-w-2xl">
+          Descubre lo que nuestros clientes opinan sobre su experiencia con
+          ElectronicZ: desde amantes de la tecnología hasta profesionales y
+          nómadas digitales.
+        </p>
       </div>
-
-      {/* Imágenes desalineadas */}
-      <div className="flex justify-center gap-6 flex-wrap">
+      <div className="flex flex-wrap justify-center gap-4 mb-8">
         {usuarios.map((user, index) => (
           <div
             key={user.id}
             className={`cursor-pointer transition-transform duration-300 hover:scale-105 ${
-              index % 2 === 0 ? "mt-0" : "mt-10"
+              index % 2 === 0 ? "mt-0" : "mt-4 sm:mt-6 md:mt-10"
             }`}
             onClick={() => setUsuarioActivo(user)}
           >
             <img
               src={user.foto}
               alt={user.nombre}
-              className="w-24 h-24 rounded-full object-cover border-2 border-blue-500"
+              className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full object-cover border-2 ${
+                usuarioActivo.id === user.id
+                  ? "border-blue-500"
+                  : "border-gray-300"
+              }`}
             />
           </div>
         ))}
       </div>
-
-      {/* Comentario dinámico */}
       {usuarioActivo && (
-        <div className="mt-15 text-center w-full mx-auto p-6 h-[500px] flex justify-center items-center">
-          <div className="w-[950px] h-[450px] bg-white px-20 py-10 rounded-xl shadow-md overflow-y-auto">
-            <h4 className="text-4xl font-semibold mb-4">
+        <div className="flex justify-center">
+          <div className="w-full sm:w-[90%] md:w-[950px] bg-white px-6 sm:px-10 md:px-20 py-6 sm:py-10 rounded-xl shadow-md overflow-y-auto">
+            <h4 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 text-center ">
               {usuarioActivo.nombre}
             </h4>
-            <p className="text-gray-700 text-2xl leading-relaxed">
+            <p className="text-gray-700 text-center text-base sm:text-lg md:text-2xl leading-relaxed mb-6">
               {usuarioActivo.comentario}
             </p>
-            {/* Estrellas */}
-            <div className="flex justify-center mb-4 mt-10">
+            <div className="flex justify-center md:justify-center mb-2">
               {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-yellow-400 text-4xl">
+                <span
+                  key={i}
+                  className="text-yellow-400 text-xl sm:text-2xl md:text-4xl"
+                >
                   ★
                 </span>
               ))}
