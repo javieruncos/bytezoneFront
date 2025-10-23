@@ -12,7 +12,6 @@ import Menu from "../components/common/Menu";
 const Home = () => {
   return (
     <div className="Main">
-      <Menu></Menu>
       <section className="mt-10 mx-3">
         <Portada></Portada>
       </section>
