@@ -22,21 +22,21 @@ const Menu = () => {
 
   return (
     <>
-      <div class="overflow-hidden h-[50px] bg-black text-white flex items-center">
-        <div class="flex will-change-transform [transform:translateZ(0)] ticker-scroller">
-          <div class="flex items-center whitespace-nowrap ticker-item">
+      <div className="overflow-hidden h-[50px] bg-black text-white flex items-center">
+        <div className="flex will-change-transform [transform:translateZ(0)] ticker-scroller">
+          <div className="flex items-center whitespace-nowrap ticker-item">
              Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
             por Hoy •
           </div>
-          <div class="flex items-center whitespace-nowrap ticker-item">
+          <div className="flex items-center whitespace-nowrap ticker-item">
              Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
             por Hoy •
           </div>
-          <div class="flex items-center whitespace-nowrap ticker-item">
+          <div className="flex items-center whitespace-nowrap ticker-item">
              Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
             por Hoy •
           </div>
-          <div class="flex items-center whitespace-nowrap ticker-item">
+          <div className="flex items-center whitespace-nowrap ticker-item">
              Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
             por Hoy •
           </div>
@@ -46,24 +46,24 @@ const Menu = () => {
         <div className="w-1/2 flex items-center">
           <span className="text-2xl font-bold">BYTEZONE</span>
         </div>
-        <div class="relative w-1/2 hidden md:block">
+        <div className="relative w-1/2 hidden md:block">
           <input
             type="search"
             placeholder="Buscar..."
-            class="w-full bg-black text-white py-3 pl-4 pr-12 rounded-lg outline-none"
+            className="w-full bg-black text-white py-3 pl-4 pr-12 rounded-lg outline-none"
           />
-          <button class="absolute right-3 top-1/2 -translate-y-1/2 text-black rounded-md bg-white p-2 hover:bg-blue-500 hover:text-white">
+          <button className="absolute right-3 top-1/2 -translate-y-1/2 text-black rounded-md bg-white p-2 hover:bg-blue-500 hover:text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2"
               stroke="currentColor"
-              class="w-5 h-5"
+              className="w-5 h-5"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
               />
             </svg>
