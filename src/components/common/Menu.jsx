@@ -101,33 +101,32 @@ const Menu = () => {
             {/* Menú desktop */}
             <ul className="hidden md:flex ms-auto gap-6">
               <li>
-                <a href="/" className="hover:text-amber-600">
+                <a href="/" className="hover:text-blue-600">
                   Inicio
                 </a>
               </li>
               <li>
-                <button
-                  onClick={() => handleScroll("servicios")}
-                  className="hover:text-amber-600"
+                <a
+                  href="/nosotros"
+                  className="hover:text-blue-600"
                 >
                   Sobre Nosotros
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => handleScroll("contacto")}
-                  className="hover:text-amber-600"
+                <a
+                  href="/contacto"
+                  className="hover:text-blue-600"
                 >
                   contacto
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => handleScroll("contacto")}
-                  className="hover:text-amber-600"
+                <a
+                  className="hover:text-blue-600"
                 >
                   Shop
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -176,21 +175,21 @@ const Menu = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="absolute top-full left-0 w-full md:hidden flex flex-col gap-4 bg-[#191919] p-4  
+              className="absolute top-full left-0 w-full md:hidden flex flex-col gap-4 bg-black p-4  
                         shadow-lg"
             >
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <a href="#" className="text-white">
                   Inicio
                 </a>
               </li>
               <li>
-                <a href="#servicios" className="hover:text-gray-400">
+                <a href="#servicios" className="text-white">
                   Servicios
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <a href="#" className="text-white">
                   Contacto
                 </a>
               </li>
