@@ -1,6 +1,7 @@
 import './App.css'
 import Menu from './components/common/Menu'
 import Contacto from './pages/Contacto'
+import "bootstrap-icons/font/bootstrap-icons.css";
 import Home from './pages/Home'
 import Nosotros from './pages/Nosotros'
 
