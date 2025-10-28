@@ -15,7 +15,7 @@ const Home = () => {
       <section className="mt-10 mx-3">
         <Portada></Portada>
       </section>
-        <MenuProduct></MenuProduct>
+      <MenuProduct></MenuProduct>
       <section className="container mt-5  mx-auto">
         <SectionProducts></SectionProducts>
       </section>
