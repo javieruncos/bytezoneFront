@@ -27,7 +27,7 @@ const Home = () => {
         <Destacados productos={product}></Destacados>
       </section>
       <section>
-        <MasVendidos></MasVendidos>
+        <MasVendidos productos={product}></MasVendidos>
       </section>
       <section>
         <ProductosPrincipales></ProductosPrincipales>

@@ -137,7 +137,7 @@
       "discount": 10,
       "rating": 4.9,
       "shortDescription": "Control inalámbrico con respuesta háptica avanzada y diseño ergonómico.",
-      "images": ["/img/joystick1.webp"],
+      "images": ["https://nagashock.com/wp-content/uploads/2023/06/nsg-xbsx-carbon-black-768x768.webp"],
       "specs": {
         "compatibility": "PC, Xbox Series X/S",
         "connection": "Wireless / USB-C",
@@ -153,7 +153,7 @@
       "discount": 5,
       "rating": 4.9,
       "shortDescription": "Control con gatillos adaptativos y vibración háptica inmersiva.",
-      "images": ["/img/joystick2.webp"],
+      "images": ["https://tienda.personal.com.ar/images/720/webp/Joystick_Play_Station_5_Dual_Sense_b5c87a3353.png"],
       "specs": {
         "compatibility": "PC, PS5",
         "connection": "Wireless / USB-C",
@@ -234,7 +234,7 @@
       "discount": 15,
       "rating": 4.9,
       "shortDescription": "Teclado mecánico profesional con switches intercambiables.",
-      "images": ["/img/teclado2.webp"],
+      "images": ["https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x60-wireless-keyboard/gallery/pro-x-60-keyboard-black-gallery-1-us.png?v=1"],
       "specs": {
         "switchType": "GX Blue",
         "backlight": "RGB",
@@ -282,7 +282,7 @@
       "discount": 20,
       "rating": 4.9,
       "shortDescription": "Teclado gamer con estructura metálica y switches Cherry MX.",
-      "images": ["/img/teclado5.webp"],
+      "images": ["https://logg.api.cygnus.market/static/logg/Global/Teclado%20Mecanico%20Corsair%20K70%20MK2%20LP%20Cherry%20MX%20Speed%20RGB%20/9e4b8820ba874499aca826cbd4585941.png"],
       "specs": {
         "switchType": "Cherry MX Red",
         "backlight": "RGB",
@@ -488,7 +488,7 @@
       "discount": 10,
       "rating": 4.9,
       "shortDescription": "Monitor 4K UHD con panel Nano IPS y 144Hz.",
-      "images": ["/img/monitor2.webp"],
+      "images": ["https://www.infiniarc.com/web/image/product.template/5748/image_1024?unique=2e7293c"],
       "specs": {
         "size": "27''",
         "resolution": "3840x2160",
