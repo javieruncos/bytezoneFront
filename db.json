@@ -8,12 +8,13 @@
       "discount": 10,
       "rating": 4.7,
       "shortDescription": "Sonido envolvente 7.1 con micrófono desmontable y diseño ergonómico.",
-      "images": ["/img/auriculares1.webp"],
+      "images": ["https://www.scphardstore.com/wp-content/uploads/Auricular-Gamer-HyperX-Cloud-Stinger-2-Negro-519T1AA.png"],
       "specs": {
         "type": "Over-ear",
         "connection": "USB / Jack 3.5mm",
         "microphone": true
-      }
+      },
+      "color": "Negro"
     },
     {
       "id": 2,
@@ -23,12 +24,13 @@
       "discount": 15,
       "rating": 4.9,
       "shortDescription": "Auriculares premium con Blue Voice y construcción de aluminio.",
-      "images": ["/img/auriculares2.webp"],
+      "images": ["https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x-2-lightspeed/gallery/gallery-1-pro-x-2-lightspeed-gaming-headset-black.png?v=1"],
       "specs": {
         "type": "Over-ear",
         "connection": "USB",
         "microphone": true
-      }
+      },
+      "color": "Negro"
     },
     {
       "id": 3,
@@ -38,12 +40,13 @@
       "discount": 5,
       "rating": 4.6,
       "shortDescription": "Experiencia inmersiva con sonido THX Spatial y RGB Chroma.",
-      "images": ["/img/auriculares3.webp"],
+      "images": ["https://aypcomputacion.com/wp-content/uploads/2022/01/daztinto-186810.png"],
       "specs": {
         "type": "Over-ear",
         "connection": "USB",
         "microphone": true
-      }
+      },
+      "color": "Negro"
     },
     {
       "id": 4,
@@ -53,12 +56,13 @@
       "discount": 0,
       "rating": 4.4,
       "shortDescription": "Sonido estéreo y micrófono ajustable con almohadillas cómodas.",
-      "images": ["/img/auriculares4.webp"],
+      "images": ["https://redragon.es/content/uploads/2024/11/Ares.png"],
       "specs": {
         "type": "Over-ear",
         "connection": "Jack 3.5mm",
         "microphone": true
-      }
+      },
+      "color": "Negro"
     },
     {
       "id": 5,
@@ -68,16 +72,65 @@
       "discount": 20,
       "rating": 4.8,
       "shortDescription": "Auriculares inalámbricos con sonido Dolby Atmos y RGB personalizable.",
-      "images": ["/img/auriculares5.webp"],
+      "images": ["https://try.com.ar/wp-content/uploads/2025/02/25147_pictures_product_visual_1.png"],
       "specs": {
         "type": "Over-ear",
         "connection": "Wireless",
         "microphone": true
-      }
+      },
+      "color": "blanco"
     },
+     {
+    "id": 6,
+    "name": "Auriculares Corsair HS80 RGB",
+    "type": "Auriculares",
+    "price": 109999,
+    "discount": 20,
+    "rating": 4.8,
+    "shortDescription": "Auriculares inalámbricos con sonido Dolby Atmos y RGB personalizable.",
+    "images": ["https://try.com.ar/wp-content/uploads/2025/02/25147_pictures_product_visual_1.png"],
+    "specs": {
+      "type": "Over-ear",
+      "connection": "Wireless",
+      "microphone": true
+    },
+    "color": "blanco"
+  },
+  {
+    "id": 7,
+    "name": "Auriculares Logitech G733 Lightspeed",
+    "type": "Auriculares",
+    "price": 124999,
+    "discount": 10,
+    "rating": 4.9,
+    "shortDescription": "Diseño ligero con luces RGB frontales y sonido espacial avanzado.",
+    "images": ["https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/g733/gallery/g733-white-gallery-1.png?v=1"],
+    "specs": {
+      "type": "Over-ear",
+      "connection": "Wireless",
+      "microphone": true
+    },
+    "color": "blanco"
+  },
+  {
+    "id": 8,
+    "name": "Auriculares Razer Barracuda X",
+    "type": "Auriculares",
+    "price": 94999,
+    "discount": 5,
+    "rating": 4.7,
+    "shortDescription": "Auriculares multiplataforma con micrófono desmontable y gran autonomía.",
+    "images": ["https://nomadaware.com.ec/wp-content/uploads/NomadaWare_Razer_Barracuda_x_blanco-4.webp"],
+    "specs": {
+      "type": "Over-ear",
+      "connection": "Wireless / USB-C",
+      "microphone": true
+    },
+    "color": "blanco"
+  },
 
-    {
-      "id": 6,
+  {
+      "id": 9,
       "name": "Joystick Xbox Series X",
       "type": "Joystick",
       "price": 89999,
@@ -89,10 +142,11 @@
         "compatibility": "PC, Xbox Series X/S",
         "connection": "Wireless / USB-C",
         "vibration": true
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 7,
+      "id": 10,
       "name": "Joystick DualSense PS5",
       "type": "Joystick",
       "price": 99999,
@@ -104,10 +158,11 @@
         "compatibility": "PC, PS5",
         "connection": "Wireless / USB-C",
         "vibration": true
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 8,
+      "id": 11,
       "name": "Joystick Redragon Saturn",
       "type": "Joystick",
       "price": 49999,
@@ -119,10 +174,11 @@
         "compatibility": "PC",
         "connection": "USB",
         "vibration": true
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 9,
+      "id": 12,
       "name": "Joystick Logitech F710",
       "type": "Joystick",
       "price": 69999,
@@ -134,10 +190,11 @@
         "compatibility": "PC",
         "connection": "Wireless",
         "vibration": true
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 10,
+      "id": 13,
       "name": "Joystick PowerA Spectra Infinity",
       "type": "Joystick",
       "price": 79999,
@@ -149,11 +206,12 @@
         "compatibility": "PC, Xbox",
         "connection": "USB",
         "vibration": true
-      }
+      },
+      "color": "Negro"
     },
 
     {
-      "id": 11,
+      "id": 14,
       "name": "Teclado Redragon Kumara K552",
       "type": "Teclado",
       "price": 69999,
@@ -165,10 +223,11 @@
         "switchType": "Red",
         "backlight": "RGB",
         "connection": "USB"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 12,
+      "id": 15,
       "name": "Teclado Logitech G Pro X",
       "type": "Teclado",
       "price": 129999,
@@ -180,10 +239,11 @@
         "switchType": "GX Blue",
         "backlight": "RGB",
         "connection": "USB"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 13,
+      "id": 16,
       "name": "Teclado Razer BlackWidow V4",
       "type": "Teclado",
       "price": 149999,
@@ -195,10 +255,11 @@
         "switchType": "Green",
         "backlight": "RGB",
         "connection": "USB"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 14,
+      "id": 17,
       "name": "Teclado HyperX Alloy Origins",
       "type": "Teclado",
       "price": 119999,
@@ -210,10 +271,11 @@
         "switchType": "Red",
         "backlight": "RGB",
         "connection": "USB"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 15,
+      "id": 18,
       "name": "Teclado Corsair K70 RGB MK.2",
       "type": "Teclado",
       "price": 159999,
@@ -225,11 +287,12 @@
         "switchType": "Cherry MX Red",
         "backlight": "RGB",
         "connection": "USB"
-      }
+      },
+      "color": "Negro"
     },
 
     {
-      "id": 16,
+      "id": 19,
       "name": "Laptop Gamer ASUS ROG Strix",
       "type": "Laptop Gamer",
       "price": 1299999,
@@ -243,10 +306,11 @@
         "ram": "32GB DDR5",
         "storage": "1TB SSD NVMe",
         "display": "16'' QHD 240Hz"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 17,
+      "id": 20,
       "name": "Laptop Gamer MSI Katana 17",
       "type": "Laptop Gamer",
       "price": 999999,
@@ -260,10 +324,11 @@
         "ram": "16GB DDR5",
         "storage": "1TB SSD",
         "display": "17.3'' FHD 144Hz"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 18,
+      "id": 21,
       "name": "Laptop Gamer Lenovo Legion 5",
       "type": "Laptop Gamer",
       "price": 899999,
@@ -277,10 +342,11 @@
         "ram": "16GB DDR5",
         "storage": "1TB SSD",
         "display": "15.6'' QHD 165Hz"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 19,
+      "id": 22,
       "name": "Laptop Gamer HP Omen 16",
       "type": "Laptop Gamer",
       "price": 1099999,
@@ -294,10 +360,11 @@
         "ram": "32GB DDR5",
         "storage": "1TB SSD",
         "display": "16.1'' QHD 165Hz"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 20,
+      "id": 23,
       "name": "Laptop Gamer Dell G15",
       "type": "Laptop Gamer",
       "price": 949999,
@@ -311,11 +378,12 @@
         "ram": "16GB DDR5",
         "storage": "512GB SSD",
         "display": "15.6'' FHD 144Hz"
-      }
+      },
+      "color": "Negro"
     },
 
     {
-      "id": 21,
+      "id": 24,
       "name": "Mouse Logitech G Pro X Superlight",
       "type": "Mouse",
       "price": 89999,
@@ -327,10 +395,11 @@
         "dpi": 25600,
         "connection": "Wireless",
         "rgb": false
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 22,
+      "id": 25,
       "name": "Mouse Razer DeathAdder V3",
       "type": "Mouse",
       "price": 99999,
@@ -342,10 +411,11 @@
         "dpi": 30000,
         "connection": "Wireless",
         "rgb": true
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 23,
+      "id": 26,
       "name": "Mouse Redragon M808 Storm",
       "type": "Mouse",
       "price": 49999,
@@ -357,10 +427,11 @@
         "dpi": 12400,
         "connection": "USB",
         "rgb": true
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 24,
+      "id": 27,
       "name": "Mouse Corsair Dark Core RGB Pro",
       "type": "Mouse",
       "price": 119999,
@@ -372,10 +443,11 @@
         "dpi": 18000,
         "connection": "Wireless",
         "rgb": true
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 25,
+      "id": 28,
       "name": "Mouse HyperX Pulsefire Haste",
       "type": "Mouse",
       "price": 74999,
@@ -387,11 +459,12 @@
         "dpi": 16000,
         "connection": "USB",
         "rgb": true
-      }
+      },
+      "color": "Negro"
     },
 
     {
-      "id": 26,
+      "id": 29,
       "name": "Monitor Samsung Odyssey G5",
       "type": "Monitor",
       "price": 259999,
@@ -404,10 +477,11 @@
         "resolution": "2560x1440",
         "refreshRate": "165Hz",
         "panel": "VA"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 27,
+      "id": 30,
       "name": "Monitor LG UltraGear 27GN950",
       "type": "Monitor",
       "price": 329999,
@@ -420,10 +494,11 @@
         "resolution": "3840x2160",
         "refreshRate": "144Hz",
         "panel": "IPS"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 28,
+      "id": 31,
       "name": "Monitor AOC 24G2SPU",
       "type": "Monitor",
       "price": 189999,
@@ -436,10 +511,11 @@
         "resolution": "1920x1080",
         "refreshRate": "165Hz",
         "panel": "IPS"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 29,
+      "id": 32,
       "name": "Monitor Gigabyte M27Q",
       "type": "Monitor",
       "price": 229999,
@@ -452,10 +528,11 @@
         "resolution": "2560x1440",
         "refreshRate": "170Hz",
         "panel": "IPS"
-      }
+      },
+      "color": "Negro"
     },
     {
-      "id": 30,
+      "id": 33,
       "name": "Monitor Dell G3223D",
       "type": "Monitor",
       "price": 279999,
@@ -468,7 +545,8 @@
         "resolution": "2560x1440",
         "refreshRate": "165Hz",
         "panel": "VA"
-      }
+      },
+      "color": "Negro"
     }
   ]
 }

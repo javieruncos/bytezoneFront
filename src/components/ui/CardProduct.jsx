@@ -9,14 +9,9 @@ const CardProduct = ({ product}) => {
         <img
           src={product.images[0]}
           alt="producto principal"
-          className="absolute  w-full h-full object-cover opacity-100 transition-opacity duration-700 ease-in-out group-hover:opacity-0"
+          className="absolute  w-full h-full object-cover opacity-100 transition-opacity duration-700 ease-in-out "
         />
-        {/* Imagen alternativa (hover) */}
-        <img
-          src={product.images[1]}
-          alt="producto hover"
-          className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100"
-        />
+        
       </div>
 
       {/* Contenido */}

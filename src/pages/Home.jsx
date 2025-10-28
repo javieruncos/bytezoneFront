@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Portada from "../components/sections/Portada";
 import MenuProduct from "../components/sections/MenuProduct";
 import SectionProducts from "../components/sections/SectionProducts";
@@ -8,8 +8,12 @@ import ProductosPrincipales from "../components/sections/ProductosPrincipales";
 import Banner from "../components/ui/Banner";
 import Comentarios from "../components/sections/Comentarios";
 import Menu from "../components/common/Menu";
+import { ContextProduct } from "../context/ProductContext";
 
 const Home = () => {
+  const {product} = useContext(ContextProduct);
+
+
   return (
     <div className="Main">
       <section className="mt-10 mx-3">
@@ -17,13 +21,23 @@ const Home = () => {
       </section>
       <MenuProduct></MenuProduct>
       <section className="container mt-5  mx-auto">
-        <SectionProducts></SectionProducts>
+        <SectionProducts productos={product}></SectionProducts>
       </section>
-      <Destacados></Destacados>
-      <MasVendidos></MasVendidos>
-      <ProductosPrincipales></ProductosPrincipales>
-      <Banner></Banner>
-      <Comentarios></Comentarios>
+      <section>
+        <Destacados productos={product}></Destacados>
+      </section>
+      <section>
+        <MasVendidos></MasVendidos>
+      </section>
+      <section>
+        <ProductosPrincipales></ProductosPrincipales>
+      </section>
+      <section>
+        <Banner></Banner>
+      </section>
+      <section>
+        <Comentarios></Comentarios>
+      </section>
     </div>
   );
 };

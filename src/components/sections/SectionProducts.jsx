@@ -2,10 +2,8 @@ import React, { use, useContext } from "react";
 import CardProduct from "../ui/CardProduct";
 import { ContextProduct} from "../../context/ProductContext";  
 
-const SectionProducts = () => {
-   const {product} = useContext(ContextProduct)
-
-
+const SectionProducts = ({productos}) => {
+  
   return (
     <div className="h-auto container mx-auto px-4 sm:px-6 lg:px-0">
       {/* Encabezado */}
@@ -27,7 +25,7 @@ const SectionProducts = () => {
       {/* Grid responsive */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-10">
         {
-          product.slice(0, 6).map((item, index) => (
+          productos.slice(0, 6).map((item, index) => (
             <CardProduct key={index} product={item}/>
           ))
         }
