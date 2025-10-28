@@ -127,7 +127,7 @@ const Destacados = ({ productos }) => {
     //     ))}
     //   </div>
     // </div>
-    <div className="h-auto container mx-auto px-4">
+    <div className="h-auto container mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Panel izquierdo */}
         <div className="col-span-1 lg:col-span-2 py-5">

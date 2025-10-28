@@ -9,136 +9,53 @@ import laptop from "../../assets/icons/laptop.png";
 import mouse from "../../assets/icons/mouse.png";
 import monitor from "../../assets/icons/monitor.png";
 
-const ProductosPrincipales = () => {
+const ProductosPrincipales = ({ productos}) => {
   const [btnActive, setBtnActive] = useState("");
 
-  // const items = [
-  //   "auriculares",
-  //   "teclados",
-  //   "monitores",
-  //   "mouse",
-  //   "parlantes",
-  //   "cámaras",
-  //   "micrófonos",
-  // ];
+  
 
   const items = [
     {
       id: 1,
-      nombre: "auriculares",
+      nombre: "Auriculares",
       icon: auricular,
     },
     {
       id: 1,
-      nombre: "joystick",
+      nombre: "Joystick",
       icon: joystick,
     },
     {
       id: 1,
-      nombre: "teclados",
+      nombre: "Teclado",
       icon: computer,
     },
     {
       id: 1,
-      nombre: "laptops",
+      nombre: "Laptop Gamer",
       icon: laptop,
     },
     {
       id: 1,
-      nombre: "mouse",
+      nombre: "Mouse",
       icon: mouse,
     },
     {
       id: 1,
-      nombre: "monitores",
+      nombre: "Monitor",
       icon: monitor,
-    },
-  ];
-
-  const productos = [
-    {
-      id: 1,
-      nombre: "Auriculares Premium",
-      categoria: "auriculares",
-      precio: 150,
-      imagen: "https://...",
-      descripcion: "Sonido envolvente y diseño ergonómico.",
-      stock: "disponible",
-    },
-    {
-      id: 2,
-      nombre: "Laptop Gamer",
-      categoria: "laptops",
-      precio: 1200,
-      imagen: "https://...",
-      descripcion: "Alto rendimiento para gaming y trabajo.",
-      stock: "disponible",
-    },
-    {
-      id: 3,
-      nombre: "Cámara HD",
-      categoria: "cámaras",
-      precio: 300,
-      imagen: "https://...",
-      descripcion: "Captura imágenes nítidas y video en alta definición.",
-      stock: "agotado",
-    },
-    {
-      id: 3,
-      nombre: "Cámara HD",
-      categoria: "micrófonos",
-      precio: 300,
-      imagen: "https://...",
-      descripcion: "Captura imágenes nítidas y video en alta definición.",
-      stock: "agotado",
-    },
-    {
-      id: 3,
-      nombre: "Cámara HD",
-      categoria: "parlantes",
-      precio: 300,
-      imagen: "https://...",
-      descripcion: "Captura imágenes nítidas y video en alta definición.",
-      stock: "agotado",
-    },
-    {
-      id: 3,
-      nombre: "Cámara HD",
-      categoria: "mouse",
-      precio: 300,
-      imagen: "https://...",
-      descripcion: "Captura imágenes nítidas y video en alta definición.",
-      stock: "agotado",
-    },
-    {
-      id: 3,
-      nombre: "Cámara HD",
-      categoria: "monitores",
-      precio: 300,
-      imagen: "https://...",
-      descripcion: "Captura imágenes nítidas y video en alta definición.",
-      stock: "agotado",
-    },
-    {
-      id: 3,
-      nombre: "Cámara HD",
-      categoria: "teclados",
-      precio: 300,
-      imagen: "https://...",
-      descripcion: "Captura imágenes nítidas y video en alta definición.",
-      stock: "agotado",
     },
   ];
 
   // filtramos productos deacuerdo a la categoria seleccionada
   const productosFiltrados = btnActive
     ? productos.filter((item) => {
-        return item.categoria === btnActive;
+        return item.type === btnActive;
       })
     : productos;
 
   return (
-    <div className="container mx-auto my-8 px-4">
+    <div className="container mx-auto my-8 ">
       {/* Título y botón */}
       <div className="flex flex-col md:flex-row justify-between items-center md:items-center py-5 gap-4">
         <h2 className="text-4xl font-bold text-center md:text-left">

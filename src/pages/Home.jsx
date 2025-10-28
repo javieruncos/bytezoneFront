@@ -20,22 +20,22 @@ const Home = () => {
         <Portada></Portada>
       </section>
       <MenuProduct></MenuProduct>
-      <section className="container mt-5  mx-auto">
+      <section className="container pt-10 mx-auto">
         <SectionProducts productos={product}></SectionProducts>
       </section>
-      <section>
+      <section className="pt-10">
         <Destacados productos={product}></Destacados>
       </section>
-      <section>
+      <section className="pt-10">
         <MasVendidos productos={product}></MasVendidos>
       </section>
-      <section>
-        <ProductosPrincipales></ProductosPrincipales>
+      <section className="pt-10">
+        <ProductosPrincipales productos={product}></ProductosPrincipales>
       </section>
-      <section>
+      <section className="py-6">
         <Banner></Banner>
       </section>
-      <section>
+      <section className="py-6">
         <Comentarios></Comentarios>
       </section>
     </div>
