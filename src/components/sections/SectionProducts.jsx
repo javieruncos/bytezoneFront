@@ -11,13 +11,14 @@ const SectionProducts = ({productos}) => {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center sm:text-left">
           Últimas <span className="text-blue-500">Novedades</span>
         </h2>
-        <button
+        <a
+          href="/categorias"
           className="py-2 px-6 sm:py-3 sm:px-10 bg-blue-500 text-white border rounded-md 
                  hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500
                  transition-all duration-300"
         >
           Ver Todo
-        </button>
+        </a>
       </div>
 
       <hr className="border-blue-500" />
@@ -25,7 +26,7 @@ const SectionProducts = ({productos}) => {
       {/* Grid responsive */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-10">
         {
-          productos.slice(0, 6).map((item, index) => (
+          productos?.slice(0, 6).map((item, index) => (
             <CardProduct key={index} product={item}/>
           ))
         }

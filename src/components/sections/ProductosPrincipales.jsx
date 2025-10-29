@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import CardMasVendidos from "../ui/CardMasVendidos";
 import { motion } from "framer-motion";
@@ -9,10 +9,12 @@ import laptop from "../../assets/icons/laptop.png";
 import mouse from "../../assets/icons/mouse.png";
 import monitor from "../../assets/icons/monitor.png";
 
-const ProductosPrincipales = ({ productos}) => {
-  const [btnActive, setBtnActive] = useState("");
+const ProductosPrincipales = ({ productos,categoria}) => {
+  const [btnActive, setBtnActive] = useState(categoria || "");
 
-  
+   useEffect(() => {
+    setBtnActive(categoria || "");
+  }, [categoria]);
 
   const items = [
     {
@@ -59,11 +61,8 @@ const ProductosPrincipales = ({ productos}) => {
       {/* Título y botón */}
       <div className="flex flex-col md:flex-row justify-between items-center md:items-center py-5 gap-4">
         <h2 className="text-4xl font-bold text-center md:text-left">
-          Ultimas <span className="text-blue-500">Novedades</span>
+          Categorias
         </h2>
-        <button className="py-3 px-10 bg-blue-500 text-white border rounded-md hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500">
-          Ver Todo
-        </button>
       </div>
 
       <hr className="text-blue-500" />
@@ -101,7 +100,7 @@ const ProductosPrincipales = ({ productos}) => {
           transition={{ duration: 0.5 }}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-3 w-full"
         >
-          {productosFiltrados.slice(0, 6).map((p) => (
+          {productosFiltrados?.slice(0, 6).map((p) => (
             <CardMasVendidos key={p.id} producto={p} />
           ))}
         </motion.div>

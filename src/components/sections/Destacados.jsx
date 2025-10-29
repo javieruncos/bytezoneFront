@@ -163,7 +163,7 @@ const Destacados = ({ productos }) => {
             >
               {/* Thumbnails */}
               <div className="flex md:flex-col justify-center md:justify-around items-center gap-3 md:gap-4 md:w-[200px]">
-                {auricularesActuales.slice(0, 4).map((item, index) => (
+                {auricularesActuales?.slice(0, 4).map((item, index) => (
                   <div
                     key={item.id}
                     className={`h-[100px] w-[100px] sm:h-[120px] sm:w-[120px] rounded-2xl p-2 border transition-all duration-300 cursor-pointer ${

@@ -13,15 +13,15 @@ const MasVendidos = ({productos}) => {
         <h2 className="text-3xl sm:text-4xl font-bold">
           Accesorios más <span className="text-blue-500">Vendidos</span>
         </h2>
-        <button className="py-2 sm:py-3 px-6 sm:px-10 bg-blue-500 text-white border rounded-md hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all">
+        <a href="/categorias" className="py-2 sm:py-3 px-6 sm:px-10 bg-blue-500 text-white border rounded-md hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all">
           <span>Ver Todo</span>
-        </button>
+        </a>
       </div>
 
       <hr className="border-blue-500" />
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
         {/* CARD */}
-        {masVendidos.slice(0, 6).map((item, index) => (
+        {masVendidos?.slice(0, 6).map((item, index) => (
           <div
             key={index}
             className="group h-auto sm:h-[400px] w-full bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-500 flex flex-col sm:flex-row items-center gap-6 p-6"

@@ -10,18 +10,22 @@ const MenuProduct = () => {
   return (
     <div className="h-auto container mx-auto px-0 py-5">
       <div className="grid grid-cols-2 lg:grid-cols-6 gap-4 px-4 md:px-0">
-        <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
-          <img src={computer} alt="" className="IconOpcion h-[95px]" />
-          <span className="text-black nombreOpcion text-2xl font-bold">
-            Teclados
-          </span>
-        </div>
-        <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
-          <img src={auricular} alt="" className="IconOpcion h-[60px]" />
-          <span className="text-black nombreOpcion text-2xl font-medium">
-            Auriculares
-          </span>
-        </div>
+        <a href="/categorias/Teclado">
+          <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
+            <img src={computer} alt="" className="IconOpcion h-[95px]" />
+            <span className="text-black nombreOpcion text-2xl font-bold">
+              Teclados
+            </span>
+          </div>
+        </a>
+        <a href="/categorias/Auriculares">
+          <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
+            <img src={auricular} alt="" className="IconOpcion h-[60px]" />
+            <span className="text-black nombreOpcion text-2xl font-medium">
+              Auriculares
+            </span>
+          </div>
+        </a>
         <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
           <img src={joystick} alt="" className="IconOpcion h-[80px]" />
           <span className="text-black nombreOpcion text-2xl font-medium">

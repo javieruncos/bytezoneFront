@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Nosotros from "./pages/Nosotros";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductContext from "./context/ProductContext";
+import Categorias from "./pages/Categorias";
 
 function App() {
   return (
@@ -16,12 +17,9 @@ function App() {
             <Menu></Menu>
             <Routes>
               <Route path="/" element={<Home></Home>} />
-            </Routes>
-            <Routes>
               <Route path="/contacto" element={<Contacto></Contacto>} />
-            </Routes>
-            <Routes>
               <Route path="/nosotros" element={<Nosotros></Nosotros>} />
+            <Route path="/categorias/:categoria?" element={<Categorias></Categorias>} />
             </Routes>
           </div>
         </BrowserRouter>
