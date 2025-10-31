@@ -7,6 +7,7 @@ import Nosotros from "./pages/Nosotros";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductContext from "./context/ProductContext";
 import Categorias from "./pages/Categorias";
+import DetalleProducto from "./pages/DetalleProducto";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/" element={<Home></Home>} />
               <Route path="/contacto" element={<Contacto></Contacto>} />
               <Route path="/nosotros" element={<Nosotros></Nosotros>} />
+              <Route path="/detalle" element={<DetalleProducto></DetalleProducto>} />
             <Route path="/categorias/:categoria?" element={<Categorias></Categorias>} />
             </Routes>
           </div>

@@ -26,30 +26,38 @@ const MenuProduct = () => {
             </span>
           </div>
         </a>
-        <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
-          <img src={joystick} alt="" className="IconOpcion h-[80px]" />
-          <span className="text-black nombreOpcion text-2xl font-medium">
-            Joystick
-          </span>
-        </div>
-        <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
-          <img src={mouse} alt="" className="IconOpcion h-[65px]" />
-          <span className="text-black nombreOpcion text-2xl font-medium">
-            Mouse
-          </span>
-        </div>
-        <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
-          <img src={laptop} alt="" className="IconOpcion h-[90px]" />
-          <span className="text-black nombreOpcion text-2xl font-medium">
-            Laptop
-          </span>
-        </div>
-        <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
-          <img src={monitor} alt="" className="IconOpcion h-[80px]" />
-          <span className="text-black nombreOpcion text-2xl font-medium">
-            Monitor
-          </span>
-        </div>
+        <a href="/categorias/Joystick">
+          <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
+            <img src={joystick} alt="" className="IconOpcion h-[80px]" />
+            <span className="text-black nombreOpcion text-2xl font-medium">
+              Joystick
+            </span>
+          </div>
+        </a>
+        <a href="/categorias/Mouse">
+          <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
+            <img src={mouse} alt="" className="IconOpcion h-[65px]" />
+            <span className="text-black nombreOpcion text-2xl font-medium">
+              Mouse
+            </span>
+          </div>
+        </a>
+        <a href="/categorias/Laptop">
+          <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
+            <img src={laptop} alt="" className="IconOpcion h-[90px]" />
+            <span className="text-black nombreOpcion text-2xl font-medium">
+              Laptop
+            </span>
+          </div>
+        </a>
+        <a href="/categorias/Monitor">
+          <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
+            <img src={monitor} alt="" className="IconOpcion h-[80px]" />
+            <span className="text-black nombreOpcion text-2xl font-medium">
+              Monitor
+            </span>
+          </div>
+        </a>
       </div>
     </div>
   );
