@@ -26,3 +26,18 @@ export const getProduct = async () => {
 };
   }
 };
+
+
+export const getProductById = async (id) => {
+  try {
+    const response = await api.get(`/${id}`);
+    return response.data;
+  } catch (error) {
+    return {
+      success: false,
+      status: error.response?.status || null,
+      data: error.response?.data || null,
+      message: error.message
+    }
+  }
+}

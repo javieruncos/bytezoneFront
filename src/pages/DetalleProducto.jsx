@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import master from "../assets/icons/masterCard.webp";
 import paypal from "../assets/icons/paypal.webp";
 import stripe from "../assets/icons/stripe.webp";
@@ -7,20 +7,83 @@ import Especificacion from "../components/ui/Especificacion";
 import ComentariosProduct from "../components/ui/ComentariosProduct";
 import DescripcionProduct from "../components/ui/DescripcionProduct";
 import { a } from "framer-motion/client";
+import { useParams } from "react-router-dom";
+import { getProductById } from "../services/productos";
 
 const DetalleProducto = () => {
-  const imagenes = [
-    "https://www.infiniarc.com/web/image/product.template/5748/image_1024?unique=2e7293c",
-    "https://www.infiniarc.com/web/image/product.template/5749/image_1024?unique=2e7293c",
-    "https://logg.api.cygnus.market/static/logg/Global/Teclado%20Mecanico%20Corsair%20K70%20MK2%20LP%20Cherry%20MX%20Speed%20RGB%20/9e4b8820ba874499aca826cbd4585941.png",
-  ];
+  const { id } = useParams();
 
-  const [imagenSeleccionada, setImagenSeleccionada] = useState(imagenes[0]);
-  const [activeSection, setActiveSection] = useState("descripcion")
+  const [activeSection, setActiveSection] = useState("descripcion");
+  const [productId, setproductId] = useState(null);
+  const [imagenSeleccionada, setImagenSeleccionada] = useState("");
+
+  useEffect(() => {
+    getProductById(id).then((res) => {
+      setproductId(res);
+      if (res?.images?.length) {
+        setImagenSeleccionada(res.images[0]);
+      }
+    });
+  }, [id]);
+
+  // Mientras cargan los datos
+  if (!productId) {
+    return (
+      <div className="text-center py-20 text-gray-500">
+        Cargando detalles del producto...
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto mt-10">
-      <div className="grid grid-cols-2 gap-3">
+      <nav
+        className="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg   "
+        aria-label="Breadcrumb"
+      >
+        <ol className="inline-flex items-center space-x-1 md:space-x-3">
+          <li className="inline-flex items-center">
+            <a
+              href="/"
+              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500"
+            >
+              <svg
+                className="w-3 h-3 mr-2.5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+              </svg>
+              Home
+            </a>
+          </li>
+          <li>
+            <div className="flex items-center">
+              <svg
+                className="w-3 h-3 mx-1 text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 6 10"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 9 4-4-4-4"
+                />
+              </svg>
+              <span className="ml-1 text-sm font-medium text-blue-500 md:ml-2 dark:text-blue-500">
+                detalle
+              </span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+      <div className="grid grid-cols-2 gap-3 pt-5">
         <div>
           <div className="h-[400px] w-full bg-[#191919] border rounded-md overflow-hidden">
             <img
@@ -30,34 +93,39 @@ const DetalleProducto = () => {
             />
           </div>
           <div className="grid grid-cols-3 gap-2 mt-5 pb-5">
-            {imagenes.map((img, index) => (
-              <div
-                className={`h-[200px] w-full  border transition-all duration-300 rounded-md hover:cursor-pointer ${
-                  imagenSeleccionada === img
-                    ? "border border-blue-500 "
-                    : "border-gray-300 "
-                }`}
-                onClick={() => setImagenSeleccionada(img)}
-                key={index}
-              >
-                <img
-                  src={img}
-                  className="h-full w-full object-contain"
-                  alt=""
-                />
-              </div>
-            ))}
+            {productId.images?.length > 0 ? (
+              productId.images.map((img, index) => (
+                <div
+                  key={index}
+                  className={`h-[200px] w-full border transition-all duration-300 rounded-md hover:cursor-pointer ${
+                    imagenSeleccionada === img
+                      ? "border-blue-500"
+                      : "border-gray-300"
+                  }`}
+                  onClick={() => setImagenSeleccionada(img)}
+                >
+                  <img
+                    src={img}
+                    className="h-full w-full object-contain"
+                    alt={productId.name}
+                  />
+                </div>
+              ))
+            ) : (
+              <p className="text-gray-400 text-center py-5">
+                No hay imágenes disponibles
+              </p>
+            )}
           </div>
         </div>
         <div className=" h-auto w-full border border-gray-300 rounded-md p-6">
-          <h3 className="text-3xl font-bold">DetalleProducto</h3>
-          <p className="text-4xl mt-5 font-bold text-blue-500">$150.000</p>
+          <h3 className="text-3xl font-bold">{productId.name}</h3>
+          <p className="text-4xl mt-5 font-bold text-blue-500">${productId.price?.toLocaleString("es-AR") || "N/A"}</p>
           <hr className="bg-gray-300 mt-4" />
           <div className="mt-4">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim
-              minima maxime similique est officia illum nostrum odio quibusdam
-              explicabo nesciunt.
+              <span className="font-semibold">Descripción:</span>{" "}
+              {productId.shortDescription}
             </p>
           </div>
           <div className="flex gap-4 mt-10">
@@ -77,13 +145,13 @@ const DetalleProducto = () => {
             </h3>
             <div className="flex gap-4 mt-4">
               <a href="">
-                <i class="bi bi-facebook text-2xl text-blue-500"></i>
+                <i class="bi bi-facebook text-2xl text-gray-400"></i>
               </a>
               <a href="">
-                <i class="bi bi-whatsapp text-2xl text-green-500"></i>
+                <i class="bi bi-whatsapp text-2xl text-gray-400"></i>
               </a>
               <a href="">
-                <i class="bi bi-instagram text-2xl text-pink-500"></i>
+                <i class="bi bi-instagram text-2xl text-gray-400"></i>
               </a>
             </div>
           </div>
@@ -109,30 +177,40 @@ const DetalleProducto = () => {
       </div>
       <div className="border border-gray-300 mt-20 rounded-md py-5">
         <div className="flex justify-center items-center gap-5 mt-5 py-3">
-          <button className="py-3 px-10 bg-blue-500 border text-white rounded-md hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all duration-300"
-          onClick={()=>{setActiveSection("descripcion")}}
+          <button
+            className="py-3 px-10 bg-blue-500 border text-white rounded-md hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all duration-300"
+            onClick={() => {
+              setActiveSection("descripcion");
+            }}
           >
             Descripcion
           </button>
-          <button className="py-3 px-10 bg-blue-500 text-white rounded-md border hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all duration-300"
-          onClick={()=>{setActiveSection("especificacion")}}>
+          <button
+            className="py-3 px-10 bg-blue-500 text-white rounded-md border hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all duration-300"
+            onClick={() => {
+              setActiveSection("especificacion");
+            }}
+          >
             Especificacion
           </button>
-          <button className="py-3 px-10 bg-blue-500 border text-white rounded-md hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all duration-300"
-          onClick={()=>{setActiveSection("comentarios")}}
+          <button
+            className="py-3 px-10 bg-blue-500 border text-white rounded-md hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all duration-300"
+            onClick={() => {
+              setActiveSection("comentarios");
+            }}
           >
             Comentarios
           </button>
         </div>
-        {
-          activeSection === "descripcion" ? (
-            <DescripcionProduct></DescripcionProduct>
-          ) : activeSection === "especificacion" ? (
-            <Especificacion></Especificacion>
-          ) : activeSection === "comentarios" && (
+        {activeSection === "descripcion" ? (
+          <DescripcionProduct></DescripcionProduct>
+        ) : activeSection === "especificacion" ? (
+          <Especificacion></Especificacion>
+        ) : (
+          activeSection === "comentarios" && (
             <ComentariosProduct></ComentariosProduct>
           )
-        }
+        )}
       </div>
     </div>
   );

@@ -27,9 +27,11 @@ const CardProduct = ({ product}) => {
           <p className="text-blue-500 pt-3 font-medium">  Precio: ${product.price?.toLocaleString("es-AR") || "N/A"}</p>
         </div>
 
-        <button className="mt-4 cursor-pointer bg-blue-500 text-white py-2 px-4 rounded-sm hover:bg-blue-600 transition-all duration-300 self-start">
+        <a href={`detalle/${product.id}`} className="mt-4 cursor-pointer bg-blue-500 text-white py-2 px-4 rounded-sm hover:bg-blue-600 transition-all duration-300 self-start"
+        
+        >
           Ver más
-        </button>
+        </a>
       </div>
     </div>
   );
