@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductContext from "./context/ProductContext";
 import Categorias from "./pages/Categorias";
 import DetalleProducto from "./pages/DetalleProducto";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/" element={<Home></Home>} />
               <Route path="/contacto" element={<Contacto></Contacto>} />
               <Route path="/nosotros" element={<Nosotros></Nosotros>} />
+              <Route path="/admin" element={<Admin></Admin>} />
               <Route path="/detalle/:id" element={<DetalleProducto></DetalleProducto>} />
             <Route path="/categorias/:categoria?" element={<Categorias></Categorias>} />
             </Routes>

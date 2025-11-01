@@ -122,10 +122,10 @@ const Menu = () => {
                 </a>
               </li>
               <li>
-                <a
+                <a href="/admin"
                   className="hover:text-blue-600"
                 >
-                  Shop
+                  administrador
                 </a>
               </li>
             </ul>
