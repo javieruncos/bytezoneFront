@@ -203,12 +203,12 @@ const DetalleProducto = () => {
           </button>
         </div>
         {activeSection === "descripcion" ? (
-          <DescripcionProduct></DescripcionProduct>
+          <DescripcionProduct product={productId}></DescripcionProduct>
         ) : activeSection === "especificacion" ? (
-          <Especificacion></Especificacion>
+          <Especificacion product={productId}></Especificacion>
         ) : (
           activeSection === "comentarios" && (
-            <ComentariosProduct></ComentariosProduct>
+            <ComentariosProduct product={productId}></ComentariosProduct>
           )
         )}
       </div>

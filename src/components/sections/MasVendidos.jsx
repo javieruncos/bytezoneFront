@@ -43,9 +43,9 @@ const MasVendidos = ({productos}) => {
               <p className="text-xl sm:text-2xl font-bold text-blue-500 mb-4">
                $ {item.price?.toLocaleString("es-AR") || "N/A"}
               </p>
-              <button className="px-4 sm:px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-300 w-full sm:w-auto">
+              <a href={`detalle/${item.id}`}className="px-4 sm:px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-300 w-full sm:w-auto">
                 Ver producto
-              </button>
+              </a>
             </div>
           </div>
         ))}

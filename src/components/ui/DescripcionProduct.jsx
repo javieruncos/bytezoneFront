@@ -1,15 +1,12 @@
 import React from "react";
 
-const DescripcionProduct = () => {
+const DescripcionProduct = ({product}) => {
   return (
     <div>
       <div className="px-10 mt-15 flex flex-col gap-5">
-        <h3 className="text-3xl font-bold">Nombre del Producto</h3>
+        <h3 className="text-4xl font-bold">{product.name}</h3>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-          maxime laboriosam neque. Illum dolorem, tempore nisi officia nam earum
-          iusto repellat quia soluta blanditiis quidem quibusdam porro aut autem
-          nostrum.
+          {product.shortDescription}
         </p>
       </div>
       <div className="px-10 mt-10">
