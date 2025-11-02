@@ -1,8 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ContextProduct } from "../context/ProductContext";
+import { getProduct } from "../services/productos";
+import ItemAdmin from "../components/ui/ItemAdmin";
 
 const Admin = () => {
-  const { product } = useContext(ContextProduct);
+  const { product,setProduct } = useContext(ContextProduct);
+
+  useEffect(() => {
+    getProduct().then((res) => {
+      setProduct(res.data);
+    });
+  }, []);
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -16,7 +24,7 @@ const Admin = () => {
                 href="#"
                 className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
               >
-                Dashboard
+                Productos
               </a>
             </li>
             <li>
@@ -24,7 +32,7 @@ const Admin = () => {
                 href="#"
                 className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
               >
-                Products
+                Ordenes
               </a>
             </li>
             <li>
@@ -32,23 +40,7 @@ const Admin = () => {
                 href="#"
                 className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
               >
-                Orders
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
-              >
-                Customers
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
-              >
-                Settings
+                usuarios
               </a>
             </li>
           </ul>
@@ -120,15 +112,7 @@ const Admin = () => {
               </thead>
               <tbody className="text-gray-700">
                 {product.map((item, index) => (
-                  <tr>
-                    <td className="py-3 px-4">{item.name}</td>
-                    <td className="py-3 px-4">{item.type}</td>
-                    <td className="py-3 px-4">${item.price.toLocaleString("es-AR") || "N/A"}</td>
-                    <td className="py-3 px-4 flex gap-3">
-                        <a href={`/edit/${item.id}`} className="px-2 py-2 bg-amber-300 rounded-md hover:cursor-pointer">Editar</a>
-                        <button className="px-2 py-2 bg-red-500 text-amber-50 rounded-md hover:cursor-pointer">Eliminar</button>
-                    </td>
-                  </tr>
+                  <ItemAdmin key={index} product={item} setProduct={setProduct} />
                 ))}
               </tbody>
             </table>

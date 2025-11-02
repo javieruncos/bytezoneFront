@@ -1,17 +1,58 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProductById } from "../services/productos";
+import { editarProductos, getProductById } from "../services/productos";
+import Swal from "sweetalert2";
+import { ContextProduct } from "../context/ProductContext";
 
 const EditProduct = () => {
+  const { setProduct } = useContext(ContextProduct);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
+    watch,
   } = useForm();
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const specsFields = {
+    Auriculares: [
+      { name: "type", label: "Tipo" },
+      { name: "connection", label: "Conexión" },
+      { name: "microphone", label: "Micrófono", type: "boolean" },
+    ],
+    Joystick: [
+      { name: "compatibility", label: "Compatibilidad" },
+      { name: "connection", label: "Conexión" },
+      { name: "vibration", label: "Vibración", type: "boolean" },
+    ],
+    Teclado: [
+      { name: "switchType", label: "Switch Type" },
+      { name: "backlight", label: "Retroiluminación" },
+      { name: "connection", label: "Conexión" },
+    ],
+    Mouse: [
+      { name: "dpi", label: "DPI" },
+      { name: "connection", label: "Conexión" },
+      { name: "rgb", label: "RGB", type: "boolean" },
+    ],
+    Monitor: [
+      { name: "size", label: "Tamaño" },
+      { name: "resolution", label: "Resolución" },
+      { name: "refreshRate", label: "Tasa de Refresco" },
+      { name: "panel", label: "Tipo de Panel" },
+    ],
+    "Laptop Gamer": [
+      { name: "cpu", label: "CPU" },
+      { name: "gpu", label: "GPU" },
+      { name: "ram", label: "RAM" },
+      { name: "storage", label: "Almacenamiento" },
+      { name: "display", label: "Pantalla" },
+    ],
+  };
 
   useEffect(() => {
     getProductById(id).then((respuesta) => {
@@ -25,17 +66,43 @@ const EditProduct = () => {
         setValue("shortDescription", respuesta.shortDescription);
 
         // Convertir arrays/objetos a JSON para el textarea
-        setValue("images", JSON.stringify(respuesta.images, null, 2));
-        setValue("specs", JSON.stringify(respuesta.specs, null, 2));
-
+        if (respuesta.specs) {
+          Object.entries(respuesta.specs).forEach(([key, value]) => {
+            setValue(`specs.${key}`, value);
+          });
+        }
         setValue("color", respuesta.color);
       }
     });
   }, []);
 
   const onSubmit = (formData) => {
-    console.log("Datos para guardar:", formData);
-    // Aquí la lógica para enviar el form
+    //convertir los booleanos
+    const parsedSpecs = Object.fromEntries(
+      Object.entries(formData.specs).map(([key, value]) => [
+        key,
+        value === "true" ? true : value === "false" ? false : value,
+      ])
+    );
+
+    const dataToSend = { ...formData, specs: parsedSpecs };
+    editarProductos(id, dataToSend).then((res) => {
+      if (res.status === 200) {
+        setProduct((prevProducts) =>
+          prevProducts.map((product) =>
+            product.id === id ? res.data : product
+          )
+        );
+
+        Swal.fire(
+          "producto editado",
+          "el producto fue editado correctmente",
+          "success"
+        );
+        navigate("/admin");
+      }
+    });
+    console.log(dataToSend);
   };
 
   return (
@@ -206,18 +273,36 @@ const EditProduct = () => {
             </div>
 
             {/* Specs (JSON) */}
-            <div className="md:col-span-2">
-              <label className="block text-gray-700 font-medium mb-2">
-                Specs (JSON)
-              </label>
-              <textarea
-                {...register("specs")}
-                placeholder='Ej. {"cpu": "Intel", "ram": "16GB"}'
-                rows={3}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition resize-none font-mono text-sm"
-              />
-            </div>
+            <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+              {specsFields[watch("type")]?.map((field) => (
+                <div key={field.name}>
+                  <label className="block text-gray-700 font-medium mb-2">
+                    {field.label}
+                  </label>
 
+                  {field.type === "boolean" ? (
+                    <select
+                      {...register(`specs.${field.name}`)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-400 transition"
+                    >
+                      <option value="true">Sí</option>
+                      <option value="false">No</option>
+                    </select>
+                  ) : (
+                    <input
+                      type="text"
+                      {...register(`specs.${field.name}`)}
+                      placeholder={field.label}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-400 transition"
+                    />
+                  )}
+                </div>
+              )) || (
+                <p className="text-gray-500">
+                  Selecciona un tipo de producto para ver las especificaciones.
+                </p>
+              )}
+            </div>
             {/* Botones */}
             <div className="md:col-span-2 flex justify-start gap-4 pt-4">
               <button

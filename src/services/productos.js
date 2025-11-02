@@ -10,23 +10,19 @@ const api = axios.create({
   },
 });
 
-
-
 export const getProduct = async () => {
-  
   try {
-      const response = await api.get("/");
-      return response;
+    const response = await api.get("/");
+    return response;
   } catch (error) {
     return {
-  success: false,
-  status: error.response?.status || null,
-  data: error.response?.data || null,
-  message: error.message
-};
+      success: false,
+      status: error.response?.status || null,
+      data: error.response?.data || null,
+      message: error.message,
+    };
   }
 };
-
 
 export const getProductById = async (id) => {
   try {
@@ -37,10 +33,41 @@ export const getProductById = async (id) => {
       success: false,
       status: error.response?.status || null,
       data: error.response?.data || null,
-      message: error.message
-    }
+      message: error.message,
+    };
+  }
+};
+
+export const editarProductos = async (id, data) => {
+  try {
+    const response = await api.put(`/${id}`, data);
+    return {
+      status: response.status, // ✅ agregamos el status
+      data: response.data,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      status: error.response?.status || null,
+      data: error.response?.data || null,
+      message: error.message,
+    };
+  }
+};
+
+export const eliminarProductos = async (id) => {
+  try {
+    const response = await api.delete(`/${id}`);
+    return {
+      status: response.status, // ✅ agregamos el status
+      data: response.data,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      status: error.response?.status || null,
+      data: error.response?.data || null,
+      message: error.message,
+    };
   }
 }
-
-
- 

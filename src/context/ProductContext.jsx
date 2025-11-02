@@ -1,26 +1,25 @@
-import React, { createContext, useEffect ,useState} from 'react';
-import { getProduct } from '../services/productos';
+import React, { createContext, useEffect, useState } from "react";
+import { getProduct } from "../services/productos";
 
 export const ContextProduct = createContext();
 
-const ProductContext = ({children}) => {
-   const [product, setProduct] = useState([])
-   const [loading, setLoading] = useState(true)
+const ProductContext = ({ children }) => {
+  const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-   useEffect(() => {
-       getProduct().then((res) => {
-           setProduct(res.data)
-           setLoading(false)
-           console.log(res.data)
-       })
-   },[])
-   
+  useEffect(() => {
+    getProduct().then((res) => {
+      setProduct(res.data);
+      setLoading(false);
+      console.log(res.data);
+    });
+  }, []);
 
-    return (
-        <ContextProduct.Provider value={{product, loading}}>
-            {children}
-        </ContextProduct.Provider>
-    );
+  return (
+    <ContextProduct.Provider value={{ product, loading, setProduct }}>
+      {children}
+    </ContextProduct.Provider>
+  );
 };
 
 export default ProductContext;
