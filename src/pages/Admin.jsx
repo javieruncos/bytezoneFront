@@ -125,7 +125,7 @@ const Admin = () => {
                     <td className="py-3 px-4">{item.type}</td>
                     <td className="py-3 px-4">${item.price.toLocaleString("es-AR") || "N/A"}</td>
                     <td className="py-3 px-4 flex gap-3">
-                        <button className="px-2 py-2 bg-amber-300 rounded-md hover:cursor-pointer">Editar</button>
+                        <a href={`/edit/${item.id}`} className="px-2 py-2 bg-amber-300 rounded-md hover:cursor-pointer">Editar</a>
                         <button className="px-2 py-2 bg-red-500 text-amber-50 rounded-md hover:cursor-pointer">Eliminar</button>
                     </td>
                   </tr>
