@@ -78,9 +78,9 @@ const Menu = () => {
             <p className=" font-bold">4335343</p>
           </div>
           <div className="flex  items-center gap-4">
-            <button className=" cursor-pointer">
+            <a href="/registro"className=" cursor-pointer">
               <img src={userIcon} alt="" className="h-[30px]" />
-            </button>
+            </a>
             <button className="cursor-pointer">
               <img src={carritoIcon} alt="" className="h-[30px]" />
             </button>
