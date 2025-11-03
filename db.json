@@ -593,5 +593,13 @@
       },
       "id": 33
     }
+  ],
+  "usuarios": [
+    { 
+      "id": 1, 
+    "nombre": "Javier", 
+    "email": "javi@mail.com" ,
+    "password": "123456"
+    }
   ]
 }
