@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import { ContextUser } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import { s } from "framer-motion/client";
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
+import { createUser } from "../../services/user";
 
 const FormRegister = () => {
-  const { user } = useContext(ContextUser);
+  const { user,currentUser, setCurrentUser} = useContext(ContextUser);
 
-  const { listaUsuarios } = useUsuarios();
   const {
     register,
     handleSubmit,
@@ -14,36 +18,48 @@ const FormRegister = () => {
   const navigate = useNavigate();
 
   const onSubmitRegister = (data) => {
+    //setear el perfil del usuario
     data.perfil = "usuario";
-    const usuarioBuscado = listaUsuarios.find(
+    //verificar si el usuario ya existe
+    const usuarioBuscado = user.find(
       (item) => item.email === data.email
     );
+    //si el usuario ya existe mostrar un mensaje de error
     if (usuarioBuscado) {
       Swal.fire("Error", "el usuario ya existe", "error");
       return;
     }
-
-    crearUsuarios(data).then((respuesta) => {
+    //verificar si las contraseñas coinciden
+    if (data.password !== data.confirmPassword) {
+      Swal.fire("Error", "las contraseñas no coinciden", "error");
+      return;
+    }
+    //si el usuario no existe crear el usuario
+    createUser(data).then((respuesta) => {
       if (respuesta.status === 201) {
         Swal.fire(
           "Usuario creado",
           "el usuario se creo correctamente",
           "success"
         );
-        localStorage.setItem("usuarioFood", JSON.stringify(data));
-        setUsuarioLogueado({ ...data, perfil: "usuario" });
+        
+        //guardar el usuario en el localStorage
+        localStorage.setItem("usuarioByte", JSON.stringify({ email: data.email, perfil: "usuario" }));
+        //setear el usuario en el estado
+        setCurrentUser({ ...data, perfil: "usuario" });
+        //limpiar el formulario
         reset();
+        //redireccionar al home
         navigate("/");
       } else {
         Swal.fire("error inesperado", "intentalo nuevamente en breve", "error");
       }
     });
-
     console.log(data);
   };
 
   return (
-    <form className="space-y-5">
+    <form className="space-y-5" onSubmit={handleSubmit(onSubmitRegister)}>
       <div>
         <label className="block text-sm font-medium text-gray-700">
           Nombre
@@ -52,8 +68,17 @@ const FormRegister = () => {
           type="text"
           placeholder="Tu nombre"
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
-          required
+          {
+            ...register("nombre", {
+              required: true,
+              minLength:{
+                value:3,
+                message:"el nombre debe tener al menos 3 caracteres"
+              },
+            })
+          }
         />
+        <span className="text-red-500">{errors.nombre?.message}</span>
       </div>
 
       <div>
@@ -64,8 +89,15 @@ const FormRegister = () => {
           type="email"
           placeholder="correo@ejemplo.com"
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
-          required
+          {...register("email", {
+            required: true,
+            pattern:{
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message:"el correo no es valido"
+            },
+          })}
         />
+        <span className="text-red-500">{errors.email?.message}</span>
       </div>
 
       <div>
@@ -76,8 +108,15 @@ const FormRegister = () => {
           type="password"
           placeholder="********"
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
-          required
+          {...register("password", {
+            required: true,
+            minLength: {
+              value: 8,
+              message: "la contraseña debe tener al menos 8 caracteres",
+            },
+          })}
         />
+        <span>{errors.password?.message}</span>
       </div>
 
       <div>
@@ -88,7 +127,15 @@ const FormRegister = () => {
           type="password"
           placeholder="********"
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
-          required
+          {
+            ...register("confirmPassword", {
+              required: true,
+              minLength: {
+                value: 8,
+                message: "la contraseña debe tener al menos 8 caracteres",
+              },
+            })
+          }
         />
       </div>
 

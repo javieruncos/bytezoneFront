@@ -595,11 +595,27 @@
     }
   ],
   "usuarios": [
-    { 
-      "id": 1, 
-    "nombre": "Javier", 
-    "email": "javi@mail.com" ,
-    "password": "123456"
+    {
+      "id": 1,
+      "nombre": "Javier",
+      "email": "javi@mail.com",
+      "password": "123456"
+    },
+    {
+      "nombre": "javier",
+      "email": "javier@mail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "perfil": "usuario",
+      "id": 2
+    },
+    {
+      "nombre": "javier",
+      "email": "javierCap@mail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "perfil": "usuario",
+      "id": 3
     }
   ]
 }

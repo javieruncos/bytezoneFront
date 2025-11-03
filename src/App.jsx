@@ -11,10 +11,12 @@ import DetalleProducto from "./pages/DetalleProducto";
 import Admin from "./pages/Admin";
 import EditProduct from "./pages/EditProduct";
 import Registro from "./pages/Registro";
+import UserContext from "./context/UserContext";
 
 function App() {
   return (
     <>
+    <UserContext>
       <ProductContext>
         <BrowserRouter>
           <div className="App">
@@ -32,6 +34,7 @@ function App() {
           </div>
         </BrowserRouter>
       </ProductContext>
+    </UserContext>
     </>
   );
 }
