@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "../../styles/Menu.css";
 import { motion, AnimatePresence } from "framer-motion";
 import auricular from "../../assets/icons/auricularIcon.png";
 import userIcon from "../../assets/icons/userIcon.webp";
 import carritoIcon from "../../assets/icons/carritoIcon.webp";
+import { ContextUser } from "../../context/UserContext";
 
 const Menu = () => {
+  const {currentUser,setCurrentUser} = useContext(ContextUser);
   const [open, setOpen] = useState(false);
   // Estado para controlar el modal de registro
   let [isOpen, setIsOpen] = useState(false);
@@ -19,6 +21,13 @@ const Menu = () => {
       });
     }
   };
+
+
+  const Logout = () => {
+    localStorage.removeItem("usuarioByte");
+    setCurrentUser(null);
+  };
+
 
   return (
     <>
@@ -81,6 +90,15 @@ const Menu = () => {
             <a href="/registro"className=" cursor-pointer">
               <img src={userIcon} alt="" className="h-[30px]" />
             </a>
+            {
+              currentUser ? (
+                <button onClick={() => Logout()}>
+                  <i class="bi bi-box-arrow-right text-4xl text-blue-500 hover:cursor-pointer"></i>
+                </button>
+              ) : (
+                null
+              )
+            }
             <button className="cursor-pointer">
               <img src={carritoIcon} alt="" className="h-[30px]" />
             </button>
