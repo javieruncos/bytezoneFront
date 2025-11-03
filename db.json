@@ -614,7 +614,7 @@
       "email": "javierCap@mail.com",
       "password": "12345678",
       "confirmPassword": "12345678",
-      "perfil": "usuario",
+      "perfil": "Admin",
       "id": 3
     }
   ]
