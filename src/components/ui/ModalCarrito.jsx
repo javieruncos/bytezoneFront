@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { ContextCarrito } from "../../context/CarritoContext";
 
 const ModalCarrito = ({ isOpen, setIsOpen }) => {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: "Teclado mecánico RGB", price: 80 },
-    { id: 2, name: "Mouse gamer Logitech", price: 50 },
-    { id: 3, name: "Auriculares HyperX", price: 100 },
-  ]);
+  // Acceder a los datos del carrito
+  const { cartItems, removeFromCart, clearCart } = useContext(ContextCarrito);
 
-  const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+  // El precio total ahora se calcula con el precio y la cantidad de cada item
+  const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
     <div className="relative">
@@ -33,12 +32,20 @@ const ModalCarrito = ({ isOpen, setIsOpen }) => {
                 {cartItems.map((item) => (
                   <li
                     key={item.id}
-                    className="flex justify-between items-center py-2"
+                    className="flex justify-between items-center py-3"
                   >
-                    <span className="font-medium">{item.name}</span>
-                    <span className="text-emerald-600 font-semibold">
-                      ${item.price}
-                    </span>
+                    <div>
+                      <span className="font-medium">{item.name}</span>
+                      <span className="text-sm text-gray-500 block">Cantidad: {item.quantity}</span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <span className="text-emerald-600 font-semibold">
+                        ${item.price * item.quantity}
+                      </span>
+                      <button onClick={() => removeFromCart(item.id)} className="text-red-500 hover:text-red-700 text-xl">
+                        &times;
+                      </button>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -47,7 +54,7 @@ const ModalCarrito = ({ isOpen, setIsOpen }) => {
             <div className="flex justify-between items-center border-t pt-3">
               <span className="font-semibold text-gray-700">Total:</span>
               <span className="text-lg font-bold text-emerald-700">
-                ${total}
+                ${total?.toLocaleString("es-AR") || "N/A"}
               </span>
             </div>
 
@@ -58,7 +65,10 @@ const ModalCarrito = ({ isOpen, setIsOpen }) => {
               >
                 Cerrar
               </button>
-              <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg">
+              <button 
+                onClick={clearCart}
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+              >
                 Finalizar compra
               </button>
             </div>

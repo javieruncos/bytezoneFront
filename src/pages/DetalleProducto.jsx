@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import master from "../assets/icons/masterCard.webp";
 import paypal from "../assets/icons/paypal.webp";
 import stripe from "../assets/icons/stripe.webp";
@@ -6,15 +6,17 @@ import visa from "../assets/icons/visa.webp";
 import Especificacion from "../components/ui/Especificacion";
 import ComentariosProduct from "../components/ui/ComentariosProduct";
 import DescripcionProduct from "../components/ui/DescripcionProduct";
-import { a } from "framer-motion/client";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/productos";
+import { ContextCarrito } from "../context/CarritoContext";
+import Swal from "sweetalert2";
 
 const DetalleProducto = () => {
+  const { addToCart } = useContext(ContextCarrito);
   const { id } = useParams();
-
   const [activeSection, setActiveSection] = useState("descripcion");
   const [productId, setproductId] = useState(null);
+  const [quantity, setQuantity] = useState(1);
   const [imagenSeleccionada, setImagenSeleccionada] = useState("");
 
   useEffect(() => {
@@ -34,6 +36,30 @@ const DetalleProducto = () => {
       </div>
     );
   }
+
+    const handleAddToCart = () => {
+      const quantityToAdd = parseInt(quantity, 10);
+      if (isNaN(quantityToAdd) || quantityToAdd <= 0) {
+        return; // No agregar si la cantidad no es válida
+      }
+      addToCart(productId, quantityToAdd);
+      Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "success",
+        title: "Producto agregado al carrito",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+    };
+
+
+
 
   return (
     <div className="container mx-auto mt-10">
@@ -131,10 +157,14 @@ const DetalleProducto = () => {
           <div className="flex gap-4 mt-10">
             <input
               type="number"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+              min="1"
               className="border rounded-sm border-gray-300 h-[40px] w-[100px] p-1"
               placeholder="1"
             />
-            <button className="bg-blue-500 text-white px-4 py-2  rounded-md cursor-pointer hover:bg-blue-600">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-blue-600"
+              onClick={handleAddToCart}>
               Agregar al Carrito
             </button>
           </div>
@@ -145,13 +175,13 @@ const DetalleProducto = () => {
             </h3>
             <div className="flex gap-4 mt-4">
               <a href="">
-                <i class="bi bi-facebook text-2xl text-gray-400"></i>
+                <i className="bi bi-facebook text-2xl text-gray-400"></i>
               </a>
               <a href="">
-                <i class="bi bi-whatsapp text-2xl text-gray-400"></i>
+                <i className="bi bi-whatsapp text-2xl text-gray-400"></i>
               </a>
               <a href="">
-                <i class="bi bi-instagram text-2xl text-gray-400"></i>
+                <i className="bi bi-instagram text-2xl text-gray-400"></i>
               </a>
             </div>
           </div>

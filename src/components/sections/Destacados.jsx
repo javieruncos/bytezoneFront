@@ -1,7 +1,7 @@
 import { image } from "framer-motion/client";
 import { useContext, useEffect, useState } from "react";
 import { motion, AnimatePresence, color } from "framer-motion";
-import { ContextProduct } from "../../context/ProductContext";
+
 
 const Destacados = ({ productos }) => {
   const [active, setActive] = useState(0);
