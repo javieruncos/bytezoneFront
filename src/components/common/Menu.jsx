@@ -5,6 +5,7 @@ import auricular from "../../assets/icons/auricularIcon.png";
 import userIcon from "../../assets/icons/userIcon.webp";
 import carritoIcon from "../../assets/icons/carritoIcon.webp";
 import { ContextUser } from "../../context/UserContext";
+import ModalCarrito from "../ui/ModalCarrito";
 
 const Menu = () => {
   const {currentUser,setCurrentUser} = useContext(ContextUser);
@@ -99,7 +100,7 @@ const Menu = () => {
                 null
               )
             }
-            <button className="cursor-pointer">
+            <button className="cursor-pointer" onClick={() => setIsOpen(true)}>
               <img src={carritoIcon} alt="" className="h-[30px]" />
             </button>
           </div>
@@ -215,6 +216,7 @@ const Menu = () => {
           )}
         </AnimatePresence>
       </nav>
+      <ModalCarrito isOpen={isOpen} setIsOpen={setIsOpen}></ModalCarrito>
     </>
   );
 };
