@@ -8,7 +8,7 @@ import { ContextUser } from "../../context/UserContext";
 import ModalCarrito from "../ui/ModalCarrito";
 
 const Menu = () => {
-  const {currentUser,setCurrentUser} = useContext(ContextUser);
+  const { currentUser, setCurrentUser } = useContext(ContextUser);
   const [open, setOpen] = useState(false);
   // Estado para controlar el modal de registro
   let [isOpen, setIsOpen] = useState(false);
@@ -23,32 +23,30 @@ const Menu = () => {
     }
   };
 
-
   const Logout = () => {
     localStorage.removeItem("usuarioByte");
     setCurrentUser(null);
   };
-
 
   return (
     <>
       <div className="overflow-hidden h-[50px] bg-black text-white flex items-center">
         <div className="flex will-change-transform [transform:translateZ(0)] ticker-scroller">
           <div className="flex items-center whitespace-nowrap ticker-item">
-             Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
-            por Hoy •
+            Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo por
+            Hoy •
           </div>
           <div className="flex items-center whitespace-nowrap ticker-item">
-             Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
-            por Hoy •
+            Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo por
+            Hoy •
           </div>
           <div className="flex items-center whitespace-nowrap ticker-item">
-             Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
-            por Hoy •
+            Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo por
+            Hoy •
           </div>
           <div className="flex items-center whitespace-nowrap ticker-item">
-             Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo
-            por Hoy •
+            Grandes Ofertas • Envíos Gratis • Descuentos Especiales • Solo por
+            Hoy •
           </div>
         </div>
       </div>
@@ -88,18 +86,14 @@ const Menu = () => {
             <p className=" font-bold">4335343</p>
           </div>
           <div className="flex  items-center gap-4">
-            <a href="/registro"className=" cursor-pointer">
+            <a href="/registro" className=" cursor-pointer">
               <img src={userIcon} alt="" className="h-[30px]" />
             </a>
-            {
-              currentUser ? (
-                <button onClick={() => Logout()}>
-                  <i className="bi bi-box-arrow-right text-4xl text-blue-500 hover:cursor-pointer"></i>
-                </button>
-              ) : (
-                null
-              )
-            }
+            {currentUser ? (
+              <button onClick={() => Logout()}>
+                <i className="bi bi-box-arrow-right text-4xl text-blue-500 hover:cursor-pointer"></i>
+              </button>
+            ) : null}
             <button className="cursor-pointer" onClick={() => setIsOpen(true)}>
               <img src={carritoIcon} alt="" className="h-[30px]" />
             </button>
@@ -125,28 +119,25 @@ const Menu = () => {
                 </a>
               </li>
               <li>
-                <a
-                  href="/nosotros"
-                  className="hover:text-blue-600"
-                >
+                <a href="/nosotros" className="hover:text-blue-600">
                   Sobre Nosotros
                 </a>
               </li>
               <li>
-                <a
-                  href="/contacto"
-                  className="hover:text-blue-600"
-                >
+                <a href="/contacto" className="hover:text-blue-600">
                   contacto
                 </a>
               </li>
-              <li>
-                <a href="/admin"
-                  className="hover:text-blue-600"
-                >
-                  administrador
-                </a>
-              </li>
+              {currentUser?.perfil === "admin" && (
+                <li>
+                  <a
+                    href="/admin"
+                    className="hover:text-blue-600 font-semibold text-red-600"
+                  >
+                    Administrador
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
           {/* Botón hamburguesa */}

@@ -10,6 +10,7 @@ import Categorias from "./pages/Categorias";
 import DetalleProducto from "./pages/DetalleProducto";
 import Admin from "./pages/Admin";
 import EditProduct from "./pages/EditProduct";
+import CrearProducto from "./pages/CrearProducto";
 import Registro from "./pages/Registro";
 import UserContext from "./context/UserContext";
 import PrivateRoute from "./components/auth/PrivateRoute";
@@ -42,6 +43,14 @@ function App() {
                     element={
                       <PrivateRoute requiredRole={"admin"}>
                         <EditProduct></EditProduct>
+                      </PrivateRoute>
+                    }
+                  />
+                  <Route
+                    path="/create"
+                    element={
+                      <PrivateRoute requiredRole={"admin"}>
+                        <CrearProducto></CrearProducto>
                       </PrivateRoute>
                     }
                   />

@@ -26,10 +26,9 @@ export const createUser = async (user) => {
   }
 };
 
-
-export const getUser = async () =>{
+export const getUser = async () => {
   try {
-    const response = await apiUser.get("/");
+    const response = await apiUser.get("/all");
     return {
       status: response.status,
       data: response.data,
@@ -40,9 +39,7 @@ export const getUser = async () =>{
       message: error.message || "Error desconocido",
     };
   }
-}
-
-
+};
 
 export const getUserById = async (id) => {
   try {
@@ -56,8 +53,7 @@ export const getUserById = async (id) => {
       message: error.message,
     };
   }
-}
-
+};
 
 export const editarUser = async (id, data) => {
   try {
@@ -74,7 +70,7 @@ export const editarUser = async (id, data) => {
       message: error.message,
     };
   }
-}
+};
 
 export const eliminarUser = async (id) => {
   try {
@@ -91,23 +87,41 @@ export const eliminarUser = async (id) => {
       message: error.message,
     };
   }
-}
-
+};
 
 export const login = async ({ email, password }) => {
   try {
-    const response = await apiUser.get("/"); // traemos TODOS los usuarios
+    const response = await apiUser.post("/login", { email, password });
 
-    const usuarioEncontrado = response.data.find(
-      (user) => user.email === email && user.password === password
-    );
+    localStorage.setItem("token", response.data.token);
 
-    if (usuarioEncontrado) {
-      return { status: 200, data: usuarioEncontrado };
-    } else {
+    const profile = await apiUser.get("/profile", {
+      headers: {
+        Authorization: `Bearer ${data.token}`,
+      },
+    });
+
+    localStorage.setItem("usuarioByte", JSON.stringify(profile.data));
+
+    return {
+      status: response.status,
+      data: profile.data,
+    };
+
+
+  } catch (error) {
+    if (error.response?.status === 401) {
       return { status: 401, message: "Usuario o contraseña incorrectos" };
     }
-  } catch (error) {
-    return { status: 500, message: error.message || "Error desconocido" };
+    return { status: 500, message: "Error en el servidor" };
   }
+};
+
+
+export const getProfile = async () => {
+  return await apiUser.get("/profile", {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
 };
