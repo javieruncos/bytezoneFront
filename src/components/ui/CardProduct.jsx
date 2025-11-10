@@ -22,13 +22,15 @@ const CardProduct = ({ product}) => {
     });
   };
 
+  const imageUrl = product.images?.length > 0 ? product.images[0] : "/placeholder.jpg";
+
   return (
     <div className="group h-[530px] w-full bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-500 hover:scale-[1.02]">
       {/* Contenedor de imágenes */}
       <div className="relative h-[300px] w-full overflow-hidden">
         {/* Imagen principal */}
         <img
-          src={product.images[0]}
+          src={imageUrl}
           alt="producto principal"
           className="absolute  w-full h-full object-cover opacity-100 transition-opacity duration-700 ease-in-out "
         />

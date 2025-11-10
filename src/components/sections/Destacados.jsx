@@ -23,6 +23,8 @@ const Destacados = ({ productos }) => {
 
   const productoActivo = auricularesActuales[active];
 
+  const imageUrl = productos.images?.length > 0 ? productos.images[0] : "/placeholder.jpg";
+
   return (
     <div className="h-auto container mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
@@ -71,7 +73,7 @@ const Destacados = ({ productos }) => {
                     onClick={() => setActive(index)}
                   >
                     <img
-                      src={item.images[0]}
+                      src={item.images[0].length > 0 ? item.images[0] : "/placeholder.jpg"}
                       alt={item.name}
                       className="w-full h-full object-contain"
                     />
