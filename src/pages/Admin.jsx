@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { ContextProduct } from "../context/ProductContext";
 import { getProduct } from "../services/productos";
+import { Link } from "react-router-dom";
 import ItemAdmin from "../components/ui/ItemAdmin";
 
 const Admin = () => {
@@ -69,6 +70,11 @@ const Admin = () => {
           </div>
         </header>
 
+        <div className="mb-8 text-right">
+          <Link to="/create" className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md transition">
+            + Añadir Nuevo Producto
+          </Link>
+        </div>
         {/* Quick Stats */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           <div className="bg-white p-5 rounded-lg shadow">

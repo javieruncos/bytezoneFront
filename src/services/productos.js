@@ -71,3 +71,20 @@ export const eliminarProductos = async (id) => {
     };
   }
 }
+
+export const createProduct = async (data) => {
+  try {
+    const response = await api.post("/", data);
+    return {
+      status: response.status,
+      data: response.data,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      status: error.response?.status || null,
+      data: error.response?.data || null,
+      message: error.message,
+    };
+  }
+};
