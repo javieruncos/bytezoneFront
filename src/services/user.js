@@ -9,6 +9,8 @@ const apiUser = axios.create({
   },
 });
 
+
+
 export const createUser = async (user) => {
   try {
     const response = await apiUser.post("/", user);
