@@ -42,13 +42,13 @@ const ItemAdmin = ({ product, setProduct }) => {
         </td>
         <td className="py-3 px-4 flex gap-3">
           <a
-            href={`/edit/${product.id}`}
+            href={`/edit/${product._id}`}
             className="px-2 py-2 bg-amber-300 rounded-md hover:cursor-pointer"
           >
             Editar
           </a>
           <button className="px-2 py-2 bg-red-500 text-amber-50 rounded-md hover:cursor-pointer"
-          onClick={() => handleDelete(product.id)}
+          onClick={() => handleDelete(product._id)}
           >
             Eliminar
           </button>

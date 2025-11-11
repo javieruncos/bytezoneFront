@@ -63,7 +63,7 @@ const EditProduct = () => {
         setValue("type", respuesta.type);
         setValue("discount", respuesta.discount);
         setValue("rating", respuesta.rating);
-        setValue("shortDescription", respuesta.shortDescription);
+        setValue("description", respuesta.description); // Corregido a 'description'
 
         // Convertir arrays/objetos a JSON para el textarea
         if (respuesta.specs) {
@@ -72,26 +72,41 @@ const EditProduct = () => {
           });
         }
         setValue("color", respuesta.color);
+        // No establecemos valor para 'images' ya que es un input de tipo file
       }
     });
-  }, []);
+  }, [id, setValue]);
 
   const onSubmit = (formData) => {
-    //convertir los booleanos
+    // Convertir los valores booleanos de las specs
     const parsedSpecs = Object.fromEntries(
-      Object.entries(formData.specs).map(([key, value]) => [
+      Object.entries(formData.specs || {}).map(([key, value]) => [
         key,
         value === "true" ? true : value === "false" ? false : value,
       ])
     );
 
-    const dataToSend = { ...formData, specs: parsedSpecs };
-    editarProductos(id, dataToSend).then((res) => {
+    const dataToUpdate = new FormData();
+    dataToUpdate.append("name", formData.name);
+    dataToUpdate.append("price", formData.price);
+    dataToUpdate.append("type", formData.type);
+    if (formData.discount) dataToUpdate.append("discount", formData.discount);
+    if (formData.rating) dataToUpdate.append("rating", formData.rating);
+    if (formData.color) dataToUpdate.append("color", formData.color);
+    if (formData.description) dataToUpdate.append("description", formData.description);
+    dataToUpdate.append("specs", JSON.stringify(parsedSpecs));
+
+    // Adjuntar nuevas imágenes solo si se seleccionaron
+    if (formData.images && formData.images.length > 0) {
+      Array.from(formData.images).forEach((file) => {
+        dataToUpdate.append("images", file);
+      });
+    }
+
+    editarProductos(id, dataToUpdate).then((res) => {
       if (res.status === 200) {
         setProduct((prevProducts) =>
-          prevProducts.map((product) =>
-            product.id === id ? res.data : product
-          )
+          prevProducts.map((p) => (p._id === id ? res.data : p))
         );
 
         Swal.fire(
@@ -102,7 +117,6 @@ const EditProduct = () => {
         navigate("/admin");
       }
     });
-    console.log(dataToSend);
   };
 
   return (
@@ -252,23 +266,24 @@ const EditProduct = () => {
                 Descripción
               </label>
               <textarea
-                {...register("shortDescription")}
+                {...register("description")}
                 placeholder="Describe el producto..."
                 rows={4}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition resize-none"
               ></textarea>
             </div>
 
-            {/* Images (por ahora texto plano) */}
+            {/* Images (File Upload) */}
             <div className="md:col-span-2">
               <label className="block text-gray-700 font-medium mb-2">
-                Imágenes (JSON)
+                Añadir/Reemplazar Imágenes
               </label>
-              <textarea
+              <input
+                type="file"
                 {...register("images")}
-                placeholder='Ej. ["url1", "url2"]'
-                rows={3}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition resize-none font-mono text-sm"
+                accept="image/*"
+                multiple
+                className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100"
               />
             </div>
 

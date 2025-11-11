@@ -10,6 +10,22 @@ const api = axios.create({
   },
 });
 
+// Interceptor para añadir el token de autorización a todas las peticiones
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+// Opcional: puedes mantener los headers por defecto si lo necesitas,
+// aunque el interceptor es más flexible.
+api.defaults.headers.common = {
+  ...api.defaults.headers.common,
+  "Content-Type": "application/json",
+};
+
 export const getProduct = async () => {
   try {
     const response = await api.get("/");
@@ -40,7 +56,11 @@ export const getProductById = async (id) => {
 
 export const editarProductos = async (id, data) => {
   try {
-    const response = await api.put(`/${id}`, data);
+    const response = await api.put(`/${id}`, data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return {
       status: response.status, // ✅ agregamos el status
       data: response.data,
@@ -74,7 +94,13 @@ export const eliminarProductos = async (id) => {
 
 export const createProduct = async (data) => {
   try {
-    const response = await api.post("/", data);
+    // Al enviar FormData, el header 'Content-Type' debe ser 'multipart/form-data'.
+    // Axios lo establece automáticamente, pero lo especificamos para mayor claridad.
+    const response = await api.post("/", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return {
       status: response.status,
       data: response.data,

@@ -27,12 +27,12 @@ const CardProduct = ({ product}) => {
   return (
     <div className="group h-[530px] w-full bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-500 hover:scale-[1.02]">
       {/* Contenedor de imágenes */}
-      <div className="relative h-[300px] w-full overflow-hidden">
+      <div className="relative h-[300px] w-full overflow-hidden bg-white">
         {/* Imagen principal */}
         <img
           src={imageUrl}
           alt="producto principal"
-          className="absolute  w-full h-full object-cover opacity-100 transition-opacity duration-700 ease-in-out "
+          className="absolute  w-full h-full object-contain opacity-100 transition-opacity duration-700 ease-in-out "
         />
         
       </div>
@@ -51,7 +51,7 @@ const CardProduct = ({ product}) => {
         </div>
 
         <div className="flex items-center gap-3">
-          <a href={`detalle/${product.id}`} className="mt-4 cursor-pointer bg-blue-500 text-white py-2 px-4 rounded-sm hover:bg-blue-600 transition-all duration-300 self-start">
+          <a href={`detalle/${product._id}`} className="mt-4 cursor-pointer bg-blue-500 text-white py-2 px-4 rounded-sm hover:bg-blue-600 transition-all duration-300 self-start">
             Ver más
           </a>
           <button 

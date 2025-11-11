@@ -7,7 +7,7 @@ const Especificacion = ({ product }) => {
         {Object.entries(product.specs).map(([key, value]) => (
           <li key={key}>
             <strong className="text-blue-500">{key.toUpperCase()}:</strong>{" "}
-            {value}
+            {typeof value === "boolean" ? (value ? "Sí" : "No") : String(value)}
           </li>
         ))}
       </ul>

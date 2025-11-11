@@ -133,7 +133,7 @@ const Menu = () => {
                 <li>
                   <a
                     href="/admin"
-                    className="hover:text-blue-600 font-semibold text-red-600"
+                    className="hover:text-blue-600 font-semibold text-blue-600"
                   >
                     Administrador
                   </a>

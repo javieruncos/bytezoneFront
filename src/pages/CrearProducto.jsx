@@ -54,36 +54,34 @@ const CrearProducto = () => {
     ],
   };
 
-  const onSubmit = (formData) => {
-    // Convertir la cadena de imágenes a un array si existe
-    let imagesArray = [];
-    if (formData.images) {
-      try {
-        imagesArray = JSON.parse(formData.images);
-        if (!Array.isArray(imagesArray)) {
-          throw new Error("El formato de imágenes no es un array JSON válido.");
-        }
-      } catch (e) {
-        Swal.fire(
-          "Error",
-          'El campo de imágenes debe ser un array JSON válido (ej. ["url1", "url2"]).',
-          "error"
-        );
-        return;
-      }
-    }
-
+  const onSubmit = (data) => {
     // Convertir los valores booleanos de las specs
     const parsedSpecs = Object.fromEntries(
-      Object.entries(formData.specs || {}).map(([key, value]) => [
+      Object.entries(data.specs || {}).map(([key, value]) => [
         key,
         value === "true" ? true : value === "false" ? false : value,
       ])
     );
 
-    const dataToSend = { ...formData, images: imagesArray, specs: parsedSpecs };
+    // 1. Crear un objeto FormData para enviar archivos y texto
+    const formData = new FormData();
 
-    createProduct(dataToSend).then((res) => {
+    // 2. Adjuntar todos los campos del formulario al FormData
+    formData.append("name", data.name);
+    formData.append("price", data.price);
+    formData.append("type", data.type);
+    if (data.discount) formData.append("discount", data.discount);
+    if (data.rating) formData.append("rating", data.rating);
+    if (data.color) formData.append("color", data.color);
+    if (data.description) formData.append("description", data.description); // Asegúrate que esta línea exista
+    formData.append("specs", JSON.stringify(parsedSpecs)); // Los objetos se envían como string JSON
+
+    // 3. Adjuntar cada archivo de imagen
+    Array.from(data.images).forEach((file) => {
+      formData.append("images", file);
+    });
+
+    createProduct(formData).then((res) => {
       if (res.status === 201) {
         setProduct((prevProducts) => [...prevProducts, res.data]);
         Swal.fire(
@@ -253,30 +251,31 @@ const CrearProducto = () => {
             {/* Descripción (2 columnas) */}
             <div className="md:col-span-2">
               <label className="block text-gray-700 font-medium mb-2">
-                Descripción Corta
+                Descripción
               </label>
               <textarea
-                {...register("shortDescription")}
+                {...register("description")}
                 placeholder="Describe brevemente el producto..."
                 rows={4}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition resize-none"
               ></textarea>
             </div>
 
-            {/* Images (JSON) */}
+            {/* Images (File Upload) */}
             <div className="md:col-span-2">
               <label className="block text-gray-700 font-medium mb-2">
-                Imagen del producto
+                Imágenes del producto
               </label>
               <input
                 type="file"
-                {...register("image", { required: "La imagen es obligatoria" })}
+                {...register("images", { required: "Al menos una imagen es obligatoria" })}
                 accept="image/*"
-                className="w-70 p-2 bg-amber-300 border border-gray-400 rounded-md cursor-pointer"
+                multiple
+                className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
               />
-              {/* {errors.image && (
-                <p className="text-red-500 text-sm">{errors.image.message}</p>
-              )} */}
+              {errors.images && (
+                <p className="text-red-500 text-sm mt-1">{errors.images.message}</p>
+              )}
             </div>
 
             {/* Specs dinámicas */}

@@ -111,7 +111,7 @@ const DetalleProducto = () => {
       </nav>
       <div className="grid grid-cols-2 gap-3 pt-5">
         <div>
-          <div className="h-[400px] w-full bg-[#191919] border rounded-md overflow-hidden">
+          <div className="h-[400px] w-full bg-white border rounded-md overflow-hidden">
             <img
               src={imagenSeleccionada}
               className="h-full w-full object-contain"
@@ -151,7 +151,7 @@ const DetalleProducto = () => {
           <div className="mt-4">
             <p>
               <span className="font-semibold">Descripción:</span>{" "}
-              {productId.shortDescription}
+              {productId.description}
             </p>
           </div>
           <div className="flex gap-4 mt-10">

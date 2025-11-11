@@ -101,7 +101,7 @@ const Destacados = ({ productos }) => {
                   <p className="text-2xl text-blue-500 font-medium py-3 mb-5">
                     ${productoActivo.price.toLocaleString()}
                   </p>
-                  <a href={`detalle/${productoActivo.id}`} className="px-5 py-3 rounded-sm  bg-blue-500 text-white w-full sm:w-auto">
+                  <a href={`detalle/${productoActivo._id}`} className="px-5 py-3 rounded-sm  bg-blue-500 text-white w-full sm:w-auto">
                     Ver Producto
                   </a>
                 </div>
