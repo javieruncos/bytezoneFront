@@ -24,7 +24,8 @@ const Menu = () => {
   };
 
   const Logout = () => {
-    localStorage.removeItem("usuarioByte");
+    localStorage.removeItem("token"); // Borra token
+    localStorage.removeItem("usuarioByte"); // Borra datos del usuario
     setCurrentUser(null);
   };
 
@@ -128,7 +129,7 @@ const Menu = () => {
                   contacto
                 </a>
               </li>
-              {currentUser?.perfil === "admin" && (
+              {currentUser?.perfil?.toLowerCase() === "admin" && (
                 <li>
                   <a
                     href="/admin"

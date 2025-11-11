@@ -9,8 +9,6 @@ const apiUser = axios.create({
   },
 });
 
-
-
 export const createUser = async (user) => {
   try {
     const response = await apiUser.post("/", user);
@@ -89,26 +87,50 @@ export const eliminarUser = async (id) => {
   }
 };
 
+// export const login = async ({ email, password }) => {
+//   try {
+//     const response = await apiUser.post("/login", { email, password });
+
+//     const token = response.data.token; // <- lo guardamos
+//     localStorage.setItem("token", token);
+
+//     const profile = await apiUser.get("/profile", {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+
+//     localStorage.setItem("usuarioByte", JSON.stringify(profile.data));
+
+//     return console.log(response.data);
+//   } catch (error) {
+//     if (error.response?.status === 401) {
+//       return { status: 401, message: "Usuario o contraseña incorrectos" };
+//     }
+//     return { status: 500, message: "Error en el servidor" };
+//   }
+// };
+
 export const login = async ({ email, password }) => {
   try {
     const response = await apiUser.post("/login", { email, password });
 
-    localStorage.setItem("token", response.data.token);
+    const token = response.data.token;
+    localStorage.setItem("token", token);
 
     const profile = await apiUser.get("/profile", {
       headers: {
-        Authorization: `Bearer ${data.token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
+    // Guardar el usuario completo (el que mostraste arriba)
     localStorage.setItem("usuarioByte", JSON.stringify(profile.data));
 
     return {
       status: response.status,
       data: profile.data,
     };
-
-
   } catch (error) {
     if (error.response?.status === 401) {
       return { status: 401, message: "Usuario o contraseña incorrectos" };
@@ -117,11 +139,27 @@ export const login = async ({ email, password }) => {
   }
 };
 
-
 export const getProfile = async () => {
-  return await apiUser.get("/profile", {
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("token"),
-    },
-  });
+  const token = localStorage.getItem("token");
+  if (!token) {
+    // Si no hay token, no podemos obtener el perfil.
+    // Lanzamos un error para que el .catch() en UserContext lo maneje.
+    throw new Error("No token found");
+  }
+
+  try {
+    const response = await apiUser.get("/profile", {
+      headers: {
+        // Adjuntamos el token en la cabecera de autorización
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return {
+      status: response.status,
+      data: response.data,
+    };
+  } catch (error) {
+    throw error; // Re-lanzamos el error para que el llamador (UserContext) lo maneje.
+  }
 };

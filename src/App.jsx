@@ -29,31 +29,16 @@ function App() {
                   <Route path="/" element={<Home></Home>} />
                   <Route path="/contacto" element={<Contacto></Contacto>} />
                   <Route path="/nosotros" element={<Nosotros></Nosotros>} />
-                  <Route
-                    path="/admin"
-                    element={
-                      <PrivateRoute requiredRole={"admin"}>
-                        <Admin></Admin>
-                      </PrivateRoute>
-                    }
-                  />
                   <Route path="/registro" element={<Registro></Registro>} />
-                  <Route
-                    path="/edit/:id"
-                    element={
-                      <PrivateRoute requiredRole={"admin"}>
-                        <EditProduct></EditProduct>
-                      </PrivateRoute>
-                    }
-                  />
-                  <Route
-                    path="/create"
-                    element={
-                      <PrivateRoute requiredRole={"admin"}>
-                        <CrearProducto></CrearProducto>
-                      </PrivateRoute>
-                    }
-                  />
+
+                  {/* Rutas Protegidas para Administradores */}
+                  <Route element={<PrivateRoute requiredRole={"admin"} />}>
+                    <Route path="/admin" element={<Admin />} />
+                    <Route path="/edit/:id" element={<EditProduct />} />
+                    <Route path="/create" element={<CrearProducto />} />
+                  </Route>
+
+                  {/* Rutas Públicas */}
                   <Route
                     path="/detalle/:id"
                     element={<DetalleProducto></DetalleProducto>}

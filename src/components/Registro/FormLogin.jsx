@@ -20,7 +20,9 @@ const FormLogin = () => {
     const respuesta = await login(data);
 
     if (respuesta.status === 200) {
-      localStorage.setItem("usuarioByte", JSON.stringify({ email: data.email, perfil: "usuario" }));
+      // La función `login` en `user.js` ya guarda el token y el usuario en localStorage.
+      // Aquí solo necesitamos actualizar el estado y navegar.
+      // `respuesta.data` contiene directamente el objeto del usuario.
       Swal.fire("Bienvenido", respuesta.message, "success");
       setCurrentUser(respuesta.data);
       reset();
