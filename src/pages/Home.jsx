@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <div className="Main">
-      <section className="mt-10 mx-3">
+      <section className="mt-10 mx-3 ">
         <Portada></Portada>
       </section>
       <MenuProduct></MenuProduct>

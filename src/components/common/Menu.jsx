@@ -6,6 +6,7 @@ import userIcon from "../../assets/icons/userIcon.webp";
 import carritoIcon from "../../assets/icons/carritoIcon.webp";
 import { ContextUser } from "../../context/UserContext";
 import ModalCarrito from "../ui/ModalCarrito";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   const { currentUser, setCurrentUser } = useContext(ContextUser);
@@ -115,28 +116,28 @@ const Menu = () => {
             {/* Menú desktop */}
             <ul className="hidden md:flex ms-auto gap-6">
               <li>
-                <a href="/" className="hover:text-blue-600">
+                <Link to="/" className="hover:text-blue-600">
                   Inicio
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/nosotros" className="hover:text-blue-600">
+                <Link to="/nosotros" className="hover:text-blue-600">
                   Sobre Nosotros
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contacto" className="hover:text-blue-600">
+                <Link to="/contacto" className="hover:text-blue-600">
                   contacto
-                </a>
+                </Link>
               </li>
               {currentUser?.perfil?.toLowerCase() === "admin" && (
                 <li>
-                  <a
-                    href="/admin"
+                  <Link
+                    to="/admin"
                     className="hover:text-blue-600 font-semibold text-blue-600"
                   >
                     Administrador
-                  </a>
+                  </Link>
                 </li>
               )}
             </ul>

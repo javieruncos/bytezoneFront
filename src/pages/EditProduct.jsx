@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { editarProductos, getProductById } from "../services/productos";
 import Swal from "sweetalert2";
 import { ContextProduct } from "../context/ProductContext";
@@ -132,20 +132,20 @@ const EditProduct = () => {
         <nav>
           <ul>
             <li>
-              <a
-                href="#"
+              <Link
+                to="#"
                 className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
               >
                 Products
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
               >
                 Home
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

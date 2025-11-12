@@ -35,7 +35,7 @@ const MenuProduct = () => {
           </div>
         </a>
         <a href="/categorias/Mouse">
-          <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
+          <div className="h-[130px] w-full border backgroundICons border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
             <img src={mouse} alt="" className="IconOpcion h-[65px]" />
             <span className="text-black nombreOpcion text-2xl font-medium">
               Mouse
@@ -43,7 +43,7 @@ const MenuProduct = () => {
           </div>
         </a>
         <a href="/categorias/Laptop">
-          <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
+          <div className="h-[130px] w-full border backgroundICons border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
             <img src={laptop} alt="" className="IconOpcion h-[90px]" />
             <span className="text-black nombreOpcion text-2xl font-medium">
               Laptop
@@ -51,7 +51,7 @@ const MenuProduct = () => {
           </div>
         </a>
         <a href="/categorias/Monitor">
-          <div className="h-[130px] w-full border border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
+          <div className="h-[130px] w-full border backgroundICons border-gray-300 flex items-center justify-center rounded-2xl flex-col menuProduct">
             <img src={monitor} alt="" className="IconOpcion h-[80px]" />
             <span className="text-black nombreOpcion text-2xl font-medium">
               Monitor

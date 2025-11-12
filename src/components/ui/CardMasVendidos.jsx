@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CardMasVendidos = ({ producto }) => {
   // Normaliza la propiedad 'images' para que siempre sea un array
@@ -13,7 +14,7 @@ const CardMasVendidos = ({ producto }) => {
 
   return (
     <>
-      <a href={`/detalle/${producto._id}`}>
+      <Link to={`/detalle/${producto._id}`}>
         <div className="group w-full bg-white border border-gray-200 rounded-md overflow-hidden transition-all duration-500 flex flex-col md:flex-row items-center md:items-start gap-6 p-4 md:p-6 h-auto pb-10 md:h-[260px]">
           {/* Imagen */}
           <div className="flex-shrink-0 w-full md:w-[230px] h-[300px] md:h-[200px] flex justify-center items-center bg-[#191919] rounded-2xl overflow-hidden">
@@ -47,7 +48,7 @@ const CardMasVendidos = ({ producto }) => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </>
   );
 };

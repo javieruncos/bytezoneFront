@@ -1,6 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 import { eliminarProductos, getProduct } from "../../services/productos";
+import { Link } from "react-router-dom";
 
 const ItemAdmin = ({ product, setProduct }) => {
   const handleDelete = (producto) => {
@@ -41,12 +42,12 @@ const ItemAdmin = ({ product, setProduct }) => {
           ${product.price.toLocaleString("es-AR") || "N/A"}
         </td>
         <td className="py-3 px-4 flex gap-3">
-          <a
-            href={`/edit/${product._id}`}
+          <Link
+            to={`/edit/${product._id}`}
             className="px-2 py-2 bg-amber-300 rounded-md hover:cursor-pointer"
           >
             Editar
-          </a>
+          </Link>
           <button className="px-2 py-2 bg-red-500 text-amber-50 rounded-md hover:cursor-pointer"
           onClick={() => handleDelete(product._id)}
           >

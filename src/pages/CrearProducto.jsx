@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createProduct } from "../services/productos"; // Nueva función
 import Swal from "sweetalert2";
 import { ContextProduct } from "../context/ProductContext";
@@ -104,20 +104,20 @@ const CrearProducto = () => {
         <nav>
           <ul>
             <li>
-              <a
-                href="/admin"
+              <Link
+                to="/admin"
                 className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
               >
                 Productos
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
               >
                 Home
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
