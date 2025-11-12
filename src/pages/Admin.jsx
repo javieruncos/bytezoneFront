@@ -11,7 +11,7 @@ const Admin = () => {
     getProduct().then((res) => {
       setProduct(res.data);
     });
-  }, []);
+  },[]);
 
   return (
     <div className="flex min-h-screen bg-gray-100">

@@ -56,22 +56,26 @@ const EditProduct = () => {
 
   useEffect(() => {
     getProductById(id).then((respuesta) => {
-      console.log(respuesta);
-      if (respuesta) {
-        setValue("name", respuesta.name);
-        setValue("price", respuesta.price);
-        setValue("type", respuesta.type);
-        setValue("discount", respuesta.discount);
-        setValue("rating", respuesta.rating);
-        setValue("description", respuesta.description); // Corregido a 'description'
+      // La respuesta de la API es el objeto del producto directamente.
+      const productData = respuesta;
+      console.log("Datos recibidos para editar:", productData);
+
+      // Verificamos que tengamos un objeto válido con un _id (de MongoDB) o id.
+      if (productData && (productData._id || productData.id)) {
+        setValue("name", productData.name);
+        setValue("price", productData.price);
+        setValue("type", productData.type);
+        setValue("discount", productData.discount);
+        setValue("rating", productData.rating);
+        setValue("description", productData.description);
 
         // Convertir arrays/objetos a JSON para el textarea
-        if (respuesta.specs) {
-          Object.entries(respuesta.specs).forEach(([key, value]) => {
+        if (productData.specs) {
+          Object.entries(productData.specs).forEach(([key, value]) => {
             setValue(`specs.${key}`, value);
           });
         }
-        setValue("color", respuesta.color);
+        setValue("color", productData.color);
         // No establecemos valor para 'images' ya que es un input de tipo file
       }
     });
@@ -106,7 +110,9 @@ const EditProduct = () => {
     editarProductos(id, dataToUpdate).then((res) => {
       if (res.status === 200) {
         setProduct((prevProducts) =>
-          prevProducts.map((p) => (p._id === id ? res.data : p))
+          // Usamos '==' para comparar de forma flexible (string vs objectId)
+          // y nos aseguramos de que ambos existan.
+          prevProducts.map((p) => (p._id && p._id == id ? res.data : p))
         );
 
         Swal.fire(

@@ -19,11 +19,23 @@ const DetalleProducto = () => {
   const [quantity, setQuantity] = useState(1);
   const [imagenSeleccionada, setImagenSeleccionada] = useState("");
 
+  // Función para normalizar las imágenes a un array
+  const getImagesAsArray = (images) => {
+    if (Array.isArray(images)) {
+      return images;
+    }
+    if (typeof images === 'string' && images.trim() !== '') {
+      return [images];
+    }
+    return [];
+  };
+
   useEffect(() => {
     getProductById(id).then((res) => {
       setproductId(res);
-      if (res?.images?.length) {
-        setImagenSeleccionada(res.images[0]);
+      const images = getImagesAsArray(res?.images);
+      if (images.length > 0) {
+        setImagenSeleccionada(images[0]);
       }
     });
   }, [id]);
@@ -119,8 +131,10 @@ const DetalleProducto = () => {
             />
           </div>
           <div className="grid grid-cols-3 gap-2 mt-5 pb-5">
-            {productId.images?.length > 0 ? (
-              productId.images.map((img, index) => (
+            {(() => {
+              const images = getImagesAsArray(productId.images);
+              return images.length > 0 ? (
+                images.map((img, index) => (
                 <div
                   key={index}
                   className={`h-[200px] w-full border transition-all duration-300 rounded-md hover:cursor-pointer ${
@@ -137,11 +151,12 @@ const DetalleProducto = () => {
                   />
                 </div>
               ))
-            ) : (
-              <p className="text-gray-400 text-center py-5">
-                No hay imágenes disponibles
-              </p>
-            )}
+              ) : (
+                <p className="text-gray-400 text-center py-5 col-span-3">
+                  No hay imágenes disponibles
+                </p>
+              );
+            })()}
           </div>
         </div>
         <div className=" h-auto w-full border border-gray-300 rounded-md p-6">

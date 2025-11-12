@@ -22,7 +22,18 @@ const CardProduct = ({ product}) => {
     });
   };
 
-  const imageUrl = product.images?.length > 0 ? product.images[0] : "/placeholder.jpg";
+  // Normaliza la propiedad 'images' para que siempre sea un array
+  const getImagesAsArray = (images) => {
+    if (Array.isArray(images)) return images;
+    if (typeof images === 'string' && images.trim() !== '') return [images];
+    return [];
+  };
+
+  const images = getImagesAsArray(product.images);
+ const imageUrl =
+  images.length > 0
+    ? `${images[0]}?v=${new Date(product.updatedAt).getTime()}`
+    : "/img/placeholder.jpg";
 
   return (
     <div className="group h-[530px] w-full bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-500 hover:scale-[1.02]">
