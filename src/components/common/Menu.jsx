@@ -97,7 +97,7 @@ const Menu = () => {
               </Link>
               {currentUser ? (
                 <button onClick={() => Logout()}>
-                  <i className="bi bi-box-arrow-right text-4xl text-blue-500 hover:cursor-pointer"></i>
+                  <i className="bi bi-box-arrow-right text-4xl text-violet-500 hover:cursor-pointer"></i>
                 </button>
               ) : null}
               <button

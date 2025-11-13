@@ -98,15 +98,28 @@ const CrearProducto = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <aside className="w-64 bg-gray-800 text-white p-5 hidden md:block">
-        <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
+    <div className="flex min-h-screen bg-[#111111] text-white">
+      <style>
+        {`
+          input:-webkit-autofill,
+          input:-webkit-autofill:hover, 
+          input:-webkit-autofill:focus, 
+          input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px #191919 inset !important;
+            -webkit-text-fill-color: #fff !important;
+            caret-color: #fff !important;
+          }
+        `}
+      </style>
+
+      <aside className="w-64 bg-[#191919] p-5 hidden md:block border-r border-white/10">
+        <h2 className="text-2xl font-bold mb-6">BYTEZONE</h2>
         <nav>
           <ul>
             <li>
               <Link
                 to="/admin"
-                className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
+                className="block py-2.5 px-4 rounded transition duration-200 hover:bg-violet-600/50"
               >
                 Productos
               </Link>
@@ -114,7 +127,7 @@ const CrearProducto = () => {
             <li>
               <Link
                 to="/"
-                className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
+                className="block py-2.5 px-4 rounded transition duration-200 hover:bg-violet-600/50"
               >
                 Home
               </Link>
@@ -124,8 +137,8 @@ const CrearProducto = () => {
       </aside>
 
       <main className="flex-1 p-6 md:p-10">
-        <section className="bg-white p-8 rounded-lg shadow-md w-full mx-auto border border-gray-200">
-          <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+        <section className="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-lg shadow-lg w-full mx-auto">
+          <h2 className="text-2xl font-bold mb-6 text-white text-center">
             ➕ Crear Nuevo Producto
           </h2>
 
@@ -135,15 +148,15 @@ const CrearProducto = () => {
           >
             {/* Nombre */}
             <div>
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-300 font-medium mb-2">
                 Nombre del producto
               </label>
               <input
                 type="text"
                 {...register("name", { required: "El nombre es obligatorio" })}
                 placeholder="Ej. Auriculares HyperX Cloud II"
-                className={`w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition ${
-                  errors.name ? "border-red-500" : "border-gray-300"
+                className={`w-full px-4 py-3 bg-white/5 border rounded-lg outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition ${
+                  errors.name ? "border-red-500" : "border-white/20"
                 }`}
               />
               {errors.name && (
@@ -155,7 +168,7 @@ const CrearProducto = () => {
 
             {/* Precio */}
             <div>
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-300 font-medium mb-2">
                 Precio
               </label>
               <input
@@ -166,8 +179,8 @@ const CrearProducto = () => {
                   min: { value: 0, message: "El precio no puede ser negativo" },
                 })}
                 placeholder="Ej. 79999"
-                className={`w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition ${
-                  errors.price ? "border-red-500" : "border-gray-300"
+                className={`w-full px-4 py-3 bg-white/5 border rounded-lg outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition ${
+                  errors.price ? "border-red-500" : "border-white/20"
                 }`}
               />
               {errors.price && (
@@ -179,18 +192,18 @@ const CrearProducto = () => {
 
             {/* Tipo */}
             <div>
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-300 font-medium mb-2">
                 Tipo
               </label>
               <select
                 {...register("type", { required: "El tipo es obligatorio" })}
-                className={`w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition ${
-                  errors.type ? "border-red-500" : "border-gray-300"
+                className={`w-full px-4 py-3 bg-white/5 border rounded-lg outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition appearance-none ${
+                  errors.type ? "border-red-500" : "border-white/20"
                 }`}
               >
-                <option value="">Selecciona un tipo</option>
+                <option value="" className="bg-[#191919] text-gray-400">Selecciona un tipo</option>
                 {Object.keys(specsFields).map((type) => (
-                  <option key={type} value={type}>
+                  <option key={type} value={type} className="bg-[#191919] text-white">
                     {type}
                   </option>
                 ))}
@@ -204,7 +217,7 @@ const CrearProducto = () => {
 
             {/* Descuento */}
             <div>
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-300 font-medium mb-2">
                 Descuento (%)
               </label>
               <input
@@ -215,13 +228,13 @@ const CrearProducto = () => {
                   max: 100,
                 })}
                 placeholder="Ej. 10"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition"
               />
             </div>
 
             {/* Rating */}
             <div>
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-300 font-medium mb-2">
                 Rating
               </label>
               <input
@@ -231,39 +244,39 @@ const CrearProducto = () => {
                 max="5"
                 {...register("rating", { valueAsNumber: true, min: 0, max: 5 })}
                 placeholder="Ej. 4.7"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition"
               />
             </div>
 
             {/* Color */}
             <div>
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-300 font-medium mb-2">
                 Color
               </label>
               <input
                 type="text"
                 {...register("color")}
                 placeholder="Ej. Negro, Rojo, Azul"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition"
               />
             </div>
 
             {/* Descripción (2 columnas) */}
             <div className="md:col-span-2">
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-300 font-medium mb-2">
                 Descripción
               </label>
               <textarea
                 {...register("description")}
                 placeholder="Describe brevemente el producto..."
                 rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition resize-none"
+                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition resize-none"
               ></textarea>
             </div>
 
             {/* Images (File Upload) */}
             <div className="md:col-span-2">
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-300 font-medium mb-2">
                 Imágenes del producto
               </label>
               <input
@@ -271,7 +284,7 @@ const CrearProducto = () => {
                 {...register("images", { required: "Al menos una imagen es obligatoria" })}
                 accept="image/*"
                 multiple
-                className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                className="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-500/20 file:text-violet-300 hover:file:bg-violet-500/30"
               />
               {errors.images && (
                 <p className="text-red-500 text-sm mt-1">{errors.images.message}</p>
@@ -283,23 +296,23 @@ const CrearProducto = () => {
               {watch("type") && specsFields[watch("type")]?.length > 0 ? (
                 specsFields[watch("type")].map((field) => (
                   <div key={field.name}>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-gray-300 font-medium mb-2">
                       {field.label}
                     </label>
                     {field.type === "boolean" ? (
                       <select
                         {...register(`specs.${field.name}`)}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg outline-none focus:ring-2 focus:ring-violet-500 transition appearance-none"
                       >
-                        <option value="true">Sí</option>
-                        <option value="false">No</option>
+                        <option value="true" className="bg-[#191919] text-white">Sí</option>
+                        <option value="false" className="bg-[#191919] text-white">No</option>
                       </select>
                     ) : (
                       <input
                         type="text"
                         {...register(`specs.${field.name}`)}
                         placeholder={field.label}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg outline-none focus:ring-2 focus:ring-violet-500 transition"
                       />
                     )}
                   </div>
@@ -316,13 +329,13 @@ const CrearProducto = () => {
               <button
                 type="button"
                 onClick={() => navigate("/admin")}
-                className="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-lg transition"
+                className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
-                className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md transition"
+                className="px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-lg shadow-md transition"
               >
                 Crear Producto
               </button>
