@@ -35,13 +35,13 @@ const FormLogin = () => {
   return (
     <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-sm font-medium text-gray-300 mb-1">
           Correo electrónico
         </label>
         <input
           type="email"
           placeholder="correo@ejemplo.com"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
           {...register("email", {
             required: true,
             pattern: {
@@ -50,17 +50,17 @@ const FormLogin = () => {
             },
           })}
         />
-        <span className="text-red-500">{errors.email?.message}</span>
+        <span className="text-red-500 text-sm">{errors.email?.message}</span>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-sm font-medium text-gray-300 mb-1">
           Contraseña
         </label>
         <input
           type="password"
           placeholder="********"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
           {...register("password", {
             required: true,
             minLength: {
@@ -70,18 +70,18 @@ const FormLogin = () => {
           })}
         />
 
-        <span className="text-red-500">{errors.password?.message}</span>
+        <span className="text-red-500 text-sm">{errors.password?.message}</span>
       </div>
 
       <button
         type="submit"
-        className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-400 transition-colors"
+        className="w-full bg-violet-600 text-white font-semibold py-2.5 rounded-md hover:bg-violet-700 transition-colors"
       >
         Iniciar sesión
       </button>
 
       <div className="text-right">
-        <a href="#" className="text-sm text-blue-500 hover:underline">
+        <a href="#" className="text-sm text-violet-400 hover:underline">
           ¿Olvidaste tu contraseña?
         </a>
       </div>

@@ -4,119 +4,64 @@ import FormRegister from "../components/Registro/FormRegister";
 import FormLogin from "../components/Registro/FormLogin";
 
 const Registro = () => {
-  const [isRegistering, setIsRegistering] = useState(true);
+  const [activeTab, setActiveTab] = useState("register");
 
   const formVariants = {
-    initial: { opacity: 0, x: 50 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: -50 },
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
+    <div className="grid grid-cols-1 lg:grid-cols-2 md:min-h-screen bg-[#111111] text-white">
       {/* Lado imagen y texto */}
-      <div className="relative h-screen bg-amber-200">
+      <div className="relative hidden lg:block">
         <img
           src="https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg"
           alt="gamer setup"
           className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
         />
-        <div className="relative z-10 bg-black/70 h-full flex flex-col justify-start py-20 px-10 md:px-16 text-white">
-          <h1 className="text-5xl font-extrabold mb-4">Bytezone</h1>
-          <p className="text-sm md:text-base max-w-md">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-            suscipit molestias, eius in autem officia omnis aut cupiditate eaque
-            et.
+        <div className="relative z-10 bg-gradient-to-t from-black/90 via-black/70 to-transparent h-full flex flex-col justify-center items-center p-16 text-center">
+          <h1 className="text-5xl font-extrabold mb-4 tracking-tighter">BYTEZONE</h1>
+          <p className="text-xl text-gray-300 max-w-md leading-relaxed">
+            Desbloquea el siguiente nivel. Únete a la comunidad y accede a equipamiento exclusivo.
           </p>
-
-          <div className="flex gap-3 mt-10">
-            <div className="h-[60px] w-[60px] bg-white flex items-center justify-center rounded-full">
-              <i className="bi bi-envelope-at text-black text-2xl"></i>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold">Email</h2>
-              <p className="text-sm">nxbusiness@gmail</p>
-            </div>
-          </div>
-
-          <div className="flex gap-3 mt-5">
-            <div className="h-[60px] w-[60px] bg-white flex items-center justify-center rounded-full">
-              <i className="bi bi-telephone text-black text-2xl"></i>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold">Telefono</h2>
-              <p className="text-sm">+123456789</p>
-            </div>
-          </div>
-
-          <div className="flex gap-3 mt-5">
-            <div className="h-[60px] w-[60px] bg-white flex items-center justify-center rounded-full">
-              <i className="bi bi-geo-alt text-black text-2xl"></i>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold">Direccion</h2>
-              <p className="text-sm">Calle 123, Ciudad</p>
-            </div>
-          </div>
-
-          <div className="flex gap-3 mt-5">
-            <div className="h-[60px] w-[60px] bg-white flex items-center justify-center rounded-full">
-              <i className="bi bi-facebook text-black text-2xl"></i>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold">Redes sociales</h2>
-              <p className="text-sm">facebook.com/bytezone</p>
-            </div>
-          </div>
         </div>
       </div>
 
       {/* Lado formulario */}
-      <div className="flex flex-col h-screen justify-center items-center bg-white px-8 py-12">
-        <h2 className="text-xl mb-8 text-gray-700 pt-10">
-          {isRegistering ? "Crea tu cuenta" : "Inicia sesión"}
-        </h2>
+      <div className="flex flex-col h-[700px] md:h-screen justify-center items-center px-8 py-12">
+        <div className="w-full max-w-md">
+          <div className="flex border-b border-white/10 mb-8">
+            <button
+              onClick={() => setActiveTab("register")}
+              className={`w-1/2 py-3 text-center font-semibold transition-colors duration-300 ${activeTab === 'register' ? 'text-violet-400 border-b-2 border-violet-400' : 'text-gray-400 hover:text-white'}`}
+            >
+              Crear Cuenta
+            </button>
+            <button
+              onClick={() => setActiveTab("login")}
+              className={`w-1/2 py-3 text-center font-semibold transition-colors duration-300 ${activeTab === 'login' ? 'text-violet-400 border-b-2 border-violet-400' : 'text-gray-400 hover:text-white'}`}
+            >
+              Iniciar Sesión
+            </button>
+          </div>
 
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={isRegistering ? "register" : "login"}
-            variants={formVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="w-full max-w-sm"
-          >
-            {isRegistering ? <FormRegister /> : <FormLogin />}
-          </motion.div>
-        </AnimatePresence>
-
-        <p className="mt-6 text-sm text-gray-600">
-          {isRegistering ? (
-            <>
-              ¿Ya tienes una cuenta?{" "}
-              <button
-                type="button"
-                onClick={() => setIsRegistering(false)}
-                className="font-semibold text-blue-500 hover:text-blue-400 underline"
-              >
-                Inicia sesión
-              </button>
-            </>
-          ) : (
-            <>
-              ¿No tienes una cuenta?{" "}
-              <button
-                type="button"
-                onClick={() => setIsRegistering(true)}
-                className="font-semibold text-blue-500 hover:text-blue-400 underline"
-              >
-                Regístrate
-              </button>
-            </>
-          )}
-        </p>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={activeTab}
+              variants={formVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ duration: 0.3 }}
+              className="min-h-[400px]"
+            >
+              {activeTab === "register" ? <FormRegister /> : <FormLogin />}
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
         <div className="relative my-6 w-full max-w-sm">
           <div
@@ -125,15 +70,15 @@ const Registro = () => {
           >
             <div className="w-full border-t border-gray-300"></div>
           </div>
-          <div className="relative flex justify-center bg-white px-2 text-sm text-gray-500">
-            O {isRegistering ? "regístrate" : "inicia sesión"} con
+          <div className="relative flex justify-center px-2 text-sm text-gray-500 bg-[#111111]">
+            O continuar con
           </div>
         </div>
 
         <div className="flex justify-center w-full max-w-sm space-x-4">
           {/* Google */}
           <button
-            className="rounded-full border h-[50px] w-[50px]  flex items-center justify-center border-gray-300 bg-white p-3 text-gray-800 shadow-sm hover:bg-gray-100 transition"
+            className="rounded-full border h-[50px] w-[50px] flex items-center justify-center border-white/20 bg-white/5 text-gray-300 hover:bg-white/10 transition-colors"
             aria-label="Continuar con Google"
           >
             <i className="bi bi-google text-2xl"></i>
@@ -141,18 +86,18 @@ const Registro = () => {
 
           {/* Facebook */}
           <button
-            className="rounded-full border h-[50px] w-[50px]  flex items-center justify-center border-gray-300 bg-white p-3 text-gray-800 shadow-sm hover:bg-gray-100 transition"
+            className="rounded-full border h-[50px] w-[50px] flex items-center justify-center border-white/20 bg-white/5 text-gray-300 hover:bg-white/10 transition-colors"
             aria-label="Continuar con Facebook"
           >
             <i className="bi bi-facebook text-2xl"></i>
           </button>
 
-          {/* Email */}
+          {/* Apple */}
           <button
-            className="rounded-full h-[50px] w-[50px] border flex items-center justify-center border-gray-300 bg-white p-3 text-gray-800 shadow-sm hover:bg-gray-100 transition"
-            aria-label="Continuar con Email"
+            className="rounded-full h-[50px] w-[50px] border flex items-center justify-center border-white/20 bg-white/5 text-gray-300 hover:bg-white/10 transition-colors"
+            aria-label="Continuar con Apple"
           >
-            <i className="bi bi-envelope-fill text-2xl"></i>
+            <i className="bi bi-apple text-2xl"></i>
           </button>
         </div>
       </div>

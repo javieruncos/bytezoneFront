@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { ContextUser } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import { s } from "framer-motion/client";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { createUser } from "../../services/user";
@@ -61,13 +60,13 @@ const FormRegister = () => {
   return (
     <form className="space-y-5" onSubmit={handleSubmit(onSubmitRegister)}>
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-sm font-medium text-gray-300 mb-1">
           Nombre
         </label>
         <input
           type="text"
           placeholder="Tu nombre"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
           {
             ...register("nombre", {
               required: true,
@@ -82,13 +81,13 @@ const FormRegister = () => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-sm font-medium text-gray-300 mb-1">
           Correo electrónico
         </label>
         <input
           type="email"
           placeholder="correo@ejemplo.com"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
           {...register("email", {
             required: true,
             pattern:{
@@ -101,13 +100,13 @@ const FormRegister = () => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-sm font-medium text-gray-300 mb-1">
           Contraseña
         </label>
         <input
           type="password"
           placeholder="********"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
           {...register("password", {
             required: true,
             minLength: {
@@ -116,17 +115,17 @@ const FormRegister = () => {
             },
           })}
         />
-        <span>{errors.password?.message}</span>
+        <span className="text-red-500 text-sm">{errors.password?.message}</span>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-sm font-medium text-gray-300 mb-1">
           Confirmar contraseña
         </label>
         <input
           type="password"
           placeholder="********"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
           {
             ...register("confirmPassword", {
               required: true,
@@ -141,7 +140,7 @@ const FormRegister = () => {
 
       <button
         type="submit"
-        className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-400 transition-colors"
+        className="w-full bg-violet-600 text-white font-semibold py-2.5 rounded-md hover:bg-violet-700 transition-colors"
       >
         Registrarse
       </button>
