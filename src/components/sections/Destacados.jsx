@@ -1,6 +1,7 @@
 import { image } from "framer-motion/client";
 import { useContext, useEffect, useState } from "react";
 import { motion, AnimatePresence, color } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Destacados = ({ productos }) => {
   const [active, setActive] = useState(0);
@@ -113,12 +114,12 @@ const Destacados = ({ productos }) => {
                   <p className="text-2xl text-violet-600 font-medium py-3 mb-5">
                     ${productoActivo.price.toLocaleString()}
                   </p>
-                  <a
-                    href={`detalle/${productoActivo._id}`}
+                  <Link
+                    to={`detalle/${productoActivo._id}`}
                     className="px-5 py-3 rounded-sm  bg-violet-600 text-white w-full sm:w-auto hover:bg-black hover:border hover:border-violet-500 transition-all duration-300"
                   >
                     Ver Producto
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>

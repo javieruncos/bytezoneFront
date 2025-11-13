@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MasVendidos = ({productos}) => {
 
@@ -13,9 +14,9 @@ const MasVendidos = ({productos}) => {
         <h2 className="text-3xl sm:text-4xl font-bold">
           Accesorios más <span className="text-violet-500">Vendidos</span>
         </h2>
-        <a href="/categorias" className="py-2 sm:py-3 px-6 sm:px-10 bg-violet-600 text-white border rounded-md hover:bg-black hover:text-white-600 hover:border hover:border-violet-500 transition-all">
+        <Link to="/categorias" className="py-2 sm:py-3 px-6 sm:px-10 bg-violet-600 text-white border rounded-md hover:bg-black hover:text-white-600 hover:border hover:border-violet-500 transition-all">
           <span>Ver Todo</span>
-        </a>
+        </Link>
       </div>
 
       <hr className="border-violet-600" />
@@ -49,9 +50,9 @@ const MasVendidos = ({productos}) => {
               <p className="text-xl sm:text-2xl font-bold text-white mb-4">
               $ {item.price?.toLocaleString("es-AR") || "N/A"}
               </p>
-              <a href={`detalle/${item._id}`}className="px-4 sm:px-5 py-2 bg-violet-500 hover:bg-black text-white rounded-lg transition-all duration-300 md:w-50 sm:w-auto text-center sm:text-left border border-violet-500 hover:border-violet-600">
+              <Link to={`detalle/${item._id}`}className="px-4 sm:px-5 py-2 bg-violet-500 hover:bg-black text-white rounded-lg transition-all duration-300 md:w-50 sm:w-auto text-center sm:text-left border border-violet-500 hover:border-violet-600">
                 Ver producto
-              </a>
+              </Link>
             </div>
           </div>
         ))}

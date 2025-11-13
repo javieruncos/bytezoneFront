@@ -52,58 +52,67 @@ const Menu = () => {
           </div>
         </div>
       </div>
-      <div className=" text-white text-center py-2 h-[100px] flex items-center justify-between px-4 md:px-12 bg-violet-900 ">
-        <div className="w-1/2 flex items-center">
-          <span className="text-2xl font-bold">BYTEZONE</span>
-        </div>
-        <div className="relative w-1/2 hidden md:block">
-          <input
-            type="search"
-            placeholder="Buscar..."
-            className="w-full bg-white text-black py-3 pl-4 pr-12 rounded-lg outline-none"
-          />
-          <button className="absolute right-3 top-1/2 -translate-y-1/2 text-black rounded-md bg-white p-2 hover:bg-blue-500 hover:text-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div className="flex items-center justify-end gap-5 w-1/2 ">
-          <div className="hidden md:block">
-            <img src={auricular} alt="" className="h-[40px]" />
+      <div className=" text-white text-center  h-[100px] flex items-center justify-between  bg-violet-900 relative">
+        <img src="https://img.freepik.com/vector-gratis/diseno-abstracto-fondo-futurista_23-2148459427.jpg"
+        className="w-full h-full object-cover"
+        alt="" />
+        <div className="absolute top-0 left-0 h-full w-full bg-black/56  flex items-center justify-between px-4 md:px-12">
+          <div className="w-1/2 flex items-center">
+            <span className="text-2xl font-bold">BYTEZONE</span>
           </div>
-          <div className="text-start text-sm hidden md:block">
-            <p className=" font-bold">Necesitas Ayuda?</p>
-            <p className=" font-bold">4335343</p>
-          </div>
-          <div className="flex  items-center gap-4">
-            <a href="/registro" className=" cursor-pointer">
-              <img src={userIcon} alt="" className="h-[30px]" />
-            </a>
-            {currentUser ? (
-              <button onClick={() => Logout()}>
-                <i className="bi bi-box-arrow-right text-4xl text-blue-500 hover:cursor-pointer"></i>
-              </button>
-            ) : null}
-            <button className="cursor-pointer" onClick={() => setIsOpen(true)}>
-              <img src={carritoIcon} alt="" className="h-[30px]" />
+          <div className="relative w-1/2 hidden md:block">
+            <input
+              type="search"
+              placeholder="Buscar..."
+              className="w-full bg-white text-black py-3 pl-4 pr-12 rounded-lg outline-none"
+            />
+            <button className="absolute right-3 top-1/2 -translate-y-1/2 text-black rounded-md bg-white p-2 hover:bg-blue-500 hover:text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
+                />
+              </svg>
             </button>
+          </div>
+          <div className="flex items-center justify-end gap-5 w-1/2 ">
+            <div className="hidden md:block">
+              <i className="bi bi-headset text-4xl"></i>
+            </div>
+            <div className="text-start text-sm hidden md:block">
+              <p className=" font-bold">Necesitas Ayuda?</p>
+              <p className=" font-bold">4335343</p>
+            </div>
+            <div className="flex  items-center gap-4">
+              <a href="/registro" className=" cursor-pointer">
+              <i className="bi bi-person text-4xl"></i>
+              </a>
+              {currentUser ? (
+                <button onClick={() => Logout()}>
+                  <i className="bi bi-box-arrow-right text-4xl text-blue-500 hover:cursor-pointer"></i>
+                </button>
+              ) : null}
+              <button
+                className="cursor-pointer"
+                onClick={() => setIsOpen(true)}
+              >
+                {/* <img src={carritoIcon} alt="" className="h-[30px]" /> */}
+                <i className="bi bi-cart2 text-3xl"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <nav className="text-white sticky top-0 w-full z-30  menu  border-b-2 border-t-2 border-l-none border-r-none border-violet-600 bg-[#191919]">
+      <nav className="text-white sticky top-0 w-full z-30  menu  border-b-2  border-l-none border-r-none border-t-none border-violet-600 bg-[#191919]">
         <div className="container mx-auto flex gap-8 items-center p-4">
           <div className="flex-1 flex items-center gap-8">
             {/* Logo */}
@@ -111,7 +120,7 @@ const Menu = () => {
               onClick={() => handleScroll("servicios")}
               className="text-xl pb-1 font-bold text-white hover:text-blue-500"
             >
-            ZONA GAMER
+              ZONA GAMER
             </button>
             {/* Menú desktop */}
             <ul className="hidden md:flex ms-auto gap-6">

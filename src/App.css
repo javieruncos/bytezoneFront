@@ -10,7 +10,17 @@
 
 .backgroundICons {
   background: #000000;
-background: linear-gradient(218deg,rgba(0, 0, 0, 1) 18%, rgba(66, 0, 137, 1) 100%, rgba(96, 0, 199, 1) 46%);
+  background: linear-gradient(
+    218deg,
+    rgba(0, 0, 0, 1) 18%,
+    rgba(66, 0, 137, 1) 100%,
+    rgba(96, 0, 199, 1) 46%
+  );
+}
+
+.radialBackground {
+ background: #000000;
+background: linear-gradient(218deg,rgba(0, 0, 0, 1) 0%, rgba(38, 0, 78, 1) 100%);
 }
 
 .Main {

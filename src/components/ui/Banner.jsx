@@ -1,16 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
     <div className="container mx-auto mt-12">
-      <div className="relative bg-violet-900 rounded-md p-6 sm:p-10 md:p-15 flex flex-col md:flex-row items-center md:items-start overflow-hidden">
+      <div className="relative radialBackground rounded-md p-6 sm:p-10 md:p-15 flex flex-col md:flex-row items-center md:items-start overflow-hidden">
         <div className="w-full md:w-1/2 text-center md:text-left pt-4">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
             Celebrate July with Discounts on All Phone Accessories!
           </h2>
-          <button className="mt-6 sm:mt-10 py-2 sm:py-3 px-6 sm:px-10 bg-blue-500 text-white border rounded-md hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all">
-            Ver Todo
-          </button>
+          <div className="mt-10">
+            <Link
+              to="/categorias"
+              className="mt-16 sm:mt-10 py-2 sm:py-3 px-6 sm:px-10 bg-violet-600 text-white border rounded-md hover:bg-black hover:text-white hover:border hover:border-violet-600 transition-all "
+            >
+              Ver Todo
+            </Link>
+          </div>
         </div>
         <div className="w-full md:w-1/2 mt-6 md:mt-0 relative flex justify-center md:justify-end">
           <img
