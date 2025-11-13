@@ -12,8 +12,8 @@ const Portada = () => {
 
   return (
     <div className="h-[1000px] md:h-[550px]   text-white rounded-2xl container mx-auto px-0 mt-5 py-5 flex flex-col justify-center relative overflow-hidden">
-      <img src={fondotec} alt="" className="h-full w-full rounded-2xl" />
-      <div className="absolute top-0 left-0 pt-10 w-full h-full">
+      <img src="https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg" alt="" className="h-full w-full rounded-2xl object-cover" />
+      <div className="absolute top-0 left-0 pt-10 w-full h-full bg-black/70">
         <div className="flex flex-col items-center ">
           {/* Render dinámico del componente */}
           <div className="flex-1 w-full">{componentes[active]}</div>

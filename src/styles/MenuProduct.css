@@ -2,11 +2,12 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+ font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.menuProduct:hover {
-  border: #3b82f6 solid 2px;
-}
+
 
 .IconOpcion {
   position: relative;

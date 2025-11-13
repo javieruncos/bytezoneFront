@@ -41,8 +41,8 @@ const CardProduct = ({ product }) => {
     <div className="group h-[530px] w-full  border  rounded-3xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-500 hover:scale-[1.02]">
       {/* Contenedor de imágenes */}
       <div className="relative h-[300px] w-full overflow-hidden">
-        <img src={fondoTec} alt="" className="h-full" />
-        <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/40">
+        <img src="https://img.freepik.com/vector-gratis/margen-abstracto-neon-sobre-fondo-purpura-oscuro_53876-99055.jpg" alt="" className="h-full" />
+        <div className="absolute top-0 left-0 h-full w-full  bg-black/70">
           <img
             src={imageUrl}
             alt="producto principal"

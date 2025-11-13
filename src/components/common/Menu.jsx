@@ -52,7 +52,7 @@ const Menu = () => {
           </div>
         </div>
       </div>
-      <div className=" text-black text-center py-2 h-[100px] flex items-center justify-between px-4 md:px-12 ">
+      <div className=" text-white text-center py-2 h-[100px] flex items-center justify-between px-4 md:px-12 bg-violet-800 ">
         <div className="w-1/2 flex items-center">
           <span className="text-2xl font-bold">BYTEZONE</span>
         </div>
@@ -60,7 +60,7 @@ const Menu = () => {
           <input
             type="search"
             placeholder="Buscar..."
-            className="w-full bg-black text-white py-3 pl-4 pr-12 rounded-lg outline-none"
+            className="w-full bg-white text-black py-3 pl-4 pr-12 rounded-lg outline-none"
           />
           <button className="absolute right-3 top-1/2 -translate-y-1/2 text-black rounded-md bg-white p-2 hover:bg-blue-500 hover:text-white">
             <svg
@@ -81,7 +81,7 @@ const Menu = () => {
         </div>
         <div className="flex items-center justify-end gap-5 w-1/2 ">
           <div className="hidden md:block">
-            <img src={auricular} alt="" className="h-[50px]" />
+            <img src={auricular} alt="" className="h-[40px]" />
           </div>
           <div className="text-start text-sm hidden md:block">
             <p className=" font-bold">Necesitas Ayuda?</p>
@@ -103,15 +103,15 @@ const Menu = () => {
         </div>
       </div>
 
-      <nav className="text-black sticky top-0 w-full z-30  menu border border-gray-300 bg-[#f5f5f5]">
+      <nav className="text-white sticky top-0 w-full z-30  menu  border-b-2 border-t-2 border-l-none border-r-none border-violet-600 bg-[#191919]">
         <div className="container mx-auto flex gap-8 items-center p-4">
           <div className="flex-1 flex items-center gap-8">
             {/* Logo */}
             <button
               onClick={() => handleScroll("servicios")}
-              className="text-xl pb-1 font-bold text-black hover:text-blue-500"
+              className="text-xl pb-1 font-bold text-white hover:text-blue-500"
             >
-              Ofertas en curso
+            ZONA GAMER
             </button>
             {/* Menú desktop */}
             <ul className="hidden md:flex ms-auto gap-6">
