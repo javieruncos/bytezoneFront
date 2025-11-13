@@ -27,7 +27,7 @@ const Portada = () => {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className={`h-5 flex items-center justify-center ${
                 active === index
-                  ? "bg-blue-500 w-20 rounded-full"
+                  ? "bg-violet-500 w-20 rounded-full"
                   : "bg-white w-5 rounded-full"
               }`}
             />

@@ -52,7 +52,7 @@ const Menu = () => {
           </div>
         </div>
       </div>
-      <div className=" text-white text-center py-2 h-[100px] flex items-center justify-between px-4 md:px-12 bg-violet-800 ">
+      <div className=" text-white text-center py-2 h-[100px] flex items-center justify-between px-4 md:px-12 bg-violet-900 ">
         <div className="w-1/2 flex items-center">
           <span className="text-2xl font-bold">BYTEZONE</span>
         </div>

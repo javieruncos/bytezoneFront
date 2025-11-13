@@ -57,7 +57,7 @@ const CardProduct = ({ product }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/30 opacity-20 pointer-events-none"></div>
 
         <div className="relative z-10">
-          <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-violet-400 transition-colors duration-300">
+          <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-violet-400 transition-colors duration-300 line-clamp-1">
             {product.name}
           </h3>
           <p className="text-white/90 text-sm leading-relaxed">

@@ -18,14 +18,16 @@ const MasVendidos = ({productos}) => {
         </a>
       </div>
 
-      <hr className="border-blue-500" />
+      <hr className="border-violet-600" />
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 ">
         {/* CARD */}
         {masVendidos?.slice(0, 6).map((item, index) => (
           <div
             key={index}
-            className="group h-auto sm:h-[400px] w-full bg-white/4 backdrop-blur-lg border border-white/10 rounded-3xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-500 flex flex-col sm:flex-row items-center gap-6 p-6"
+            className="group relative h-auto sm:h-[400px] w-full bg-white/4 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-500 flex flex-col sm:flex-row items-center gap-6 p-6"
           >
+            {/* capa de brillo */}
+            <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/30 opacity-40 pointer-events-none -z-10"></div>
             <div className="flex-shrink-0 h-[220px] sm:h-[300px] w-full sm:w-[300px] flex justify-center items-center bg-violet-800 rounded-2xl overflow-hidden relative">
               <img src="https://img.freepik.com/vector-gratis/margen-abstracto-neon-sobre-fondo-purpura-oscuro_53876-99055.jpg" alt="" className="object-cover h-full" />
               <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-black/80">

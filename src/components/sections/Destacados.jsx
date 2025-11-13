@@ -61,9 +61,11 @@ const Destacados = ({ productos }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.6 }}
-              className="w-full mt-5 flex flex-col md:flex-row gap-4 border border-gray-300 px-4 sm:px-5 py-5 rounded-2xl backdrop-blur-xl bg-white/4"
+              className="relative w-full mt-5 flex flex-col md:flex-row gap-4 border border-white/20 px-4 sm:px-5 py-5 rounded-2xl backdrop-blur-xl bg-white/4 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
             >
               {/* Thumbnails */}
+              {/* capa de brillo */}
+              <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/30 opacity-40 pointer-events-none -z-10"></div>
               <div className="flex md:flex-col justify-center md:justify-around items-center gap-3 md:gap-4 md:w-[200px]">
                 {auricularesActuales?.slice(0, 4).map((item, index) => (
                   <div

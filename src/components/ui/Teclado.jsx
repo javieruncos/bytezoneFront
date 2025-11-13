@@ -20,7 +20,7 @@ const Teclado = () => {
                 <button className="bg-white text-black rounded-sm px-6 py-2">
                   Ver Producto
                 </button>
-                <button className="bg-blue-500 text-white rounded-sm px-6 py-2">
+                <button className="bg-violet-500 text-white rounded-sm px-6 py-2">
                   Comprar Ahora
                 </button>
               </div>
@@ -44,7 +44,7 @@ const Teclado = () => {
                 transition={{ duration: 0.6, delay: 1 }}
                 className="absolute top-20 left-10 w-[150px]"
               >
-                <span className="text-white py-2 px-10 text-2xl bg-blue-500 rounded-sm">
+                <span className="text-white py-2 px-10 text-2xl bg-violet-700 rounded-sm">
                   $150.000
                 </span>
               </motion.div>

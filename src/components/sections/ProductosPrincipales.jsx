@@ -65,10 +65,10 @@ const ProductosPrincipales = ({ productos,categoria}) => {
         </h2>
       </div>
 
-      <hr className="text-blue-500" />
+      <hr className="text-violet-600" />
 
       {/* Contenedor principal */}
-      <div className="flex flex-col md:flex-row gap-4 mt-8 ">
+      <div className="flex flex-col md:flex-row gap-4 mt-8 px-4">
         {/* Sidebar categorías */}
         <div className="w-full md:w-[200px] flex-shrink-0 ">
           <div className="grid grid-cols-2 sm:grid-cols-1 gap-4">
@@ -78,8 +78,8 @@ const ProductosPrincipales = ({ productos,categoria}) => {
                 onClick={() => setBtnActive(item.nombre)}
                 className={`flex flex-col items-center justify-center py-4 px-2 border rounded-md hover:border-blue-500 gap-2 ${
                   btnActive === item.nombre
-                    ? "bg-blue-500 text-white"
-                    : "bg-white text-black"
+                    ? "bg-white text-black"
+                    : "bg-violet-900 text-white"
                 }`}
               >
                 <img src={item.icon} alt="" className="w-[50px] h-[50px]" />
