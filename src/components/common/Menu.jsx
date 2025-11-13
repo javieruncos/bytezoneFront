@@ -92,9 +92,9 @@ const Menu = () => {
               <p className=" font-bold">4335343</p>
             </div>
             <div className="flex  items-center gap-4">
-              <a href="/registro" className=" cursor-pointer">
+              <Link to="/registro" className=" cursor-pointer">
               <i className="bi bi-person text-4xl"></i>
-              </a>
+              </Link>
               {currentUser ? (
                 <button onClick={() => Logout()}>
                   <i className="bi bi-box-arrow-right text-4xl text-blue-500 hover:cursor-pointer"></i>

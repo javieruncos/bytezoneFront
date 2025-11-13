@@ -5,7 +5,7 @@ const DescripcionProduct = ({product}) => {
     <div>
       <div className="px-10 mt-15 flex flex-col gap-5">
         <h3 className="text-4xl font-bold">{product.name}</h3>
-        <p className="text-black">
+        <p className="text-white">
           {product.description}
       </p>
       </div>

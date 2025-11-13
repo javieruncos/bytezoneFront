@@ -21,12 +21,12 @@ const CarritoContext = ({children}) => {
 
     const addToCart = useCallback((product, quantity = 1) => { // Añadimos un valor por defecto para quantity
         setCartItems(prevItems => {
-            const existingItem = prevItems.find(item => item.id === product.id);
+            const existingItem = prevItems.find(item => item._id === product._id);
             
             if (existingItem) {
                 // Si el producto ya existe, actualizamos su cantidad
                 return prevItems.map(item =>
-                    item.id === product.id
+                    item._id === product._id
                         ? { ...item, quantity: item.quantity + quantity }
                         : item
                 );
@@ -36,7 +36,7 @@ const CarritoContext = ({children}) => {
     }, []);
 
     const removeFromCart = useCallback((productId) => {
-        setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
+        setCartItems(prevItems => prevItems.filter(item => item._id !== productId));
     }, []);
 
     const clearCart = useCallback(() => {

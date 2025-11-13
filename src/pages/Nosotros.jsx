@@ -41,10 +41,10 @@ const Nosotros = () => {
     <div className="container mx-auto px-4 my-12">
       {/* Título de sección */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-          Sobre <span className="text-blue-500">Nosotros</span>
+        <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
+          Sobre <span className="text-violet-500">Nosotros</span>
         </h1>
-        <p className="text-gray-700 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+        <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
           En ElectronicZ nos apasiona la tecnología y la innovación. Nuestro
           equipo trabaja con dedicación para ofrecer los mejores productos y la
           mejor experiencia a nuestros clientes.
@@ -61,10 +61,10 @@ const Nosotros = () => {
           />
         </div>
         <div className="w-full md:w-1/2 text-center md:text-left ">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
             Nuestra historia
           </h2>
-          <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
+          <p className="text-gray-300 text-lg sm:text-xl leading-relaxed">
             ElectronicZ nació de la pasión por la tecnología y el deseo de
             ofrecer productos de alta calidad a los amantes de la electrónica.
             Desde nuestros inicios, nos hemos comprometido a seleccionar
@@ -82,25 +82,25 @@ const Nosotros = () => {
 
       {/* Equipo */}
       <div className="mb-16">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10">
-          Nuestro <span className="text-blue-500">Equipo</span>
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-white">
+          Nuestro <span className="text-violet-500">Equipo</span>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {equipo.map((persona) => (
             <div
               key={persona.id}
-              className="bg-white rounded-2xl shadow-md overflow-hidden p-6 text-center flex flex-col items-center transition-transform hover:scale-105"
+              className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-md overflow-hidden p-6 text-center flex flex-col items-center transition-transform hover:scale-105"
             >
               <img
                 src={persona.foto}
                 alt={persona.nombre}
-                className="w-32 h-32 rounded-full object-cover mb-4 border-2 border-blue-500"
+                className="w-32 h-32 rounded-full object-cover mb-4 border-2 border-violet-500"
               />
-              <h3 className="text-xl sm:text-2xl font-semibold mb-1">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-1 text-white">
                 {persona.nombre}
               </h3>
-              <p className="text-blue-500 font-medium mb-3">{persona.cargo}</p>
-              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+              <p className="text-violet-500 font-medium mb-3">{persona.cargo}</p>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
                 {persona.descripcion}
               </p>
             </div>

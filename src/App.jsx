@@ -15,6 +15,7 @@ import Registro from "./pages/Registro";
 import UserContext from "./context/UserContext";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import CarritoContext from "./context/CarritoContext";
+import FooterMenu from "./components/sections/FooterMenu";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
                     element={<Categorias></Categorias>}
                   />
                 </Routes>
+                <FooterMenu></FooterMenu>
               </div>
             </BrowserRouter>
           </ProductContext>

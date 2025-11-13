@@ -1,6 +1,6 @@
-import React, { use, useContext } from "react";
+import React from "react";
 import CardProduct from "../ui/CardProduct";
-import { ContextProduct} from "../../context/ProductContext";  
+import { motion } from "framer-motion";
 
 const SectionProducts = ({productos}) => {
   
@@ -27,7 +27,15 @@ const SectionProducts = ({productos}) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-10">
         {
           productos?.slice(0, 6).map((item, index) => (
-            <CardProduct key={index} product={item}/>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <CardProduct product={item}/>
+            </motion.div>
           ))
         }
       </div>

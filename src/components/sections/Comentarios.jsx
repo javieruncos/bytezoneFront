@@ -106,7 +106,7 @@ const Comentarios = () => {
         `}
       </style>
 
-    <div className="container mx-auto px-4 my-12 overflow-hidden">
+    <div className="container mx-auto px-4 my-1 overflow-hidden">
       <div className="flex flex-col items-center text-center mb-10">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
           Reseñas de clientes

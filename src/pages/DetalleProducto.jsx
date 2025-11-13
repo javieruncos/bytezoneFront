@@ -76,14 +76,14 @@ const DetalleProducto = () => {
   return (
     <div className="container mx-auto mt-10">
       <nav
-        className="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg   "
+        className="flex px-5 py-3 text-gray-300 border border-white/20 rounded-lg"
         aria-label="Breadcrumb"
       >
         <ol className="inline-flex items-center space-x-1 md:space-x-3">
           <li className="inline-flex items-center">
             <a
               href="/"
-              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-500"
+              className="inline-flex items-center text-sm font-medium text-gray-400 hover:text-violet-500"
             >
               <svg
                 className="w-3 h-3 mr-2.5"
@@ -114,16 +114,16 @@ const DetalleProducto = () => {
                   d="m1 9 4-4-4-4"
                 />
               </svg>
-              <span className="ml-1 text-sm font-medium text-blue-500 md:ml-2 dark:text-blue-500">
+              <span className="ml-1 text-sm font-medium text-violet-500 md:ml-2">
                 detalle
               </span>
             </div>
           </li>
         </ol>
       </nav>
-      <div className="grid grid-cols-2 gap-3 pt-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-5">
         <div>
-          <div className="h-[400px] w-full bg-white border rounded-md overflow-hidden">
+          <div className="h-[400px] w-full bg-white/5 backdrop-blur-lg border border-white/20 rounded-md overflow-hidden p-4">
             <img
               src={imagenSeleccionada}
               className="h-full w-full object-contain"
@@ -137,10 +137,10 @@ const DetalleProducto = () => {
                 images.map((img, index) => (
                 <div
                   key={index}
-                  className={`h-[200px] w-full border transition-all duration-300 rounded-md hover:cursor-pointer ${
+                  className={`h-[200px] w-full border transition-all duration-300 rounded-md hover:cursor-pointer p-2 bg-white/5 ${
                     imagenSeleccionada === img
-                      ? "border-blue-500"
-                      : "border-gray-300"
+                      ? "border-violet-500"
+                      : "border-white/10"
                   }`}
                   onClick={() => setImagenSeleccionada(img)}
                 >
@@ -159,12 +159,12 @@ const DetalleProducto = () => {
             })()}
           </div>
         </div>
-        <div className=" h-auto w-full border border-gray-300 rounded-md p-6">
+        <div className="h-auto w-full bg-white/5 backdrop-blur-lg border border-white/20 rounded-md p-6 text-white">
           <h3 className="text-3xl font-bold">{productId.name}</h3>
-          <p className="text-4xl mt-5 font-bold text-blue-500">${productId.price?.toLocaleString("es-AR") || "N/A"}</p>
-          <hr className="bg-gray-300 mt-4" />
+          <p className="text-4xl mt-5 font-bold text-violet-500">${productId.price?.toLocaleString("es-AR") || "N/A"}</p>
+          <hr className="border-white/20 mt-4" />
           <div className="mt-4">
-            <p>
+            <p className="text-gray-300">
               <span className="font-semibold">Descripción:</span>{" "}
               {productId.description}
             </p>
@@ -175,32 +175,32 @@ const DetalleProducto = () => {
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
               min="1"
-              className="border rounded-sm border-gray-300 h-[40px] w-[100px] p-1"
+              className="border rounded-sm border-white/20 bg-transparent h-[40px] w-[100px] p-2 text-center"
               placeholder="1"
             />
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-blue-600"
+            <button className="bg-violet-600 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-violet-700 transition-colors"
               onClick={handleAddToCart}>
               Agregar al Carrito
             </button>
           </div>
-          <hr className="bg-gray-300 mt-7" />
+          <hr className="border-white/20 mt-7" />
           <div>
             <h3 className="text-2xl mt-4">
               Siguenos para obtener mas Información
             </h3>
             <div className="flex gap-4 mt-4">
               <a href="">
-                <i className="bi bi-facebook text-2xl text-gray-400"></i>
+                <i className="bi bi-facebook text-2xl text-gray-400 hover:text-violet-500 transition-colors"></i>
               </a>
               <a href="">
-                <i className="bi bi-whatsapp text-2xl text-gray-400"></i>
+                <i className="bi bi-whatsapp text-2xl text-gray-400 hover:text-violet-500 transition-colors"></i>
               </a>
               <a href="">
-                <i className="bi bi-instagram text-2xl text-gray-400"></i>
+                <i className="bi bi-instagram text-2xl text-gray-400 hover:text-violet-500 transition-colors"></i>
               </a>
             </div>
           </div>
-          <hr className="bg-gray-300 mt-7" />
+          <hr className="border-white/20 mt-7" />
           <div>
             <h3 className="text-2xl mt-4">Recibimos tarjetas de crédito</h3>
             <div className="flex gap-4 mt-4">
@@ -220,10 +220,10 @@ const DetalleProducto = () => {
           </div>
         </div>
       </div>
-      <div className="border border-gray-300 mt-20 rounded-md py-5">
-        <div className="flex justify-center items-center gap-5 mt-5 py-3">
+      <div className="border border-white/20 mt-20 rounded-md py-5 bg-white/5 backdrop-blur-lg">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-5 mt-5 py-3 px-4">
           <button
-            className="py-3 px-10 bg-blue-500 border text-white rounded-md hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all duration-300"
+            className={`w-full sm:w-auto py-3 px-6 sm:px-10 border rounded-md transition-all duration-300 ${activeSection === 'descripcion' ? 'bg-violet-600 text-white border-violet-600' : 'bg-transparent text-gray-300 border-white/20 hover:bg-white/10'}`}
             onClick={() => {
               setActiveSection("descripcion");
             }}
@@ -231,7 +231,7 @@ const DetalleProducto = () => {
             Descripcion
           </button>
           <button
-            className="py-3 px-10 bg-blue-500 text-white rounded-md border hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all duration-300"
+            className={`w-full sm:w-auto py-3 px-6 sm:px-10 border rounded-md transition-all duration-300 ${activeSection === 'especificacion' ? 'bg-violet-600 text-white border-violet-600' : 'bg-transparent text-gray-300 border-white/20 hover:bg-white/10'}`}
             onClick={() => {
               setActiveSection("especificacion");
             }}
@@ -239,7 +239,7 @@ const DetalleProducto = () => {
             Especificacion
           </button>
           <button
-            className="py-3 px-10 bg-blue-500 border text-white rounded-md hover:bg-white hover:text-blue-500 hover:border hover:border-blue-500 transition-all duration-300"
+            className={`w-full sm:w-auto py-3 px-6 sm:px-10 border rounded-md transition-all duration-300 ${activeSection === 'comentarios' ? 'bg-violet-600 text-white border-violet-600' : 'bg-transparent text-gray-300 border-white/20 hover:bg-white/10'}`}
             onClick={() => {
               setActiveSection("comentarios");
             }}
