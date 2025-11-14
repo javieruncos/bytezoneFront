@@ -16,6 +16,7 @@ import UserContext from "./context/UserContext";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import CarritoContext from "./context/CarritoContext";
 import FooterMenu from "./components/sections/FooterMenu";
+import SearchProduct from "./pages/SearchProduct";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
                   <Route path="/contacto" element={<Contacto></Contacto>} />
                   <Route path="/nosotros" element={<Nosotros></Nosotros>} />
                   <Route path="/registro" element={<Registro></Registro>} />
+                  <Route path="/busqueda" element={<SearchProduct></SearchProduct>} />
+                  
 
                   {/* Rutas Protegidas para Administradores */}
                   <Route element={<PrivateRoute requiredRole={"admin"} />}>

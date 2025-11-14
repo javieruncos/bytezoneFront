@@ -6,6 +6,8 @@ export const ContextProduct = createContext();
 const ProductContext = ({ children }) => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filterSearch, setFilterSearch] = useState("");
+
 
   useEffect(() => {
     getProduct().then((res) => {
@@ -16,7 +18,7 @@ const ProductContext = ({ children }) => {
   }, []);
 
   return (
-    <ContextProduct.Provider value={{ product, loading, setProduct }}>
+    <ContextProduct.Provider value={{ product, loading, setProduct , filterSearch, setFilterSearch}}>
       {children}
     </ContextProduct.Provider>
   );

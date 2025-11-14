@@ -5,29 +5,31 @@ import auricular from "../../assets/icons/auricularIcon.png";
 import userIcon from "../../assets/icons/userIcon.webp";
 import carritoIcon from "../../assets/icons/carritoIcon.webp";
 import { ContextUser } from "../../context/UserContext";
-import ModalCarrito from "../ui/ModalCarrito";
-import { Link } from "react-router-dom";
+import ModalCarrito from "../ui/ModalCarrito"; 
+import { Link, useNavigate } from "react-router-dom";
+import { ContextProduct } from "../../context/ProductContext";
 
 const Menu = () => {
   const { currentUser, setCurrentUser } = useContext(ContextUser);
+  const { setFilterSearch } = useContext(ContextProduct);
   const [open, setOpen] = useState(false);
   // Estado para controlar el modal de registro
   let [isOpen, setIsOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const navigate = useNavigate();
 
-  const handleScroll = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth", // scroll suave
-        block: "start", // se alinea al inicio del elemento
-      });
-    }
-  };
-
-  const Logout = () => {
+  const handleLogout = () => {
     localStorage.removeItem("token"); // Borra token
     localStorage.removeItem("usuarioByte"); // Borra datos del usuario
     setCurrentUser(null);
+  };
+
+  const handleFilter =(e)=>{
+    e.preventDefault()
+    if (searchValue.trim() !== "") {
+      setFilterSearch(searchValue); // Opcional: mantener el contexto actualizado
+      navigate(`/busqueda?q=${searchValue}`);
+    }
   };
 
   return (
@@ -60,13 +62,15 @@ const Menu = () => {
           <div className="w-1/2 flex items-center">
             <span className="text-2xl font-bold">BYTEZONE</span>
           </div>
-          <div className="relative w-1/2 hidden md:block">
+          <form onSubmit={handleFilter} className="relative w-1/2 hidden md:block">
             <input
               type="search"
               placeholder="Buscar..."
               className="w-full bg-white text-black py-3 pl-4 pr-12 rounded-lg outline-none"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
             />
-            <button className="absolute right-3 top-1/2 -translate-y-1/2 text-black rounded-md bg-white p-2 hover:bg-blue-500 hover:text-white">
+            <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-black rounded-md bg-white p-2 hover:bg-violet-500 hover:text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -82,7 +86,7 @@ const Menu = () => {
                 />
               </svg>
             </button>
-          </div>
+          </form>
           <div className="flex items-center justify-end gap-5 w-1/2 ">
             <div className="hidden md:block">
               <i className="bi bi-headset text-4xl"></i>
@@ -96,7 +100,7 @@ const Menu = () => {
               <i className="bi bi-person text-4xl"></i>
               </Link>
               {currentUser ? (
-                <button onClick={() => Logout()}>
+                <button onClick={handleLogout}>
                   <i className="bi bi-box-arrow-right text-4xl text-violet-500 hover:cursor-pointer"></i>
                 </button>
               ) : null}
