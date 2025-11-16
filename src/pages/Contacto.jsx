@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { contactEmail } from "../services/contacto";
+import Swal from "sweetalert2";
 
 const Contacto = () => {
   const {
@@ -9,24 +11,50 @@ const Contacto = () => {
     reset,
   } = useForm();
 
-  const onSubmit = (data) =>{
-    console.log(data);
-  }
+  const onSubmit = async (data) => {
+    try {
+      const res = await contactEmail(data);
+
+      if (res.status === 200) {
+        Swal.fire({
+          title: "¡Mensaje Enviado!",
+          text: "Tu mensaje ha sido enviado con éxito. Nos pondremos en contacto contigo pronto.",
+          icon: "success",
+          confirmButtonText: "Aceptar",
+          background: "#111827", // Coincide con el fondo oscuro
+          color: "#e5e7eb", // Texto claro
+          iconColor: "#8b5cf6", // Color violeta del ícono
+          confirmButtonColor: "#7c3aed", // Color violeta del botón
+        });
+        reset();
+      } else {
+        // Manejo de error del backend
+        Swal.fire({
+          title: "Error al Enviar",
+          text: res.message || "No se pudo enviar el mensaje. Por favor, inténtalo de nuevo.",
+          icon: "error",
+          confirmButtonText: "Cerrar",
+          background: "#111827",
+          color: "#e5e7eb",
+          confirmButtonColor: "#7c3aed",
+        });
+      }
+    } catch (error) {
+      // Error inesperado
+      Swal.fire({
+        title: "Error Inesperado",
+        text: "Tuvimos un problema al procesar tu solicitud. Intenta más tarde.",
+        icon: "error",
+        confirmButtonText: "Cerrar",
+        background: "#111827",
+        color: "#e5e7eb",
+        confirmButtonColor: "#7c3aed",
+      });
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <style>
-        {`
-          input:-webkit-autofill,
-          input:-webkit-autofill:hover, 
-          input:-webkit-autofill:focus, 
-          input:-webkit-autofill:active {
-            -webkit-box-shadow: 0 0 0 30px #1f2937 inset !important; /* Color de fondo oscuro */
-            -webkit-text-fill-color: #fff !important; /* Color del texto */
-            caret-color: #fff !important;
-          }
-        `}
-      </style>
       {/* Título */}
       <div className="text-center mb-12">
         <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
@@ -128,7 +156,10 @@ const Contacto = () => {
             </div>
           </div>
         </div>
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 shadow-lg" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 shadow-lg"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           {/* Nombre */}
           <div className="h-20">
             <input
@@ -143,7 +174,9 @@ const Contacto = () => {
                 },
               })}
             />
-            <span className="text-red-500 text-sm">{errors.nombre?.message}</span>
+            <span className="text-red-500 text-sm">
+              {errors.nombre?.message}
+            </span>
           </div>
           {/* Correo */}
           <div className="h-20">
@@ -159,7 +192,9 @@ const Contacto = () => {
                 },
               })}
             />
-            <span className="text-red-500 text-sm">{errors.email?.message}</span>
+            <span className="text-red-500 text-sm">
+              {errors.email?.message}
+            </span>
           </div>
           {/* Telefono */}
           <div className="h-20">
@@ -174,7 +209,9 @@ const Contacto = () => {
                 },
               })}
             />
-            <span className="text-red-500 text-sm">{errors.telefono?.message}</span>
+            <span className="text-red-500 text-sm">
+              {errors.telefono?.message}
+            </span>
           </div>
           {/* Asunto */}
           <div className="h-20">
@@ -182,13 +219,13 @@ const Contacto = () => {
               type="text"
               placeholder="Asunto"
               className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
-              {...register("asunto",
-                {
-                  required: "El asunto es obligatorio",
-                }
-              )}
+              {...register("asunto", {
+                required: "El asunto es obligatorio",
+              })}
             />
-            <span className="text-red-500 text-sm">{errors.asunto?.message}</span>
+            <span className="text-red-500 text-sm">
+              {errors.asunto?.message}
+            </span>
           </div>
           {/* Mensaje */}
           <textarea
@@ -208,6 +245,18 @@ const Contacto = () => {
           </div>
         </form>
       </div>
+      <style>
+        {`
+          input:-webkit-autofill,
+          input:-webkit-autofill:hover, 
+          input:-webkit-autofill:focus, 
+          input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px #1f2937 inset !important; /* Color de fondo oscuro */
+            -webkit-text-fill-color: #fff !important; /* Color del texto */
+            caret-color: #fff !important;
+          }
+        `}
+      </style>
     </div>
   );
 };

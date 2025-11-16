@@ -1,8 +1,8 @@
-import { head } from "framer-motion/client";
+import axios from "axios";
 
-const urlContact = import.meta.env.VITE_URL_CONTACT;
+const urlContact = import.meta.env.VITE_API_CONTACT;
 
-const apiContact = axios.create({
+export const apiContact = axios.create({
   baseURL: urlContact,
   headers: {
     "Content-Type": "application/json",
