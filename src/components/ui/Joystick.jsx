@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Joystick = () => {
   return (
@@ -17,11 +18,11 @@ const Joystick = () => {
             <div className="mt-20 flex flex-col gap-5">
               <p className="text-4xl font-bold">Joystick Blancos</p>
               <div className="flex gap-6 mt-5 justify-center md:justify-start">
-                <button className="bg-white text-black rounded-sm px-6 py-2">
-                  Ver Producto
-                </button>
+                <Link to={"/categorias/Joystick"} className="bg-white text-black rounded-sm px-6 py-2">
+                  Ver Productos
+                </Link>
                 <button className="bg-violet-500 text-white rounded-sm px-6 py-2">
-                  Comprar Ahora
+                 Categorias
                 </button>
               </div>
             </div>

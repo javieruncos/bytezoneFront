@@ -3,7 +3,7 @@ import { useState } from "react";
 import Auricular from "../ui/Auricular";
 import Joystick from "../ui/Joystick";
 import Teclado from "../ui/Teclado";
-import fondotec from "../../assets/images/fondo-pantalla-perspectiva.avif";
+
 
 const Portada = () => {
   const [active, setActive] = useState(0);

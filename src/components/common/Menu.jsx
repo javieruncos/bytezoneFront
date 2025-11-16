@@ -60,7 +60,7 @@ const Menu = () => {
         alt="" />
         <div className="absolute top-0 left-0 h-full w-full bg-black/56  flex items-center justify-between px-4 md:px-12">
           <div className="w-1/2 flex items-center">
-            <span className="text-2xl font-bold">BYTEZONE</span>
+            <Link to={"/"} className="text-2xl font-bold">BYTEZONE</Link>
           </div>
           <form onSubmit={handleFilter} className="relative w-1/2 hidden md:block">
             <input
@@ -108,7 +108,6 @@ const Menu = () => {
                 className="cursor-pointer"
                 onClick={() => setIsOpen(true)}
               >
-                {/* <img src={carritoIcon} alt="" className="h-[30px]" /> */}
                 <i className="bi bi-cart2 text-3xl"></i>
               </button>
             </div>
@@ -120,12 +119,11 @@ const Menu = () => {
         <div className="container mx-auto flex gap-8 items-center p-4">
           <div className="flex-1 flex items-center gap-8">
             {/* Logo */}
-            <button
-              onClick={() => handleScroll("servicios")}
-              className="text-xl pb-1 font-bold text-white hover:text-blue-500"
+            <span
+              className="text-xl pb-1 font-bold text-violet-500"
             >
               ZONA GAMER
-            </button>
+            </span>
             {/* Menú desktop */}
             <ul className="hidden md:flex ms-auto gap-6">
               <li>

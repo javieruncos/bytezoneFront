@@ -1,4 +1,4 @@
-import React from "react";
+import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { contactEmail } from "../services/contacto";
 import Swal from "sweetalert2";
@@ -31,7 +31,9 @@ const Contacto = () => {
         // Manejo de error del backend
         Swal.fire({
           title: "Error al Enviar",
-          text: res.message || "No se pudo enviar el mensaje. Por favor, inténtalo de nuevo.",
+          text:
+            res.message ||
+            "No se pudo enviar el mensaje. Por favor, inténtalo de nuevo.",
           icon: "error",
           confirmButtonText: "Cerrar",
           background: "#111827",
@@ -55,8 +57,12 @@ const Contacto = () => {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      {/* Título */}
-      <div className="text-center mb-12">
+      <motion.div
+        className="text-center mb-12"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
           Contáctanos
         </h1>
@@ -64,10 +70,15 @@ const Contacto = () => {
           Ponte en contacto con nosotros para consultas, soporte o cualquier
           información sobre nuestros productos.
         </p>
-      </div>
+      </motion.div>
 
-      {/* Información de contacto */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
         <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6">
           <div className="text-center">
             <div className="p-4 bg-violet-600 h-16 w-16 rounded-2xl mx-auto mb-4 flex justify-center items-center text-white">
@@ -120,15 +131,20 @@ const Contacto = () => {
           <p className="text-gray-300 mb-2 text-center">(415) 555‑0XX2</p>
           <p className="text-gray-300 mb-2 text-center">(800) 555‑0XX5</p>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Formulario */}
-      <div className="p-4 md:p-8 mb-12 grid grid-cols-1 lg:grid-cols-2 gap-12 text-center md:text-left">
+      <motion.div
+        className="p-4 md:p-8 mb-12 grid grid-cols-1 lg:grid-cols-2 gap-12 text-center md:text-left"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
         <div>
           <span className="font-medium text-violet-400">Contactanos</span>
 
           <h2 className="text-4xl font-bold mb-6 text-white">
-            Comunícate hoy mismo
+            Comunícate hoy mismoF
           </h2>
           <p className="text-gray-300 leading-relaxed">
             Explora tecnología de alto rendimiento diseñada para gamers y
@@ -160,7 +176,6 @@ const Contacto = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 shadow-lg"
           onSubmit={handleSubmit(onSubmit)}
         >
-          {/* Nombre */}
           <div className="h-20">
             <input
               type="text"
@@ -178,7 +193,6 @@ const Contacto = () => {
               {errors.nombre?.message}
             </span>
           </div>
-          {/* Correo */}
           <div className="h-20">
             <input
               type="email"
@@ -196,7 +210,7 @@ const Contacto = () => {
               {errors.email?.message}
             </span>
           </div>
-          {/* Telefono */}
+
           <div className="h-20">
             <input
               type="text"
@@ -213,7 +227,7 @@ const Contacto = () => {
               {errors.telefono?.message}
             </span>
           </div>
-          {/* Asunto */}
+
           <div className="h-20">
             <input
               type="text"
@@ -227,7 +241,7 @@ const Contacto = () => {
               {errors.asunto?.message}
             </span>
           </div>
-          {/* Mensaje */}
+
           <textarea
             placeholder="Mensaje"
             className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 md:col-span-2 h-32 resize-none"
@@ -244,7 +258,7 @@ const Contacto = () => {
             </button>
           </div>
         </form>
-      </div>
+      </motion.div>
       <style>
         {`
           input:-webkit-autofill,

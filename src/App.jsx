@@ -17,6 +17,7 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 import CarritoContext from "./context/CarritoContext";
 import FooterMenu from "./components/sections/FooterMenu";
 import SearchProduct from "./pages/SearchProduct";
+import ScrollToTop from "./components/ui/ScrollToTop";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <CarritoContext>
           <ProductContext>
             <BrowserRouter>
+              <ScrollToTop />
               <div className="App">
                 <Menu></Menu>
                 <Routes>

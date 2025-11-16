@@ -24,13 +24,6 @@ const MasVendidos = ({productos}) => {
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 ">
         {/* CARD */}
         {masVendidos?.slice(0, 6).map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
             <div
             className="group relative h-auto sm:h-[400px] w-full bg-white/4 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-500 flex flex-col sm:flex-row items-center gap-6 p-6"
           >
@@ -62,7 +55,6 @@ const MasVendidos = ({productos}) => {
               </Link>
             </div>
             </div>
-          </motion.div>
         ))}
       </div>
     </div>

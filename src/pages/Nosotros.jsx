@@ -1,4 +1,4 @@
-import React from "react";
+import { motion } from "framer-motion";
 import Comentarios from "../components/sections/Comentarios";
 
 const Nosotros = () => {
@@ -40,7 +40,12 @@ const Nosotros = () => {
   return (
     <div className="container mx-auto px-4 my-12">
       {/* Título de sección */}
-      <div className="text-center mb-12">
+      <motion.div
+        className="text-center mb-12"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
           Sobre <span className="text-violet-500">Nosotros</span>
         </h1>
@@ -49,10 +54,15 @@ const Nosotros = () => {
           equipo trabaja con dedicación para ofrecer los mejores productos y la
           mejor experiencia a nuestros clientes.
         </p>
-      </div>
-
+      </motion.div>
       {/* Historia / misión */}
-      <div className="flex flex-col md:flex-row  gap-8 mb-16 mt-20">
+      <motion.div
+        className="flex flex-col md:flex-row gap-8 mb-16 mt-20"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
         <div className="w-full md:w-1/2">
           <img
             src="https://cdn.prod.website-files.com/66010b96fb3d1aa19847819d/661ce9798566d3604bcc4c33_16480-p-800.webp"
@@ -75,10 +85,10 @@ const Nosotros = () => {
             un servicio excepcional que acompañe cada compra. Nuestro equipo
             trabaja constantemente para anticipar las necesidades de los
             usuarios, explorando nuevas tendencias y soluciones tecnológicas que
-            marquen la diferencia. 
+            marquen la diferencia.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Equipo */}
       <div className="mb-16">
@@ -87,9 +97,13 @@ const Nosotros = () => {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {equipo.map((persona) => (
-            <div
+            <motion.div
               key={persona.id}
-              className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-md overflow-hidden p-6 text-center flex flex-col items-center transition-transform hover:scale-105"
+              className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-md overflow-hidden p-6 text-center flex flex-col items-center"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: persona.id * 0.1 }}
             >
               <img
                 src={persona.foto}
@@ -99,11 +113,13 @@ const Nosotros = () => {
               <h3 className="text-xl sm:text-2xl font-semibold mb-1 text-white">
                 {persona.nombre}
               </h3>
-              <p className="text-violet-500 font-medium mb-3">{persona.cargo}</p>
+              <p className="text-violet-500 font-medium mb-3">
+                {persona.cargo}
+              </p>
               <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
                 {persona.descripcion}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

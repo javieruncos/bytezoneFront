@@ -9,35 +9,53 @@ import Banner from "../components/ui/Banner";
 import Comentarios from "../components/sections/Comentarios";
 import Menu from "../components/common/Menu";
 import { ContextProduct } from "../context/ProductContext";
+import FadeInSections from "../components/animaciones/FadeInSections";
 
 const Home = () => {
-  const {product} = useContext(ContextProduct);
-
+  const { product } = useContext(ContextProduct);
 
   return (
     <div className="Main">
-      <section className="mt-10 mx-3 ">
-        <Portada></Portada>
-      </section>
-      <MenuProduct></MenuProduct>
-      <section className="container pt-10 mx-auto">
-        <SectionProducts productos={product}></SectionProducts>
-      </section>
-      <section className="pt-10">
-        <Destacados productos={product}></Destacados>
-      </section>
-      <section className="pt-10">
-        <MasVendidos productos={product}></MasVendidos>
-      </section>
-      <section className="pt-10">
-        <ProductosPrincipales productos={product}></ProductosPrincipales>
-      </section>
-      <section className="py-6">
-        <Banner></Banner>
-      </section>
-      <section className="py-6">
-        <Comentarios></Comentarios>
-      </section>
+      <FadeInSections>
+        <section className="mt-10 mx-3 ">
+          <Portada></Portada>
+        </section>
+      </FadeInSections>
+
+      <FadeInSections>
+        <MenuProduct></MenuProduct>
+      </FadeInSections>
+
+      <FadeInSections>
+        <section className="container pt-10 mx-auto">
+          <SectionProducts productos={product}></SectionProducts>
+        </section>
+      </FadeInSections>
+      <FadeInSections>
+        <section className="pt-10">
+          <Destacados productos={product}></Destacados>
+        </section>
+      </FadeInSections>
+      <FadeInSections>
+        <section className="pt-10">
+          <MasVendidos productos={product}></MasVendidos>
+        </section>
+      </FadeInSections>
+      <FadeInSections>
+        <section className="pt-10">
+          <ProductosPrincipales productos={product}></ProductosPrincipales>
+        </section>
+      </FadeInSections>
+      <FadeInSections>
+        <section className="py-6">
+          <Banner></Banner>
+        </section>
+      </FadeInSections>
+      <FadeInSections>
+        <section className="py-6">
+          <Comentarios></Comentarios>
+        </section>
+      </FadeInSections>
     </div>
   );
 };
