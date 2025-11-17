@@ -19,7 +19,7 @@ const MasVendidos = ({ productos }) => {
       </div>
 
       <hr className="border-violet-600" />
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6 ">
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {/* CARD */}
         {masVendidos?.slice(0, 4).map((item) => (
           <div key={item._id || item.id} className="group relative h-auto lg:min-h-[350px] w-full bg-white/4 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-500 flex flex-col lg:flex-row items-center gap-6 p-6">

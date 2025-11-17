@@ -28,7 +28,7 @@ const Destacados = ({ productos }) => {
 
   return (
     <div className="h-auto container mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:px-10 lg:px-0 px-3">
         {/* Panel izquierdo */}
         <div className="col-span-1 lg:col-span-2 ">
           <div className="h-[600px] w-full text-white  rounded-2xl relative overflow-hidden">
@@ -71,7 +71,7 @@ const Destacados = ({ productos }) => {
                 {auricularesActuales?.slice(0, 4).map((item, index) => (
                   <div
                     key={item.id}
-                    className={`h-[100px] w-[100px] sm:h-[120px] sm:w-[120px] rounded-2xl p-2 border transition-all duration-300 cursor-pointer ${
+                    className={`h-[90px] w-[100px] sm:h-[120px] sm:w-[120px] rounded-2xl p-2 border transition-all duration-300 cursor-pointer ${
                       active === index
                         ? "border-violet-600 scale-105"
                         : "border-gray-300 hover:border-violet-600"
