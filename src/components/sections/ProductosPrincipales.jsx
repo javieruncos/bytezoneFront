@@ -59,7 +59,7 @@ const ProductosPrincipales = ({ productos,categoria}) => {
   return (
     <div className="container mx-auto my-8 ">
       {/* Título y botón */}
-      <div className="flex flex-col md:flex-row justify-between items-center md:items-center py-5 gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-center md:items-center py-5 gap-4 md:px-10 lg:px-0">
         <h2 className="text-4xl font-bold text-center md:text-left">
           Categorias
         </h2>
@@ -68,21 +68,21 @@ const ProductosPrincipales = ({ productos,categoria}) => {
       <hr className="text-violet-600" />
 
       {/* Contenedor principal */}
-      <div className="flex flex-col md:flex-row gap-4 mt-8 px-4">
+      <div className="flex flex-col lg:flex-row gap-6 mt-8">
         {/* Sidebar categorías */}
-        <div className="w-full md:w-[200px] flex-shrink-0 ">
-          <div className="grid grid-cols-2 sm:grid-cols-1 gap-4">
+        <div className="w-full lg:w-[200px] flex-shrink-0 px-4 md:px-10 lg:px-0">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 lg:flex lg:flex-col">
             {items.map((item) => (
               <button
                 key={item.nombre}
                 onClick={() => setBtnActive(item.nombre)}
-                className={`flex flex-col items-center justify-center py-4 px-2 border rounded-md hover:border-blue-500 gap-2 ${
+                className={`flex flex-col items-center justify-center py-4 px-4 border rounded-lg hover:border-violet-500 gap-2 transition-colors duration-300 w-full ${
                   btnActive === item.nombre
-                    ? "bg-white text-black"
-                    : "bg-violet-900 text-white"
+                    ? "bg-white text-black border-violet-500"
+                    : "bg-violet-600 text-white border-white/20"
                 }`}
               >
-                <img src={item.icon} alt="" className="w-[50px] h-[50px]" />
+                <img src={item.icon} alt={`Icono de ${item.nombre}`} className="w-[50px] h-[50px]" />
                 <span className="text-center text-sm md:text-base font-medium">
                   {item.nombre}
                 </span>
@@ -98,7 +98,7 @@ const ProductosPrincipales = ({ productos,categoria}) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-3 w-full"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-full px-4 md:px-10 lg:px-0"
         >
           {productosFiltrados?.slice(0, 6).map((p) => (
             <CardMasVendidos key={p.id} producto={p} />
