@@ -17,6 +17,7 @@ const FormLogin = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
+    console.log(data);
     const respuesta = await login(data);
 
     if (respuesta.status === 200) {
