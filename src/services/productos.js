@@ -94,18 +94,21 @@ export const eliminarProductos = async (id) => {
 
 export const createProduct = async (data) => {
   try {
-    // Al enviar FormData, el header 'Content-Type' debe ser 'multipart/form-data'.
-    // Axios lo establece automáticamente, pero lo especificamos para mayor claridad.
+    const token = localStorage.getItem("token"); // o de donde guardes el JWT
+
     const response = await api.post("/", data, {
       headers: {
+        Authorization: `Bearer ${token}`, // <== Aquí envías el token
         "Content-Type": "multipart/form-data",
       },
     });
+
     return {
       status: response.status,
       data: response.data,
     };
   } catch (error) {
+    console.log(error);
     return {
       success: false,
       status: error.response?.status || null,

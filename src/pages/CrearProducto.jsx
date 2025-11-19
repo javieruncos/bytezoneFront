@@ -55,6 +55,8 @@ const CrearProducto = () => {
   };
 
   const onSubmit = (data) => {
+    console.log(data);
+
     // Convertir los valores booleanos de las specs
     const parsedSpecs = Object.fromEntries(
       Object.entries(data.specs || {}).map(([key, value]) => [
