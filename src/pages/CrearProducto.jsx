@@ -13,6 +13,7 @@ const CrearProducto = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
     watch,
     reset,
   } = useForm();
@@ -55,8 +56,6 @@ const CrearProducto = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
-
     // Convertir los valores booleanos de las specs
     const parsedSpecs = Object.fromEntries(
       Object.entries(data.specs || {}).map(([key, value]) => [
@@ -65,23 +64,27 @@ const CrearProducto = () => {
       ])
     );
 
-    // 1. Crear un objeto FormData para enviar archivos y texto
+    const imageFiles = Array.from(data.images || []);
+    if (imageFiles.length === 0) {
+      Swal.fire("Error", "Debes subir al menos una imagen", "error");
+      return;
+    }
+
     const formData = new FormData();
-
-    // 2. Adjuntar todos los campos del formulario al FormData
     formData.append("name", data.name);
-    formData.append("price", data.price);
+    formData.append("price", Number(data.price));
     formData.append("type", data.type);
-    if (data.discount) formData.append("discount", data.discount);
-    if (data.rating) formData.append("rating", data.rating);
+    if (data.discount) formData.append("discount", Number(data.discount));
+    if (data.rating) formData.append("rating", Number(data.rating));
     if (data.color) formData.append("color", data.color);
-    if (data.description) formData.append("description", data.description); // Asegúrate que esta línea exista
-    formData.append("specs", JSON.stringify(parsedSpecs)); // Los objetos se envían como string JSON
+    if (data.description) formData.append("description", data.description);
+    formData.append("specs", JSON.stringify(parsedSpecs));
 
-    // 3. Adjuntar cada archivo de imagen
-    Array.from(data.images).forEach((file) => {
-      formData.append("images", file);
+    imageFiles.forEach((file) => {
+      formData.append("images", file); // ← nombre debe coincidir con upload.array("images")
     });
+
+    
 
     createProduct(formData).then((res) => {
       if (res.status === 201) {
@@ -91,10 +94,15 @@ const CrearProducto = () => {
           "El producto fue creado correctamente",
           "success"
         );
-        reset(); // Limpiar el formulario
-        navigate("/admin");
+        reset();
+        navigate("/admin", { replace: true });
       } else {
-        Swal.fire("Error", "Hubo un problema al crear el producto", "error");
+        console.error("❌ Error al crear producto:", res);
+        Swal.fire(
+          "Error",
+          res.data?.message || "Hubo un problema al crear el producto",
+          "error"
+        );
       }
     });
   };
@@ -203,9 +211,15 @@ const CrearProducto = () => {
                   errors.type ? "border-red-500" : "border-white/20"
                 }`}
               >
-                <option value="" className="bg-[#191919] text-gray-400">Selecciona un tipo</option>
+                <option value="" className="bg-[#191919] text-gray-400">
+                  Selecciona un tipo
+                </option>
                 {Object.keys(specsFields).map((type) => (
-                  <option key={type} value={type} className="bg-[#191919] text-white">
+                  <option
+                    key={type}
+                    value={type}
+                    className="bg-[#191919] text-white"
+                  >
                     {type}
                   </option>
                 ))}
@@ -283,13 +297,18 @@ const CrearProducto = () => {
               </label>
               <input
                 type="file"
-                {...register("images", { required: "Al menos una imagen es obligatoria" })}
+                name="images"
                 accept="image/*"
                 multiple
+                onChange={(e) => setValue("images", e.target.files)}
                 className="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-500/20 file:text-violet-300 hover:file:bg-violet-500/30"
               />
+             
+
               {errors.images && (
-                <p className="text-red-500 text-sm mt-1">{errors.images.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.images.message}
+                </p>
               )}
             </div>
 
@@ -306,8 +325,18 @@ const CrearProducto = () => {
                         {...register(`specs.${field.name}`)}
                         className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg outline-none focus:ring-2 focus:ring-violet-500 transition appearance-none"
                       >
-                        <option value="true" className="bg-[#191919] text-white">Sí</option>
-                        <option value="false" className="bg-[#191919] text-white">No</option>
+                        <option
+                          value="true"
+                          className="bg-[#191919] text-white"
+                        >
+                          Sí
+                        </option>
+                        <option
+                          value="false"
+                          className="bg-[#191919] text-white"
+                        >
+                          No
+                        </option>
                       </select>
                     ) : (
                       <input

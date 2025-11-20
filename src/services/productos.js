@@ -5,9 +5,6 @@ console.log("URL de la API:", apiProduct);
 
 const api = axios.create({
   baseURL: apiProduct,
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 // Interceptor para añadir el token de autorización a todas las peticiones
@@ -19,12 +16,6 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Opcional: puedes mantener los headers por defecto si lo necesitas,
-// aunque el interceptor es más flexible.
-api.defaults.headers.common = {
-  ...api.defaults.headers.common,
-  "Content-Type": "application/json",
-};
 
 export const getProduct = async () => {
   try {
@@ -99,7 +90,6 @@ export const createProduct = async (data) => {
     const response = await api.post("/", data, {
       headers: {
         Authorization: `Bearer ${token}`, // <== Aquí envías el token
-        "Content-Type": "multipart/form-data",
       },
     });
 

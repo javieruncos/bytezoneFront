@@ -25,26 +25,27 @@ const CardProduct = ({ product }) => {
   };
 
   // Normaliza la propiedad 'images' para que siempre sea un array
-  const getImagesAsArray = (images) => {
-    if (Array.isArray(images)) return images;
-    if (typeof images === "string" && images.trim() !== "") return [images];
-    return [];
-  };
+  const getImagesAsArray = (images) => (Array.isArray(images) ? images : []);
 
   const images = getImagesAsArray(product.images);
+
   const imageUrl =
-    images.length > 0
-      ? `${images[0]}?v=${new Date(product.updatedAt).getTime()}`
+    images.length > 0 && images[0].url
+      ? `${images[0].url}?v=${new Date(product.updatedAt).getTime()}`
       : "/img/placeholder.jpg";
 
   return (
     <div className="group h-[530px] w-full  border  rounded-3xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-500 hover:scale-[1.02]">
       {/* Contenedor de imágenes */}
       <div className="relative h-[300px] w-full overflow-hidden">
-        <img src="https://img.freepik.com/vector-gratis/margen-abstracto-neon-sobre-fondo-purpura-oscuro_53876-99055.jpg" alt="" className="h-full" />
+        <img
+          src="https://img.freepik.com/vector-gratis/margen-abstracto-neon-sobre-fondo-purpura-oscuro_53876-99055.jpg"
+          alt=""
+          className="h-full"
+        />
         <div className="absolute top-0 left-0 h-full w-full  bg-black/70">
           <img
-            src={imageUrl}
+            src={product.images?.[0]?.url}
             alt="producto principal"
             className="absolute  w-full h-full object-contain opacity-100 transition-opacity duration-700 ease-in-out "
           />
