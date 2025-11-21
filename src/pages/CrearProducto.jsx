@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { useForm } from "react-hook-form";
+import { useRef } from "react";
+import { useForm, Controller } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { createProduct } from "../services/productos"; // Nueva función
 import Swal from "sweetalert2";
@@ -8,12 +9,14 @@ import { ContextProduct } from "../context/ProductContext";
 const CrearProducto = () => {
   const { setProduct } = useContext(ContextProduct);
   const navigate = useNavigate();
+  const fileInputRef = useRef(null);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
+    control,
     watch,
     reset,
   } = useForm();
@@ -56,7 +59,7 @@ const CrearProducto = () => {
   };
 
   const onSubmit = (data) => {
-    // Convertir los valores booleanos de las specs
+    // 1. Convertir los valores booleanos de las specs
     const parsedSpecs = Object.fromEntries(
       Object.entries(data.specs || {}).map(([key, value]) => [
         key,
@@ -64,12 +67,14 @@ const CrearProducto = () => {
       ])
     );
 
-    const imageFiles = Array.from(data.images || []);
+    // 2. Validar imágenes (gracias al Controller, data.images ya es un array de File)
+    const imageFiles = data.images || [];
     if (imageFiles.length === 0) {
       Swal.fire("Error", "Debes subir al menos una imagen", "error");
       return;
     }
 
+    // 3. Armar FormData
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("price", Number(data.price));
@@ -81,12 +86,10 @@ const CrearProducto = () => {
     formData.append("specs", JSON.stringify(parsedSpecs));
 
     imageFiles.forEach((file) => {
-      formData.append("images", file); // ← nombre debe coincidir con upload.array("images")
+      formData.append("images", file); // nombre debe coincidir con upload.array("images")
     });
 
-    console.log("Form Data:", formData);
-
-
+    // 4. Llamada al backend
     createProduct(formData).then((res) => {
       if (res.status === 201) {
         setProduct((prevProducts) => [...prevProducts, res.data]);
@@ -94,11 +97,11 @@ const CrearProducto = () => {
           "Producto creado",
           "El producto fue creado correctamente",
           "success"
-        );
-        reset();
-        navigate("/admin", { replace: true });
+        ).then(() => {
+          reset(); // limpia el formulario
+          navigate("/admin", { replace: true }); // redirige después de cerrar el modal
+        });
       } else {
-        console.error("❌ Error al crear producto:", res);
         Swal.fire(
           "Error",
           res.data?.message || "Hubo un problema al crear el producto",
@@ -296,15 +299,24 @@ const CrearProducto = () => {
               <label className="block text-gray-300 font-medium mb-2">
                 Imágenes del producto
               </label>
-              <input
-                type="file"
+              <Controller
                 name="images"
-                accept="image/*"
-                multiple
-                onChange={(e) => setValue("images", e.target.files)}
-                className="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-500/20 file:text-violet-300 hover:file:bg-violet-500/30"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={(e) => field.onChange(Array.from(e.target.files))}
+                    className="w-full text-sm text-gray-400 
+                 file:mr-4 file:py-2 file:px-4 
+                 file:rounded-full file:border-0 
+                 file:text-sm file:font-semibold 
+                 file:bg-violet-500/20 file:text-violet-300 
+                 hover:file:bg-violet-500/30"
+                  />
+                )}
               />
-             
 
               {errors.images && (
                 <p className="text-red-500 text-sm mt-1">

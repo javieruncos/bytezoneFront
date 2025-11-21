@@ -73,9 +73,9 @@ const Admin = () => {
           </div>
 
           <div className="flex items-center gap-4 w-full md:w-auto">
-            <Link to="/create" className="w-full text-center px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-lg shadow-md transition">
+            <a href="/create" className="w-full text-center px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-lg shadow-md transition">
             + Añadir Nuevo Producto
-          </Link>
+          </a>
           </div>
         </header>
 

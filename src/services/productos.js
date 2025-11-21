@@ -86,7 +86,9 @@ export const createProduct = async (data) => {
   try {
     const token = localStorage.getItem("token"); // o de donde guardes el JWT
 
-    const response = await api.post("/", data);
+    const response = await api.post("/", data, {
+      headers: { "Content-Type": "multipart/form-data" }
+    });
 
     return {
       status: response.status,
