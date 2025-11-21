@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ContextProduct } from "../../context/ProductContext";
 
 const Menu = () => {
-  const { currentUser, setCurrentUser } = useContext(ContextUser);
+  const { currentUser, setCurrentUser, loading } = useContext(ContextUser);
   const { setFilterSearch } = useContext(ContextProduct);
   const [open, setOpen] = useState(false);
   // Estado para controlar el modal de registro
@@ -99,11 +99,13 @@ const Menu = () => {
               <Link to="/registro" className=" cursor-pointer">
               <i className="bi bi-person text-4xl"></i>
               </Link>
-              {currentUser ? (
-                <button onClick={handleLogout}>
-                  <i className="bi bi-box-arrow-right text-4xl text-violet-500 hover:cursor-pointer"></i>
-                </button>
-              ) : null}
+              {/* Solo muestra el botón de logout si la carga ha terminado y hay un usuario */}
+              {!loading && currentUser && (
+                  <button onClick={handleLogout}>
+                    <i className="bi bi-box-arrow-right text-4xl text-violet-500 hover:cursor-pointer"></i>
+                  </button>
+              )}
+
               <button
                 className="cursor-pointer"
                 onClick={() => setIsOpen(true)}

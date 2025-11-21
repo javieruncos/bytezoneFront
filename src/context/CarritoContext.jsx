@@ -9,7 +9,6 @@ const CarritoContext = ({children}) => {
             const localData = window.localStorage.getItem('carrito');
             return localData ? JSON.parse(localData) : [];
         } catch (error) {
-            console.error("Error al leer de localStorage", error);
             return [];
         }
     });

@@ -87,30 +87,6 @@ export const eliminarUser = async (id) => {
   }
 };
 
-// export const login = async ({ email, password }) => {
-//   try {
-//     const response = await apiUser.post("/login", { email, password });
-
-//     const token = response.data.token; // <- lo guardamos
-//     localStorage.setItem("token", token);
-
-//     const profile = await apiUser.get("/profile", {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-
-//     localStorage.setItem("usuarioByte", JSON.stringify(profile.data));
-
-//     return console.log(response.data);
-//   } catch (error) {
-//     if (error.response?.status === 401) {
-//       return { status: 401, message: "Usuario o contraseña incorrectos" };
-//     }
-//     return { status: 500, message: "Error en el servidor" };
-//   }
-// };
-
 export const login = async ({ email, password }) => {
   try {
     const response = await apiUser.post("/login", { email, password });
