@@ -22,6 +22,7 @@ const Menu = () => {
     localStorage.removeItem("token"); // Borra token
     localStorage.removeItem("usuarioByte"); // Borra datos del usuario
     setCurrentUser(null);
+    navigate("/"); // Redirigir al home para refrescar el estado visual
   };
 
   const handleFilter =(e)=>{

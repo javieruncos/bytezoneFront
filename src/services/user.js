@@ -12,11 +12,27 @@ const apiUser = axios.create({
 export const createUser = async (user) => {
   try {
     const response = await apiUser.post("/register", user);
+    // Guardamos el token y el usuario en localStorage, igual que en login.
+    const { token, user: createdUser } = response.data;
+
+    // ¡Verificación clave! Si no hay un usuario en la respuesta, no continuamos.
+    if (!createdUser) {
+      throw new Error("La respuesta de registro no incluyó datos del usuario.");
+    }
+
+    localStorage.setItem("token", token);
+    localStorage.setItem("usuarioByte", JSON.stringify(createdUser));
+
     return {
       status: response.status,
-      data: response.data,
+      // Devolvemos una estructura consistente con la función login
+      data: { user: createdUser, token },
     };
   } catch (error) {
+    // Si el error viene de la verificación anterior o de la API
+    if (error.response?.data?.message) {
+      return { status: error.response.status, message: error.response.data.message };
+    }
     return {
       status: error.response?.status || 500,
       message: error.message || "Error desconocido",
@@ -101,11 +117,12 @@ export const login = async ({ email, password }) => {
     });
 
     // Guardar el usuario completo (el que mostraste arriba)
-    localStorage.setItem("usuarioByte", JSON.stringify(profile.data));
+    // profile.data tiene la forma { user: {...} }, guardamos solo el objeto de usuario.
+    localStorage.setItem("usuarioByte", JSON.stringify(profile.data.user));
 
     return {
       status: response.status,
-      data: profile.data,
+      data: profile.data.user, // Devolvemos directamente el objeto del usuario
     };
   } catch (error) {
     if (error.response?.status === 401) {
@@ -133,7 +150,7 @@ export const getProfile = async () => {
 
     return {
       status: response.status,
-      data: response.data,
+      data: response.data.user, // Aseguramos que la estructura sea la misma { user: {...} } -> devolvemos user
     };
   } catch (error) {
     throw error; // Re-lanzamos el error para que el llamador (UserContext) lo maneje.
