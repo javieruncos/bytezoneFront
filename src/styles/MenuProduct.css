@@ -1,0 +1,34 @@
+.menuProduct {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+ font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+.IconOpcion {
+  position: relative;
+  transition: transform 0.6s ease;
+}
+
+.menuProduct:hover .IconOpcion {
+  transform: translateY(-18px);
+}
+
+.menuProduct:hover .nombreOpcion {
+  display: block;
+  bottom: 15px;
+  transition: all 0.5s ease;
+  opacity: 1;
+  color: #3b82f6;
+}
+
+.nombreOpcion {
+  position: absolute;
+  bottom: -20px;
+  opacity: 0;
+  padding: 0;
+}

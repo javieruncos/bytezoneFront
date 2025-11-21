@@ -1,0 +1,43 @@
+import React, { createContext, useEffect, useState } from "react";
+import { getProfile, getUser } from "../services/user";
+
+export const ContextUser = createContext();
+
+const UserContext = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+  // 1. Añadimos un estado para saber si estamos verificando la sesión.
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      getProfile()
+        .then((res) => {
+          setCurrentUser(res.data);
+        })
+        .catch(() => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("usuarioByte");
+          setCurrentUser(null);
+        })
+        .finally(() => {
+          // 3. Cuando la verificación termina (éxito o fracaso), dejamos de cargar.
+          setLoading(false);
+        });
+    } else {
+      // 2. Si no hay token, no hay nada que verificar. Dejamos de cargar.
+      setLoading(false);
+    }
+  }, []);
+
+  return (
+    <ContextUser.Provider
+      value={{ currentUser, setCurrentUser, loading }}
+    >
+      {children}
+    </ContextUser.Provider>
+  );
+};
+
+export default UserContext;

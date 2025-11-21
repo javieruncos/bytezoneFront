@@ -1,0 +1,621 @@
+{
+  "products": [
+    {
+      "name": "Auriculares HyperX Cloud II",
+      "price": 89999,
+      "type": "Auriculares",
+      "discount": 10,
+      "rating": 4.7,
+      "color": "Negro",
+      "shortDescription": "Sonido envolvente 7.1 con micrófono desmontable y diseño ergonómico.",
+      "images": "",
+      "specs": {
+        "type": "Over-ear",
+        "connection": "USB / Jack 3.5mm",
+        "microphone": true
+      },
+      "id": 1
+    },
+    {
+      "name": "Auriculares Logitech G Pro X",
+      "price": 99998,
+      "type": "Auriculares",
+      "discount": 15,
+      "rating": 4.9,
+      "color": "Negro",
+      "shortDescription": "Auriculares premium con Blue Voice y construcción de aluminio.",
+      "images": "",
+      "specs": {
+        "type": "Over-ear",
+        "connection": "USB",
+        "microphone": true
+      },
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Auriculares Razer Kraken V3",
+      "type": "Auriculares",
+      "price": 89999,
+      "discount": 5,
+      "rating": 4.6,
+      "shortDescription": "Experiencia inmersiva con sonido THX Spatial y RGB Chroma.",
+      "images": [
+        "https://aypcomputacion.com/wp-content/uploads/2022/01/daztinto-186810.png"
+      ],
+      "specs": {
+        "type": "Over-ear",
+        "connection": "USB",
+        "microphone": true
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 4,
+      "name": "Auriculares Redragon Ares",
+      "type": "Auriculares",
+      "price": 59999,
+      "discount": 0,
+      "rating": 4.4,
+      "shortDescription": "Sonido estéreo y micrófono ajustable con almohadillas cómodas.",
+      "images": [
+        "https://redragon.es/content/uploads/2024/11/Ares.png"
+      ],
+      "specs": {
+        "type": "Over-ear",
+        "connection": "Jack 3.5mm",
+        "microphone": true
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 5,
+      "name": "Auriculares Corsair HS80 RGB",
+      "type": "Auriculares",
+      "price": 109999,
+      "discount": 20,
+      "rating": 4.8,
+      "shortDescription": "Auriculares inalámbricos con sonido Dolby Atmos y RGB personalizable.",
+      "images": [
+        "https://try.com.ar/wp-content/uploads/2025/02/25147_pictures_product_visual_1.png"
+      ],
+      "specs": {
+        "type": "Over-ear",
+        "connection": "Wireless",
+        "microphone": true
+      },
+      "color": "blanco"
+    },
+    {
+      "name": "Auriculares Corsair HS80 RGB",
+      "price": 119999,
+      "type": "Auriculares",
+      "discount": 20,
+      "rating": 4.8,
+      "color": "blanco",
+      "shortDescription": "Auriculares inalámbricos con sonido Dolby Atmos y RGB personalizable.",
+      "images": "",
+      "specs": {
+        "type": "Over-ear",
+        "connection": "Wireless",
+        "microphone": true
+      },
+      "id": 6
+    },
+    {
+      "name": "Auriculares Logitech G733 Lightspeed",
+      "price": 12999,
+      "type": "Auriculares",
+      "discount": 10,
+      "rating": 4.9,
+      "color": "blanco",
+      "shortDescription": "Diseño ligero con luces RGB frontales y sonido espacial avanzado.",
+      "images": "",
+      "specs": {
+        "type": "Over-ear",
+        "connection": "Wireless",
+        "microphone": true
+      },
+      "id": 7
+    },
+    {
+      "id": 8,
+      "name": "Auriculares Razer Barracuda X",
+      "type": "Auriculares",
+      "price": 94999,
+      "discount": 5,
+      "rating": 4.7,
+      "shortDescription": "Auriculares multiplataforma con micrófono desmontable y gran autonomía.",
+      "images": [
+        "https://nomadaware.com.ec/wp-content/uploads/NomadaWare_Razer_Barracuda_x_blanco-4.webp"
+      ],
+      "specs": {
+        "type": "Over-ear",
+        "connection": "Wireless / USB-C",
+        "microphone": true
+      },
+      "color": "blanco"
+    },
+    {
+      "name": "Joystick Xbox Series X",
+      "price": 99999,
+      "type": "Joystick",
+      "discount": 10,
+      "rating": 4.9,
+      "color": "Negro",
+      "shortDescription": "Control inalámbrico con respuesta háptica avanzada y diseño ergonómico.",
+      "images": "",
+      "specs": {
+        "compatibility": "PC, Xbox Series X/S",
+        "connection": "Wireless / USB-C",
+        "vibration": true
+      },
+      "id": 9
+    },
+    {
+      "name": "Joystick DualSense PS5",
+      "price": 120000,
+      "type": "Joystick",
+      "discount": 5,
+      "rating": 4.9,
+      "color": "Negro",
+      "shortDescription": "Control con gatillos adaptativos y vibración háptica inmersiva.",
+      "images": "",
+      "specs": {
+        "compatibility": "PC, PS5",
+        "connection": "Wireless / USB-C",
+        "vibration": true
+      },
+      "id": 10
+    },
+    {
+      "name": "Joystick Redragon Saturn",
+      "price": 59999,
+      "type": "Joystick",
+      "discount": 0,
+      "rating": 4.5,
+      "color": "Negro",
+      "shortDescription": "Control con conexión USB y vibración doble para una mejor experiencia.",
+      "images": "",
+      "specs": {
+        "compatibility": "PC",
+        "connection": "USB",
+        "vibration": true
+      },
+      "id": 11
+    },
+    {
+      "id": 12,
+      "name": "Joystick Logitech F710",
+      "type": "Joystick",
+      "price": 69999,
+      "discount": 15,
+      "rating": 4.6,
+      "shortDescription": "Joystick inalámbrico con modo XInput y DirectInput.",
+      "images": [
+        "/img/joystick4.webp"
+      ],
+      "specs": {
+        "compatibility": "PC",
+        "connection": "Wireless",
+        "vibration": true
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 13,
+      "name": "Joystick PowerA Spectra Infinity",
+      "type": "Joystick",
+      "price": 79999,
+      "discount": 10,
+      "rating": 4.7,
+      "shortDescription": "Control alámbrico con iluminación LED y botones programables.",
+      "images": [
+        "/img/joystick5.webp"
+      ],
+      "specs": {
+        "compatibility": "PC, Xbox",
+        "connection": "USB",
+        "vibration": true
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 14,
+      "name": "Teclado Redragon Kumara K552",
+      "type": "Teclado",
+      "price": 69999,
+      "discount": 5,
+      "rating": 4.7,
+      "shortDescription": "Teclado mecánico compacto con switches Red y retroiluminación RGB.",
+      "images": [
+        "/img/teclado1.webp"
+      ],
+      "specs": {
+        "switchType": "Red",
+        "backlight": "RGB",
+        "connection": "USB"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 15,
+      "name": "Teclado Logitech G Pro X",
+      "type": "Teclado",
+      "price": 129999,
+      "discount": 15,
+      "rating": 4.9,
+      "shortDescription": "Teclado mecánico profesional con switches intercambiables.",
+      "images": [
+        "https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x60-wireless-keyboard/gallery/pro-x-60-keyboard-black-gallery-1-us.png?v=1"
+      ],
+      "specs": {
+        "switchType": "GX Blue",
+        "backlight": "RGB",
+        "connection": "USB"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 16,
+      "name": "Teclado Razer BlackWidow V4",
+      "type": "Teclado",
+      "price": 149999,
+      "discount": 10,
+      "rating": 4.8,
+      "shortDescription": "Diseño premium con switches mecánicos y controles multimedia.",
+      "images": [
+        "/img/teclado3.webp"
+      ],
+      "specs": {
+        "switchType": "Green",
+        "backlight": "RGB",
+        "connection": "USB"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 17,
+      "name": "Teclado HyperX Alloy Origins",
+      "type": "Teclado",
+      "price": 119999,
+      "discount": 10,
+      "rating": 4.7,
+      "shortDescription": "Teclado de aluminio con switches lineales y RGB dinámico.",
+      "images": [
+        "/img/teclado4.webp"
+      ],
+      "specs": {
+        "switchType": "Red",
+        "backlight": "RGB",
+        "connection": "USB"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 18,
+      "name": "Teclado Corsair K70 RGB MK.2",
+      "type": "Teclado",
+      "price": 159999,
+      "discount": 20,
+      "rating": 4.9,
+      "shortDescription": "Teclado gamer con estructura metálica y switches Cherry MX.",
+      "images": [
+        "https://logg.api.cygnus.market/static/logg/Global/Teclado%20Mecanico%20Corsair%20K70%20MK2%20LP%20Cherry%20MX%20Speed%20RGB%20/9e4b8820ba874499aca826cbd4585941.png"
+      ],
+      "specs": {
+        "switchType": "Cherry MX Red",
+        "backlight": "RGB",
+        "connection": "USB"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 19,
+      "name": "Laptop Gamer ASUS ROG Strix",
+      "type": "Laptop Gamer",
+      "price": 1299999,
+      "discount": 15,
+      "rating": 4.8,
+      "shortDescription": "Potencia extrema para gaming competitivo y multitarea.",
+      "images": [
+        "/img/laptop1.webp"
+      ],
+      "specs": {
+        "cpu": "Intel i9 13900H",
+        "gpu": "RTX 4070",
+        "ram": "32GB DDR5",
+        "storage": "1TB SSD NVMe",
+        "display": "16'' QHD 240Hz"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 20,
+      "name": "Laptop Gamer MSI Katana 17",
+      "type": "Laptop Gamer",
+      "price": 999999,
+      "discount": 10,
+      "rating": 4.6,
+      "shortDescription": "Laptop gamer con gran rendimiento y refrigeración avanzada.",
+      "images": [
+        "/img/laptop2.webp"
+      ],
+      "specs": {
+        "cpu": "Intel i7 13700H",
+        "gpu": "RTX 4060",
+        "ram": "16GB DDR5",
+        "storage": "1TB SSD",
+        "display": "17.3'' FHD 144Hz"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 21,
+      "name": "Laptop Gamer Lenovo Legion 5",
+      "type": "Laptop Gamer",
+      "price": 899999,
+      "discount": 5,
+      "rating": 4.7,
+      "shortDescription": "Diseño robusto con gran rendimiento y pantalla fluida.",
+      "images": [
+        "/img/laptop3.webp"
+      ],
+      "specs": {
+        "cpu": "AMD Ryzen 7 7840HS",
+        "gpu": "RTX 4050",
+        "ram": "16GB DDR5",
+        "storage": "1TB SSD",
+        "display": "15.6'' QHD 165Hz"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 22,
+      "name": "Laptop Gamer HP Omen 16",
+      "type": "Laptop Gamer",
+      "price": 1099999,
+      "discount": 10,
+      "rating": 4.7,
+      "shortDescription": "Rendimiento competitivo con refrigeración inteligente Omen Tempest.",
+      "images": [
+        "/img/laptop4.webp"
+      ],
+      "specs": {
+        "cpu": "Intel i7 13700HX",
+        "gpu": "RTX 4060",
+        "ram": "32GB DDR5",
+        "storage": "1TB SSD",
+        "display": "16.1'' QHD 165Hz"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 23,
+      "name": "Laptop Gamer Dell G15",
+      "type": "Laptop Gamer",
+      "price": 949999,
+      "discount": 5,
+      "rating": 4.5,
+      "shortDescription": "Laptop robusta y confiable con componentes de alto rendimiento.",
+      "images": [
+        "/img/laptop5.webp"
+      ],
+      "specs": {
+        "cpu": "Intel i7 12700H",
+        "gpu": "RTX 3060",
+        "ram": "16GB DDR5",
+        "storage": "512GB SSD",
+        "display": "15.6'' FHD 144Hz"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 24,
+      "name": "Mouse Logitech G Pro X Superlight",
+      "type": "Mouse",
+      "price": 89999,
+      "discount": 10,
+      "rating": 4.9,
+      "shortDescription": "Mouse ultraligero inalámbrico con sensor HERO 25K.",
+      "images": [
+        "/img/mouse1.webp"
+      ],
+      "specs": {
+        "dpi": 25600,
+        "connection": "Wireless",
+        "rgb": false
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 25,
+      "name": "Mouse Razer DeathAdder V3",
+      "type": "Mouse",
+      "price": 99999,
+      "discount": 10,
+      "rating": 4.8,
+      "shortDescription": "Diseño ergonómico con sensor Focus Pro 30K.",
+      "images": [
+        "/img/mouse2.webp"
+      ],
+      "specs": {
+        "dpi": 30000,
+        "connection": "Wireless",
+        "rgb": true
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 26,
+      "name": "Mouse Redragon M808 Storm",
+      "type": "Mouse",
+      "price": 49999,
+      "discount": 0,
+      "rating": 4.6,
+      "shortDescription": "Mouse gamer ultraligero con diseño de panal y RGB.",
+      "images": [
+        "/img/mouse3.webp"
+      ],
+      "specs": {
+        "dpi": 12400,
+        "connection": "USB",
+        "rgb": true
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 27,
+      "name": "Mouse Corsair Dark Core RGB Pro",
+      "type": "Mouse",
+      "price": 119999,
+      "discount": 20,
+      "rating": 4.7,
+      "shortDescription": "Mouse inalámbrico con sensor óptico de alta precisión y RGB dinámico.",
+      "images": [
+        "/img/mouse4.webp"
+      ],
+      "specs": {
+        "dpi": 18000,
+        "connection": "Wireless",
+        "rgb": true
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 28,
+      "name": "Mouse HyperX Pulsefire Haste",
+      "type": "Mouse",
+      "price": 74999,
+      "discount": 10,
+      "rating": 4.8,
+      "shortDescription": "Mouse liviano y rápido con cable trenzado flexible.",
+      "images": [
+        "/img/mouse5.webp"
+      ],
+      "specs": {
+        "dpi": 16000,
+        "connection": "USB",
+        "rgb": true
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 29,
+      "name": "Monitor Samsung Odyssey G5",
+      "type": "Monitor",
+      "price": 259999,
+      "discount": 15,
+      "rating": 4.8,
+      "shortDescription": "Monitor curvo QHD de 27'' con 165Hz y 1ms de respuesta.",
+      "images": [
+        "/img/monitor1.webp"
+      ],
+      "specs": {
+        "size": "27''",
+        "resolution": "2560x1440",
+        "refreshRate": "165Hz",
+        "panel": "VA"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 30,
+      "name": "Monitor LG UltraGear 27GN950",
+      "type": "Monitor",
+      "price": 329999,
+      "discount": 10,
+      "rating": 4.9,
+      "shortDescription": "Monitor 4K UHD con panel Nano IPS y 144Hz.",
+      "images": [
+        "https://www.infiniarc.com/web/image/product.template/5748/image_1024?unique=2e7293c"
+      ],
+      "specs": {
+        "size": "27''",
+        "resolution": "3840x2160",
+        "refreshRate": "144Hz",
+        "panel": "IPS"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 31,
+      "name": "Monitor AOC 24G2SPU",
+      "type": "Monitor",
+      "price": 189999,
+      "discount": 5,
+      "rating": 4.7,
+      "shortDescription": "Monitor gamer Full HD de 24'' con 165Hz y soporte ajustable.",
+      "images": [
+        "/img/monitor3.webp"
+      ],
+      "specs": {
+        "size": "24''",
+        "resolution": "1920x1080",
+        "refreshRate": "165Hz",
+        "panel": "IPS"
+      },
+      "color": "Negro"
+    },
+    {
+      "id": 32,
+      "name": "Monitor Gigabyte M27Q",
+      "type": "Monitor",
+      "price": 229999,
+      "discount": 10,
+      "rating": 4.8,
+      "shortDescription": "Monitor QHD de 27'' con 170Hz y soporte VESA DisplayHDR400.",
+      "images": [
+        "/img/monitor4.webp"
+      ],
+      "specs": {
+        "size": "27''",
+        "resolution": "2560x1440",
+        "refreshRate": "170Hz",
+        "panel": "IPS"
+      },
+      "color": "Negro"
+    },
+    {
+      "name": "Monitor Dell G3223D",
+      "price": 279999,
+      "type": "Monitor",
+      "discount": 10,
+      "rating": 4.7,
+      "color": "Negro",
+      "shortDescription": "Monitor gamer curvo QHD de 32'' con 165Hz y USB-C.",
+      "images": "",
+      "specs": {
+        "size": "32''",
+        "resolution": "2560x1440",
+        "refreshRate": "165Hz",
+        "panel": "VA"
+      },
+      "id": 33
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Javier",
+      "email": "javi@mail.com",
+      "password": "123456"
+    },
+    {
+      "nombre": "javier",
+      "email": "javier@mail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "perfil": "usuario",
+      "id": 2
+    },
+    {
+      "nombre": "javier",
+      "email": "javierCap@mail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "perfil": "Admin",
+      "id": 3
+    }
+  ]
+}
