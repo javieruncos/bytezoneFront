@@ -34,7 +34,7 @@ const ProductosPrincipales = ({ productos,categoria}) => {
     },
     {
       id: 1,
-      nombre: "Laptop Gamer",
+      nombre: "Laptop",
       icon: laptop,
     },
     {

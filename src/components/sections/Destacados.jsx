@@ -86,7 +86,7 @@ const Destacados = ({ productos }) => {
                       src={
                         item.images && item.images.length > 0
                           ? typeof item.images[0] === "string"
-                            ? item.images[0]
+                            ? item.images[0].url
                             : item.images[0].url
                           : "/placeholder.jpg"
                       }
