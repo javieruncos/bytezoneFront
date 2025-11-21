@@ -32,7 +32,11 @@ const Destacados = ({ productos }) => {
         {/* Panel izquierdo */}
         <div className="col-span-1 lg:col-span-2 ">
           <div className="h-[600px] w-full text-white  rounded-2xl relative overflow-hidden">
-            <img src="https://img.freepik.com/vector-gratis/margen-abstracto-neon-sobre-fondo-purpura-oscuro_53876-99055.jpg" alt="" className="h-full object-cover" />
+            <img
+              src="https://img.freepik.com/vector-gratis/margen-abstracto-neon-sobre-fondo-purpura-oscuro_53876-99055.jpg"
+              alt=""
+              className="h-full object-cover"
+            />
             <div className="absolute top-0 left-0 h-full w-full bg-black/70">
               <div className="flex flex-col items-center py-9 gap-4 text-center">
                 <span className="bg-violet-600 py-2 px-3 rounded-sm text-sm sm:text-base">
@@ -43,12 +47,12 @@ const Destacados = ({ productos }) => {
                 </h3>
               </div>
               <div className="h-[250px] sm:h-[300px] md:h-[350px] flex justify-center items-center">
-              <img
-                src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6614f0cb0c96220c7026b096_wepik-export-20240408173119hqvi.webp"
-                alt={productoActivo.name}
-                className="w-full h-full object-contain"
-              />
-            </div>
+                <img
+                  src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6614f0cb0c96220c7026b096_wepik-export-20240408173119hqvi.webp"
+                  alt={productoActivo.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -80,8 +84,10 @@ const Destacados = ({ productos }) => {
                   >
                     <img
                       src={
-                        item.images[0].length > 0
-                          ? item.images[0]
+                        item.images && item.images.length > 0
+                          ? typeof item.images[0] === "string"
+                            ? item.images[0]
+                            : item.images[0].url
                           : "/placeholder.jpg"
                       }
                       alt={item.name}
@@ -94,13 +100,23 @@ const Destacados = ({ productos }) => {
               {/* Imagen principal y detalles */}
               <div className="w-full">
                 <div className="h-[250px] sm:h-[300px] py-5 rounded-2xl flex justify-center items-center relative overflow-hidden">
-                  <img src="https://img.freepik.com/vector-gratis/margen-abstracto-neon-sobre-fondo-purpura-oscuro_53876-99055.jpg" alt="" />
-                  <div className="absolute top-0 left-0 h-full w-full bg-black/70">
                   <img
-                    src={productoActivo.images[0]}
-                    alt={productoActivo.name}
-                    className="w-full h-full object-contain"
+                    src="https://img.freepik.com/vector-gratis/margen-abstracto-neon-sobre-fondo-purpura-oscuro_53876-99055.jpg"
+                    alt=""
                   />
+                  <div className="absolute top-0 left-0 h-full w-full bg-black/70">
+                    <img
+                      src={
+                        productoActivo.images &&
+                        productoActivo.images.length > 0
+                          ? typeof productoActivo.images[0] === "string"
+                            ? productoActivo.images[0]
+                            : productoActivo.images[0].url
+                          : "/placeholder.jpg"
+                      }
+                      alt={productoActivo.name}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                 </div>
                 <a href={`detalle/${productoActivo.id}`}></a>

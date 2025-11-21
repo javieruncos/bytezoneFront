@@ -7,7 +7,10 @@ const ModalCarrito = ({ isOpen, setIsOpen }) => {
   const { cartItems, removeFromCart, clearCart } = useContext(ContextCarrito);
 
   // El precio total ahora se calcula con el precio y la cantidad de cada item
-  const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="relative">
@@ -31,9 +34,7 @@ const ModalCarrito = ({ isOpen, setIsOpen }) => {
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <h2 className="text-2xl font-bold mb-4">
-                Tu Carrito de compras
-              </h2>
+              <h2 className="text-2xl font-bold mb-4">Tu Carrito de compras</h2>
 
               {cartItems.length === 0 ? (
                 <p className="text-gray-400">Tu carrito está vacío.</p>
@@ -44,22 +45,43 @@ const ModalCarrito = ({ isOpen, setIsOpen }) => {
                       key={item._id} // Usar _id como key es correcto y crucial
                       className="flex items-center py-4 gap-4"
                     >
-                      <img src={item.images[0]} alt={item.name} className="w-16 h-16 object-contain rounded-md bg-white/10 p-1" />
+                      <img
+                        src={
+                          typeof item.images[0] === "string"
+                            ? item.images[0]
+                            : item.images[0]?.url
+                        }
+                        alt={item.name}
+                        className="w-16 h-16 object-contain rounded-md bg-white/10 p-1"
+                      />
+
                       <div className="flex-grow min-w-0">
-                        <span className="font-medium text-white block truncate">{item.name}</span>
-                        <span className="text-sm text-gray-400">Cantidad: {item.quantity}</span>
+                        <span className="font-medium text-white block truncate">
+                          {item.name}
+                        </span>
+                        <span className="text-sm text-gray-400">
+                          Cantidad: {item.quantity}
+                        </span>
                       </div>
                       <div className="flex items-center gap-4">
                         <span className="text-violet-400 font-semibold text-base w-24 text-right">
-                          ${(item.price * item.quantity).toLocaleString("es-AR")}
+                          $
+                          {(item.price * item.quantity).toLocaleString("es-AR")}
                         </span>
-                        <button 
-                          onClick={() => removeFromCart(item._id)} 
+                        <button
+                          onClick={() => removeFromCart(item._id)}
                           className="flex items-center justify-center w-8 h-8 rounded-full bg-red-500/20 text-red-400 hover:bg-red-500 hover:text-white transition-colors"
                           aria-label="Eliminar producto"
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3-fill" viewBox="0 0 16 16">
-                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m3.5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m3.5-.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06"/>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="bi bi-trash3-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m3.5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m3.5-.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06" />
                           </svg>
                         </button>
                       </div>
@@ -82,7 +104,7 @@ const ModalCarrito = ({ isOpen, setIsOpen }) => {
                 >
                   Cerrar
                 </button>
-                <button 
+                <button
                   onClick={clearCart}
                   className="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
                 >

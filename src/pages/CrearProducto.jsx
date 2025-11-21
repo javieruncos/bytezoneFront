@@ -84,7 +84,8 @@ const CrearProducto = () => {
       formData.append("images", file); // ← nombre debe coincidir con upload.array("images")
     });
 
-    
+    console.log("Form Data:", formData);
+
 
     createProduct(formData).then((res) => {
       if (res.status === 201) {

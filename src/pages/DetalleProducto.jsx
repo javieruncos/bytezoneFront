@@ -22,18 +22,19 @@ const DetalleProducto = () => {
   // Función para normalizar las imágenes a un array
   const getImagesAsArray = (images) => {
     if (Array.isArray(images)) {
-      return images;
+      return images.map((img) => (typeof img === "string" ? img : img.url));
     }
-    if (typeof images === 'string' && images.trim() !== '') {
-      return [images];
-    }
+    if (typeof images === "string" && images.trim() !== "") return [images];
     return [];
   };
 
   useEffect(() => {
     getProductById(id).then((res) => {
       setproductId(res);
-      const images = getImagesAsArray(res?.images);
+      const images = Array.isArray(res.images)
+        ? res.images.map((img) => (typeof img === "string" ? img : img.url))
+        : [];
+
       if (images.length > 0) {
         setImagenSeleccionada(images[0]);
       }
@@ -49,29 +50,26 @@ const DetalleProducto = () => {
     );
   }
 
-    const handleAddToCart = () => {
-      const quantityToAdd = parseInt(quantity, 10);
-      if (isNaN(quantityToAdd) || quantityToAdd <= 0) {
-        return; // No agregar si la cantidad no es válida
-      }
-      addToCart(productId, quantityToAdd);
-      Swal.fire({
-        toast: true,
-        position: "top-end",
-        icon: "success",
-        title: "Producto agregado al carrito",
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-    };
-
-
-
+  const handleAddToCart = () => {
+    const quantityToAdd = parseInt(quantity, 10);
+    if (isNaN(quantityToAdd) || quantityToAdd <= 0) {
+      return; // No agregar si la cantidad no es válida
+    }
+    addToCart(productId, quantityToAdd);
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "success",
+      title: "Producto agregado al carrito",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+  };
 
   return (
     <div className="container mx-auto mt-10">
@@ -134,23 +132,23 @@ const DetalleProducto = () => {
             {(() => {
               const images = getImagesAsArray(productId.images);
               return images.length > 0 ? (
-                images.map((img, index) => (
-                <div
-                  key={index}
-                  className={`h-[200px] w-full border transition-all duration-300 rounded-md hover:cursor-pointer p-2 bg-white/5 ${
-                    imagenSeleccionada === img
-                      ? "border-violet-500"
-                      : "border-white/10"
-                  }`}
-                  onClick={() => setImagenSeleccionada(img)}
-                >
-                  <img
-                    src={img}
-                    className="h-full w-full object-contain"
-                    alt={productId.name}
-                  />
-                </div>
-              ))
+                images.slice(0, 3).map((img, index) => (
+                  <div
+                    key={index}
+                    className={`h-[200px] w-full border transition-all duration-300 rounded-md hover:cursor-pointer p-2 bg-white/5 ${
+                      imagenSeleccionada === img
+                        ? "border-violet-500"
+                        : "border-white/10"
+                    }`}
+                    onClick={() => setImagenSeleccionada(img)}
+                  >
+                    <img
+                      src={img}
+                      className="h-full w-full object-contain"
+                      alt={productId.name}
+                    />
+                  </div>
+                ))
               ) : (
                 <p className="text-gray-400 text-center py-5 col-span-3">
                   No hay imágenes disponibles
@@ -161,7 +159,9 @@ const DetalleProducto = () => {
         </div>
         <div className="h-auto w-full bg-white/5 backdrop-blur-lg border border-white/20 rounded-md p-6 text-white">
           <h3 className="text-3xl font-bold">{productId.name}</h3>
-          <p className="text-4xl mt-5 font-bold text-violet-500">${productId.price?.toLocaleString("es-AR") || "N/A"}</p>
+          <p className="text-4xl mt-5 font-bold text-violet-500">
+            ${productId.price?.toLocaleString("es-AR") || "N/A"}
+          </p>
           <hr className="border-white/20 mt-4" />
           <div className="mt-4">
             <p className="text-gray-300">
@@ -178,8 +178,10 @@ const DetalleProducto = () => {
               className="border rounded-sm border-white/20 bg-transparent h-[40px] w-[100px] p-2 text-center"
               placeholder="1"
             />
-            <button className="bg-violet-600 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-violet-700 transition-colors"
-              onClick={handleAddToCart}>
+            <button
+              className="bg-violet-600 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-violet-700 transition-colors"
+              onClick={handleAddToCart}
+            >
               Agregar al Carrito
             </button>
           </div>
@@ -223,7 +225,11 @@ const DetalleProducto = () => {
       <div className="border border-white/20 mt-20 rounded-md py-5 bg-white/5 backdrop-blur-lg">
         <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-5 mt-5 py-3 px-4">
           <button
-            className={`w-full sm:w-auto py-3 px-6 sm:px-10 border rounded-md transition-all duration-300 ${activeSection === 'descripcion' ? 'bg-violet-600 text-white border-violet-600' : 'bg-transparent text-gray-300 border-white/20 hover:bg-white/10'}`}
+            className={`w-full sm:w-auto py-3 px-6 sm:px-10 border rounded-md transition-all duration-300 ${
+              activeSection === "descripcion"
+                ? "bg-violet-600 text-white border-violet-600"
+                : "bg-transparent text-gray-300 border-white/20 hover:bg-white/10"
+            }`}
             onClick={() => {
               setActiveSection("descripcion");
             }}
@@ -231,7 +237,11 @@ const DetalleProducto = () => {
             Descripcion
           </button>
           <button
-            className={`w-full sm:w-auto py-3 px-6 sm:px-10 border rounded-md transition-all duration-300 ${activeSection === 'especificacion' ? 'bg-violet-600 text-white border-violet-600' : 'bg-transparent text-gray-300 border-white/20 hover:bg-white/10'}`}
+            className={`w-full sm:w-auto py-3 px-6 sm:px-10 border rounded-md transition-all duration-300 ${
+              activeSection === "especificacion"
+                ? "bg-violet-600 text-white border-violet-600"
+                : "bg-transparent text-gray-300 border-white/20 hover:bg-white/10"
+            }`}
             onClick={() => {
               setActiveSection("especificacion");
             }}
@@ -239,7 +249,11 @@ const DetalleProducto = () => {
             Especificacion
           </button>
           <button
-            className={`w-full sm:w-auto py-3 px-6 sm:px-10 border rounded-md transition-all duration-300 ${activeSection === 'comentarios' ? 'bg-violet-600 text-white border-violet-600' : 'bg-transparent text-gray-300 border-white/20 hover:bg-white/10'}`}
+            className={`w-full sm:w-auto py-3 px-6 sm:px-10 border rounded-md transition-all duration-300 ${
+              activeSection === "comentarios"
+                ? "bg-violet-600 text-white border-violet-600"
+                : "bg-transparent text-gray-300 border-white/20 hover:bg-white/10"
+            }`}
             onClick={() => {
               setActiveSection("comentarios");
             }}

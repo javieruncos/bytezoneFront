@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const apiProduct = import.meta.env.VITE_API_PRODUCTOS;
-console.log("URL de la API:", apiProduct);
 
 const api = axios.create({
   baseURL: apiProduct,
@@ -87,11 +86,7 @@ export const createProduct = async (data) => {
   try {
     const token = localStorage.getItem("token"); // o de donde guardes el JWT
 
-    const response = await api.post("/", data, {
-      headers: {
-        Authorization: `Bearer ${token}`, // <== Aquí envías el token
-      },
-    });
+    const response = await api.post("/", data);
 
     return {
       status: response.status,

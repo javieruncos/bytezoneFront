@@ -35,8 +35,8 @@ const MasVendidos = ({ productos }) => {
                 <img
                   // Usar la primera imagen si existe, si no, un placeholder o nada.
                   src={
-                    Array.isArray(item.images) && item.images.length > 0
-                      ? item.images[0]
+                    (item.images) && item.images.length > 0
+                      ? item.images[0].url
                       : "https://via.placeholder.com/300"
                   }
                   alt={item.name}

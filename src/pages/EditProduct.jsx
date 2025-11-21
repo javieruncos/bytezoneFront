@@ -6,7 +6,10 @@ import Swal from "sweetalert2";
 import { ContextProduct } from "../context/ProductContext";
 
 const EditProduct = () => {
-  const { setProduct } = useContext(ContextProduct);
+  const { setProduct, product } = useContext(ContextProduct);
+  const [existingImages, setExistingImages] = useState(product.images || []);
+  const [deletedImages, setDeletedImages] = useState([]);
+  const [newImages, setNewImages] = useState([]);
 
   const {
     register,
@@ -75,6 +78,7 @@ const EditProduct = () => {
             setValue(`specs.${key}`, value);
           });
         }
+        setExistingImages(productData.images || []);
         setValue("color", productData.color);
         // No establecemos valor para 'images' ya que es un input de tipo file
       }
@@ -97,13 +101,20 @@ const EditProduct = () => {
     if (formData.discount) dataToUpdate.append("discount", formData.discount);
     if (formData.rating) dataToUpdate.append("rating", formData.rating);
     if (formData.color) dataToUpdate.append("color", formData.color);
-    if (formData.description) dataToUpdate.append("description", formData.description);
+    if (formData.description)
+      dataToUpdate.append("description", formData.description);
     dataToUpdate.append("specs", JSON.stringify(parsedSpecs));
 
     // Adjuntar nuevas imágenes solo si se seleccionaron
-    if (formData.images && formData.images.length > 0) {
-      Array.from(formData.images).forEach((file) => {
+    if (newImages.length > 0) {
+      newImages.forEach((file) => {
         dataToUpdate.append("images", file);
+      });
+    }
+
+    if (deletedImages.length > 0) {
+      deletedImages.forEach((public_id) => {
+        dataToUpdate.append("deletedImages", public_id);
       });
     }
 
@@ -299,11 +310,61 @@ const EditProduct = () => {
               </label>
               <input
                 type="file"
-                {...register("images")}
                 accept="image/*"
                 multiple
+                onChange={(e) => {
+                  const files = Array.from(e.target.files);
+                  setNewImages(files); // ← guardás los archivos en estado
+                }}
                 className="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-500/20 file:text-violet-300 hover:file:bg-violet-500/30"
               />
+              <div className="flex gap-2 flex-wrap mt-4">
+                {newImages.map((file, index) => (
+                  <div key={index} className="relative">
+                    <img
+                      src={URL.createObjectURL(file)}
+                      alt={`Nueva imagen ${index + 1}`}
+                      className="w-24 h-24 object-cover rounded"
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setNewImages((prev) =>
+                          prev.filter((_, i) => i !== index)
+                        )
+                      }
+                      className="absolute top-0 right-0 bg-red-600 text-white p-1 rounded-full"
+                      title="Eliminar imagen"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex gap-2 flex-wrap mt-4">
+              {existingImages.map((img, index) => (
+                <div key={index} className="relative">
+                  <img
+                    src={img.url}
+                    alt={`Imagen ${index + 1}`}
+                    className="w-24 h-24 object-cover rounded"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDeletedImages((prev) => [...prev, img.public_id]);
+                      setExistingImages((prev) =>
+                        prev.filter((_, i) => i !== index)
+                      );
+                    }}
+                    className="absolute top-0 right-0 bg-red-600 text-white p-1 rounded-full"
+                    title="Eliminar imagen"
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
             </div>
 
             {/* Specs (JSON) */}
@@ -319,8 +380,12 @@ const EditProduct = () => {
                       {...register(`specs.${field.name}`)}
                       className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg outline-none focus:ring-2 focus:ring-violet-500 transition appearance-none"
                     >
-                      <option value="true" className="bg-[#191919] text-white">Sí</option>
-                      <option value="false" className="bg-[#191919] text-white">No</option>
+                      <option value="true" className="bg-[#191919] text-white">
+                        Sí
+                      </option>
+                      <option value="false" className="bg-[#191919] text-white">
+                        No
+                      </option>
                     </select>
                   ) : (
                     <input

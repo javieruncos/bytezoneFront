@@ -10,7 +10,7 @@ const CardMasVendidos = ({ producto }) => {
   };
 
   const images = getImagesAsArray(producto.images);
-  const imageUrl = images.length > 0 ? images[0] : "/img/placeholder.jpg"; // Usar una imagen de respaldo
+  const imageUrl = images.length > 0 ? images[0].url : "/img/placeholder.jpg"; // Usar una imagen de respaldo
 
   return (
     <>

@@ -13,7 +13,6 @@ const ProductContext = ({ children }) => {
     getProduct().then((res) => {
       setProduct(res.data);
       setLoading(false);
-      console.log(res.data);
     });
   }, []);
 
