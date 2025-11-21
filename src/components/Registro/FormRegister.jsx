@@ -48,8 +48,6 @@ const FormRegister = () => {
         Swal.fire("Error inesperado", "Inténtalo nuevamente en breve", "error");
       }
     });
-
-    console.log(data);
   };
 
   return (

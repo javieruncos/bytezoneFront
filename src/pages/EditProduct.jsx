@@ -61,7 +61,6 @@ const EditProduct = () => {
     getProductById(id).then((respuesta) => {
       // La respuesta de la API es el objeto del producto directamente.
       const productData = respuesta;
-      console.log("Datos recibidos para editar:", productData);
 
       // Verificamos que tengamos un objeto válido con un _id (de MongoDB) o id.
       if (productData && (productData._id || productData.id)) {

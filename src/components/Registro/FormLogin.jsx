@@ -17,7 +17,6 @@ const FormLogin = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log(data);
     const respuesta = await login(data);
 
     if (respuesta.status === 200) {
@@ -25,7 +24,7 @@ const FormLogin = () => {
       // Aquí solo necesitamos actualizar el estado y navegar.
       // `respuesta.data` contiene directamente el objeto del usuario.
       Swal.fire("Bienvenido", respuesta.message, "success");
-      setCurrentUser(respuesta.data);
+      setCurrentUser(respuesta.data.user);
       reset();
       navigate("/");
     } else {
