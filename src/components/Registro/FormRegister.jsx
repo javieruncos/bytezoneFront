@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { createUser } from "../../services/user";
 
 const FormRegister = () => {
-  const { user,currentUser, setCurrentUser} = useContext(ContextUser);
+  const { user, currentUser, setCurrentUser } = useContext(ContextUser);
 
   const {
     register,
@@ -19,15 +19,7 @@ const FormRegister = () => {
   const onSubmitRegister = (data) => {
     //setear el perfil del usuario
     data.perfil = "usuario";
-    //verificar si el usuario ya existe
-    const usuarioBuscado = user.find(
-      (item) => item.email === data.email
-    );
-    //si el usuario ya existe mostrar un mensaje de error
-    if (usuarioBuscado) {
-      Swal.fire("Error", "el usuario ya existe", "error");
-      return;
-    }
+  
     //verificar si las contraseñas coinciden
     if (data.password !== data.confirmPassword) {
       Swal.fire("Error", "las contraseñas no coinciden", "error");
@@ -38,22 +30,25 @@ const FormRegister = () => {
       if (respuesta.status === 201) {
         Swal.fire(
           "Usuario creado",
-          "el usuario se creo correctamente",
+          "El usuario se creó correctamente",
           "success"
         );
-        
-        //guardar el usuario en el localStorage
-        localStorage.setItem("usuarioByte", JSON.stringify({ email: data.email, perfil: "usuario" }));
-        //setear el usuario en el estado
-        setCurrentUser({ ...data, perfil: "usuario" });
-        //limpiar el formulario
+
+        // Guardar token y usuario
+        localStorage.setItem("token", respuesta.data.token);
+        localStorage.setItem(
+          "usuarioByte",
+          JSON.stringify(respuesta.data.user)
+        );
+
+        setCurrentUser(respuesta.data.user);
         reset();
-        //redireccionar al home
         navigate("/");
       } else {
-        Swal.fire("error inesperado", "intentalo nuevamente en breve", "error");
+        Swal.fire("Error inesperado", "Inténtalo nuevamente en breve", "error");
       }
     });
+
     console.log(data);
   };
 
@@ -67,15 +62,13 @@ const FormRegister = () => {
           type="text"
           placeholder="Tu nombre"
           className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
-          {
-            ...register("nombre", {
-              required: true,
-              minLength:{
-                value:3,
-                message:"el nombre debe tener al menos 3 caracteres"
-              },
-            })
-          }
+          {...register("username", {
+            required: true,
+            minLength: {
+              value: 3,
+              message: "el nombre debe tener al menos 3 caracteres",
+            },
+          })}
         />
         <span className="text-red-500">{errors.nombre?.message}</span>
       </div>
@@ -90,9 +83,9 @@ const FormRegister = () => {
           className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
           {...register("email", {
             required: true,
-            pattern:{
+            pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message:"el correo no es valido"
+              message: "el correo no es valido",
             },
           })}
         />
@@ -126,15 +119,13 @@ const FormRegister = () => {
           type="password"
           placeholder="********"
           className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
-          {
-            ...register("confirmPassword", {
-              required: true,
-              minLength: {
-                value: 8,
-                message: "la contraseña debe tener al menos 8 caracteres",
-              },
-            })
-          }
+          {...register("confirmPassword", {
+            required: true,
+            minLength: {
+              value: 8,
+              message: "la contraseña debe tener al menos 8 caracteres",
+            },
+          })}
         />
       </div>
 
