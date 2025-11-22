@@ -34,14 +34,8 @@ const FormRegister = () => {
           "success"
         );
 
-        // Guardar token y usuario
-        localStorage.setItem("token", respuesta.data.token);
-        localStorage.setItem(
-          "usuarioByte",
-          JSON.stringify(respuesta.data.user)
-        );
-
-        setCurrentUser(respuesta.data.user);
+        // La función `createUser` ya guarda los datos. Solo actualizamos el contexto.
+        setCurrentUser(respuesta.data.user); // Asumiendo que createUser devuelve { data: { user: ..., token: ... } }
         reset();
         navigate("/");
       } else {

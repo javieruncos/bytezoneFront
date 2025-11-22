@@ -24,7 +24,8 @@ const FormLogin = () => {
       // Aquí solo necesitamos actualizar el estado y navegar.
       // `respuesta.data` contiene directamente el objeto del usuario.
       Swal.fire("Bienvenido", respuesta.message, "success");
-      setCurrentUser(respuesta.data.user);
+      // La función `login` ya se encarga de localStorage. Solo actualizamos el contexto.
+      setCurrentUser(respuesta.data);
       reset();
       navigate("/");
     } else {

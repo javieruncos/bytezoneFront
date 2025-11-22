@@ -4,7 +4,15 @@ import { getProfile, getUser } from "../services/user";
 export const ContextUser = createContext();
 
 const UserContext = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(() => {
+    try {
+      const userInStorage = localStorage.getItem("usuarioByte");
+      // Si hay algo en storage y no es "undefined", lo parseamos.
+      return userInStorage && userInStorage !== "undefined" ? JSON.parse(userInStorage) : null;
+    } catch (error) {
+      return null; // Si el JSON es inválido, retornamos null.
+    }
+  });
   // 1. Añadimos un estado para saber si estamos verificando la sesión
   const [loading, setLoading] = useState(true); 
 
@@ -14,7 +22,10 @@ const UserContext = ({ children }) => {
     if (token) {
       getProfile()
         .then((res) => {
-          setCurrentUser(res.data);
+          // Aseguramos que solo actualizamos si hay datos válidos
+          if (res && res.data) {
+            setCurrentUser(res.data);
+          }
         })
         .catch(() => {
           localStorage.removeItem("token");
