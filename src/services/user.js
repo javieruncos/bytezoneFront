@@ -9,6 +9,15 @@ const apiUser = axios.create({
   },
 });
 
+// Interceptor para añadir el token de autorización a todas las peticiones
+apiUser.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export const createUser = async (user) => {
   try {
     const response = await apiUser.post("/register", user);
@@ -105,30 +114,31 @@ export const eliminarUser = async (id) => {
 
 export const login = async ({ email, password }) => {
   try {
+    // --- Primer paso: Autenticación y obtención del token ---
     const response = await apiUser.post("/login", { email, password });
-
     const token = response.data.token;
     localStorage.setItem("token", token);
-
-    const profile = await apiUser.get("/profile", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    // Guardar el usuario completo (el que mostraste arriba)
-    // profile.data tiene la forma { user: {...} }, guardamos solo el objeto de usuario.
-    localStorage.setItem("usuarioByte", JSON.stringify(profile.data.user));
-
-    return {
-      status: response.status,
-      data: profile.data.user, // Devolvemos directamente el objeto del usuario
-    };
   } catch (error) {
+    // Este catch solo se activa si el login (email/password) falla.
     if (error.response?.status === 401) {
       return { status: 401, message: "Usuario o contraseña incorrectos" };
     }
-    return { status: 500, message: "Error en el servidor" };
+    // Devolvemos un mensaje más descriptivo para otros errores de login.
+    return { status: error.response?.status || 500, message: error.response?.data?.message || "Error en el servidor durante el login." };
+  }
+
+  try {
+    // --- Segundo paso: Usar getProfile para obtener los datos del usuario ---
+    // getProfile ya maneja la llamada a /profile y la estructura de la respuesta.
+    const profileData = await getProfile();
+    const user = profileData.data; // getProfile devuelve { status, data }
+    localStorage.setItem("usuarioByte", JSON.stringify(user));
+
+    return { status: 200, data: user };
+  } catch (error) {
+    // Este catch se activa si falla la obtención del perfil.
+    // getProfile relanza el error de Axios, por lo que podemos inspeccionar error.response
+    return { status: error.response?.status || 500, message: error.response?.data?.message || "Error al obtener el perfil del usuario." };
   }
 };
 
@@ -141,16 +151,11 @@ export const getProfile = async () => {
   }
 
   try {
-    const response = await apiUser.get("/profile", {
-      headers: {
-        // Adjuntamos el token en la cabecera de autorización
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await apiUser.get("/profile");
 
     return {
       status: response.status,
-      data: response.data.user, // Aseguramos que la estructura sea la misma { user: {...} } -> devolvemos user
+      data: response.data, // La API devuelve el objeto de usuario directamente
     };
   } catch (error) {
     throw error; // Re-lanzamos el error para que el llamador (UserContext) lo maneje.

@@ -97,8 +97,9 @@ const Menu = () => {
               <p className=" font-bold">4335343</p>
             </div>
             <div className="flex  items-center gap-4">
+             
               <Link to="/registro" className=" cursor-pointer">
-              <i className="bi bi-person text-4xl"></i>
+              <i className={ `bi bi-person text-4xl ${currentUser ? "hidden" : ""}`}></i>
               </Link>
               {/* Solo muestra el botón de logout si la carga ha terminado y hay un usuario */}
               {!loading && currentUser && (
